@@ -12,8 +12,15 @@ import logo from '../img/firelogo.png';
 const vector2 = require('../img/landingvector.png');
 const greenBackgroundSVG = require('../img/green-slanted-bg-shape.png');
 const handshakeImg = require('../img/handshake.png');
-const analytics = require('../img/analytics-1.png')
-const startup = require('../img/startup-1.png')
+const analytics = require('../img/analytics-1.png');
+const startup = require('../img/startup-1.png');
+const getStartedVector = require('../img/getstartedvector.png');
+const facebookIcon = require('../img/fb.png');
+const githubIcon = require('../img/github-1.png');
+const instagramIcon = require('../img/instagram-logo-1.png');
+const linkedInIcon = require('../img/linkedin.png');
+const twitterIcon = require('../img/twitter-1.png');
+
 
 // media queries
 
@@ -58,7 +65,7 @@ const LogoTitleContainer = styled.div`
   width: 30%;
   display: flex;
   justify-content: flex-start;
-  align-items: center;  
+  align-items: center;
 `;
 
 const NavTitleContainer = styled.div`
@@ -106,7 +113,7 @@ export const StyledButton = styled.button`
   border-radius: 4px;
   height: 100%;
   width: 100%;
-  padding: 1em;
+  padding: 1em 2em;
   border: none;
   font-family: Ubuntu;
   font-size: 14px;
@@ -126,6 +133,10 @@ export const StyledButton = styled.button`
     transform: translateY(1px);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   }
+
+  @media only screen and (max-width: 600px) {
+    padding: 0.7em;
+  }
 `;
 
 const TopLandingContainer = styled.div`
@@ -135,7 +146,6 @@ const TopLandingContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -223,8 +233,9 @@ const LandingVectorImageContainer = styled.div`
 
   img {
     padding-right: 3em;
+    padding-top: 2em;
     height: 100%;
-    width: 70%;
+    transform: scale(1.05);
   }
 
   ${mobileHidden};
@@ -243,6 +254,7 @@ const InfoboxContainer = styled.div`
   @media only screen and (max-width: 600px) {
     height: 360vh;
     background-size: auto;
+    background-repeat: ;
   }
 `;
 
@@ -255,6 +267,11 @@ const InfoBoxTitleContainer = styled.div`
   h1 {
     color: white;
     padding-bottom: 1em;
+
+    @media only screen and (max-width: 600px) {
+      width: 80%;
+      text-align: center;
+    }
   }
 `;
 
@@ -267,7 +284,9 @@ const InfoCardsContainer = styled.div`
   align-items: flex-start;
 
   @media only screen and (max-width: 600px) {
-    
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15em;
   }
 `;
 
@@ -286,6 +305,11 @@ const InfoCard = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: transform 0.1s;
+
+  :hover {
+    transform: scale(1.01);
+  }
 
   p {
     margin-top: -0.2em;
@@ -294,6 +318,147 @@ const InfoCard = styled.div`
 
   img {
     height: 7em;
+  }
+`;
+
+// bottom section
+const BottomSectionContainer = styled.div`
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+const BottomImgDiv = styled.div`
+  width: 50%;
+  }
+`;
+
+const BottomTextStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+  h2 {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 46px;
+    width: 12em;
+    text-align: center;
+  }
+  input {
+    height: 3em;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #ada8a8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    padding-left: 1em;
+  }
+`;
+
+const BottomButton = styled.div`
+  background: ${props => props.theme.background};
+  color: ${props => props.theme.text};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  height: 1.5em;
+  width: 95%;
+  padding: 1em;
+  border: none;
+  font-family: Ubuntu;
+  font-size: 14px;
+  margin-top: 2em;
+  text-align: center;
+  vertical-align: middle;
+  :focus {
+    outline: none;
+  }
+  :active {
+    outline: none;
+    transform: translateY(2px);
+  }
+`;
+
+//footer
+const FooterConatiner = styled.div`
+  height: 50vh;
+  width: 100%;
+  background: #292d38;
+  p {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+    color: #ffffff;
+  }
+`;
+
+const FooterTopSection = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const LogoFooter = styled.div`
+  margin-top: 1.5%;
+  margin-left: 10%;
+  height: 10em;
+  width: 5em;
+  background-image: url(${logo});
+  background-repeat: no-repeat;
+`;
+
+const LogoTitleContainerFooter = styled.div`
+  margin-top: 5%;
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const FooterTextStyle = styled.div`
+  margin-top: 2%;
+  h3 {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+  }
+  p {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+  }
+`;
+
+const FooterBottomSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Icons = styled.div`
+  margin-right: 1.5%;
+  height: 1.6em;
+  img {
+    max-height: 100%;
   }
 `;
 
@@ -306,10 +471,6 @@ const SignUp = () => {
       <StyledButton theme={buttonTheme}>Get Started</StyledButton>
     </SignupContainer>
   );
-};
-
-const LandingCard = () => {
-  return <InfoCard></InfoCard>;
 };
 
 const Landing = () => {
@@ -389,7 +550,69 @@ const Landing = () => {
             </InfoCard>
           </InfoCardsContainer>
         </InfoboxContainer>
-        <BottomLandingContainer></BottomLandingContainer>
+        <BottomSectionContainer>
+          <BottomImgDiv>
+            <img src={getStartedVector} />
+          </BottomImgDiv>
+          <BottomTextStyle>
+            <h2>Ready to get started?</h2>
+            <input placeholder="Enter your email address" />
+            <BottomButton theme={buttonTheme}>Get Started</BottomButton>
+          </BottomTextStyle>
+        </BottomSectionContainer>
+        <FooterConatiner>
+          <FooterTopSection>
+            <LogoTitleContainerFooter>
+              <LogoFooter />
+              <NavTitleContainer>
+                <h1>DevCoach</h1>
+              </NavTitleContainer>
+            </LogoTitleContainerFooter>
+            <FooterTextStyle>
+              <h3>SUPPORT</h3>
+              <p>How it works</p>
+            </FooterTextStyle>
+            <FooterTextStyle>
+              <h3>PRODUCT</h3>
+              <p>Product feedback</p>
+              <p>About the team</p>
+            </FooterTextStyle>
+            <FooterTextStyle>
+              <h3>HELP</h3>
+              <p>FAQ</p>
+              <p>Contact us</p>
+              <p>Career</p>
+            </FooterTextStyle>
+            <FooterTextStyle>
+              <h3>LEGAL</h3>
+              <p>Privacy Policy</p>
+              <p>Terms and Conditions</p>
+              <p>Manage Cookies</p>
+            </FooterTextStyle>
+          </FooterTopSection>
+          <FooterBottomSection>
+             <Icons>
+              <img src={githubIcon} />
+            </Icons>
+            <Icons>
+              <img src={facebookIcon} />
+            </Icons>
+            <Icons>
+              <img src={instagramIcon} />
+            </Icons>
+            <Icons>
+              <img src={linkedInIcon} />
+            </Icons>
+            <Icons>
+              <img src={twitterIcon} />
+            </Icons>
+          </FooterBottomSection>
+          <p>
+            {' '}
+            hello@dev-coach.com - copyright © Devcoach 2019. All rights
+            reserved.
+          </p>
+        </FooterConatiner>
       </LandingWrapper>
     </div>
   );
