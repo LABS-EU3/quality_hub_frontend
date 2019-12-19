@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import React from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
 // import AppBar from '@material-ui/core/AppBar';
@@ -14,6 +14,15 @@ const greenBackgroundSVG = require('../img/green-slanted-bg-shape.png');
 const handshakeImg = require('../img/handshake.png');
 const analytics = require('../img/analytics-1.png')
 const startup = require('../img/startup-1.png')
+
+// media queries
+
+const mobileHidden = css`
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+`;
+
 // styled components
 
 const LandingWrapper = styled.div`
@@ -30,6 +39,10 @@ const NavbarContainer = styled.div`
   top: 0;
   z-index: 11;
   box-shadow: 0px 3px 4px -2px rgba(150, 150, 150, 1);
+
+  @media only screen and (max-width: 600px) {
+    justify-content: space-evenly;
+  }
 `;
 
 const Logo = styled.div`
@@ -38,13 +51,14 @@ const Logo = styled.div`
   background-image: url(${logo});
   background-repeat: no-repeat;
   transform: scale(0.7);
+  ${mobileHidden};
 `;
 
 const LogoTitleContainer = styled.div`
   width: 30%;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center;  
 `;
 
 const NavTitleContainer = styled.div`
@@ -67,6 +81,7 @@ const NavbarLink = styled.div`
   font-family: Ubuntu;
   font-size: 14px;
   color: black;
+  ${mobileHidden};
 
   a {
     text-decoration: none;
@@ -89,8 +104,8 @@ export const StyledButton = styled.button`
   color: ${props => props.theme.text};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  height: 3em;
-  width: 7em;
+  height: 100%;
+  width: 100%;
   padding: 1em;
   border: none;
   font-family: Ubuntu;
@@ -120,6 +135,12 @@ const TopLandingContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    height: 120vh;
+  }
 `;
 
 const LandingTaglineContainer = styled.div`
@@ -131,15 +152,28 @@ const LandingTaglineContainer = styled.div`
 
   h1 {
     width: 80%;
-    font-size: 40px;
+    font-size: 2.5em;
     padding-top: 0.75em;
+
+    @media only screen and (max-width: 600px) {
+      padding-top: 0;
+    }
   }
 
   h3 {
     margin-top: 0em;
     width: 80%;
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: normal;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    text-align: center;
+
+    h1 {
+      width: 100%;
+    }
   }
 `;
 
@@ -185,13 +219,15 @@ const LandingRightContainer = styled.div`
 `;
 
 const LandingVectorImageContainer = styled.div`
-  z-index: 10;
+  z-index: 1;
 
   img {
     padding-right: 3em;
-    height: 29em;
-    width: 29em;
+    height: 100%;
+    width: 70%;
   }
+
+  ${mobileHidden};
 `;
 
 const InfoboxContainer = styled.div`
@@ -203,6 +239,11 @@ const InfoboxContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+
+  @media only screen and (max-width: 600px) {
+    height: 360vh;
+    background-size: auto;
+  }
 `;
 
 const InfoBoxTitleContainer = styled.div`
@@ -224,6 +265,10 @@ const InfoCardsContainer = styled.div`
   width: 100%;
   justify-content: space-evenly;
   align-items: flex-start;
+
+  @media only screen and (max-width: 600px) {
+    
+  }
 `;
 
 const BottomLandingContainer = styled.div`
