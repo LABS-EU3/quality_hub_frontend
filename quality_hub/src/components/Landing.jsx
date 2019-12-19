@@ -11,7 +11,9 @@ import React from 'react';
 import logo from '../img/firelogo.png';
 const vector2 = require('../img/landingvector.png');
 const greenBackgroundSVG = require('../img/green-slanted-bg-shape.png');
-
+const handshakeImg = require('../img/handshake.png');
+const analytics = require('../img/analytics-1.png')
+const startup = require('../img/startup-1.png')
 // styled components
 
 const LandingWrapper = styled.div`
@@ -94,9 +96,10 @@ export const StyledButton = styled.button`
   font-family: Ubuntu;
   font-size: 14px;
   transition: opacity 0.2s;
+  transition: transform 0.1s;
 
   :hover {
-    opacity: 0.9;
+    opacity: 0.8;
   }
 
   :focus {
@@ -200,11 +203,10 @@ const InfoboxContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
 `;
 
 const InfoBoxTitleContainer = styled.div`
-  width: 100%;  
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -213,7 +215,7 @@ const InfoBoxTitleContainer = styled.div`
     color: white;
     padding-bottom: 1em;
   }
-`
+`;
 
 const InfoCardsContainer = styled.div`
   display: flex;
@@ -222,7 +224,7 @@ const InfoCardsContainer = styled.div`
   width: 100%;
   justify-content: space-evenly;
   align-items: flex-start;
-`
+`;
 
 const BottomLandingContainer = styled.div`
   height: 100vh;
@@ -234,9 +236,20 @@ const InfoCard = styled.div`
   background: white;
   border: 1px solid #a3a3a3;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 4px; 
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  p {
+    margin-top: -0.2em;
+    width: 80%;
+  }
+
+  img {
+    height: 7em;
+  }
 `;
 
 // react components
@@ -305,9 +318,30 @@ const Landing = () => {
             <h1>Say goodbye to second guessing.</h1>
           </InfoBoxTitleContainer>
           <InfoCardsContainer>
-            <InfoCard></InfoCard>
-            <InfoCard></InfoCard>
-            <InfoCard></InfoCard>
+            <InfoCard>
+              <h3>Find your coach.</h3>
+              <p>
+                Match with an experienced professional, hand-selected by us for
+                interviewing experience and mentoring ability.
+              </p>
+              <img src={handshakeImg} />
+            </InfoCard>
+            <InfoCard>
+              <h3>Find your coach.</h3>
+              <p>
+                Match with an experienced professional, hand-selected by us for
+                interviewing experience and mentoring ability.
+              </p>
+              <img src={analytics} />
+            </InfoCard>
+            <InfoCard>
+              <h3>Get hired! </h3>
+              <p>
+                Take advantage of your newfound interview skills and land the
+                job of your dreams.
+              </p>
+              <img src={startup} />
+            </InfoCard>
           </InfoCardsContainer>
         </InfoboxContainer>
         <BottomLandingContainer></BottomLandingContainer>
