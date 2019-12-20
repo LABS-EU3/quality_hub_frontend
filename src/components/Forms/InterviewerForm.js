@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -37,24 +37,31 @@ function StudentForm(props) {
             <Field
               type='text'
               name='city'
-              placeholder=' current city '
+              placeholder='Current City'
             />
             <Field
               type='text'
               name='level_of_experience'
-              placeholder=' select level of experience '
+              placeholder='Level of Experience'
             />
             <Field
               type='text'
               name='skills'
-              placeholder=' what skill(s) do you have ? '
+              placeholder='Your skills'
             />
             <Field
               type='text'
               name='value'
-              placeholder=' what value do you bring to dev coach ? '
+              placeholder='Brief description of what you will offer'
             />
-            <StyledButton theme={buttonTheme}> Submit </StyledButton>
+            <Link to='/dashboard'>
+              <StyledButton
+                style={{ width: '100%' }}
+                theme={buttonTheme}
+              >
+                Submit
+              </StyledButton>
+            </Link>
           </Form>
         </FormContainer>
       </RegisterCard>
@@ -68,12 +75,6 @@ const FormikStudentForm = withFormik({
     level_of_experience: Yup.array(),
     skills: Yup.array(),
     value: Yup.string().required(),
-  }),
-  mapPropsToValues: props => ({
-    city: ['edinburgh', 'lagos', 'watford'],
-    level_of_experience: ['less than a year', 'Over two years'],
-    skills: ['Native JS', 'React JS', 'Node JS'],
-    value: '',
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
     resetForm();

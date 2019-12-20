@@ -75,6 +75,7 @@ function StudentForm({ touched, errors, isSubmitting }) {
             </div>
             <Link to='/dashboard'>
               <StyledButton
+                style={{ width: '100%' }}
                 type='submit'
                 disabled={isSubmitting}
                 theme={buttonTheme}
@@ -106,9 +107,10 @@ const FormikStudentForm = withFormik({
       'Please enter your confidence level',
     ),
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
+  handleSubmit(values, { resetForm, setSubmitting, props }) {
     resetForm();
     setSubmitting(false);
+    console.log(props);
   },
 })(StudentForm);
 
