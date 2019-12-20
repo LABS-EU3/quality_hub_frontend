@@ -38,7 +38,7 @@ function UserTypePage() {
               </ul>
             </div>
             <div className='user-decision'>
-              <Link to='/dashboard'>
+              <Link to='/interviewer'>
                 <StyledButton theme={buttonTheme} type='submit'>
                   Join As Coach
                 </StyledButton>
@@ -63,7 +63,7 @@ function UserTypePage() {
               </ul>
             </div>
             <div className='user-decision'>
-              <Link to='/dashboard'>
+              <Link to='/student'>
                 <StyledButton theme={buttonTheme} type='submit'>
                   Join As Student
                 </StyledButton>

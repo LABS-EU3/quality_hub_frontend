@@ -75,12 +75,9 @@ const FormikStudentForm = withFormik({
     skills: ['Native JS', 'React JS', 'Node JS'],
     value: '',
   }),
-  handleSubmit(values, { props }) {
-    props.register(
-      'http://localhost:5000/user/register',
-      props,
-      values,
-    );
+  handleSubmit(values, { resetForm, setSubmitting }) {
+    resetForm();
+    setSubmitting(false);
   },
 })(StudentForm);
 

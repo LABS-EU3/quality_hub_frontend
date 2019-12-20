@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export default connect(state => state)(App);
+export default connect(state => state)(App);  

@@ -31,7 +31,7 @@ export const register = (props, values) => dispatch => {
       localStorage.setItem('user', JSON.stringify(res.data));
       dispatch({ type: types.LOGIN_SUCCESSFUL });
       localStorage.setItem('token', res.data.token);
-      props.history.push('/dashboard');
+      props.history.push('/user/type');
     })
     .catch(err => {
       dispatch({ type: types.SIGN_UP_ERROR, payload: err });

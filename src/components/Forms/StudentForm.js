@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-
+import { Link } from 'react-router-dom';
 import { StyledButton, buttonTheme } from '../Landing';
 import {
   GreyBackgroundContainer,
@@ -73,13 +73,15 @@ function StudentForm({ touched, errors, isSubmitting }) {
                 placeholder='Select Confidence Level'
               />
             </div>
-            <StyledButton
-              type='submit'
-              disabled={isSubmitting}
-              theme={buttonTheme}
-            >
-              Submit
-            </StyledButton>
+            <Link to='/dashboard'>
+              <StyledButton
+                type='submit'
+                disabled={isSubmitting}
+                theme={buttonTheme}
+              >
+                Submit
+              </StyledButton>
+            </Link>
           </Form>
         </FormContainer>
       </RegisterCard>
