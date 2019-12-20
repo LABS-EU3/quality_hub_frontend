@@ -20,9 +20,7 @@ function userReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         isLoggedIn: true,
-
-        user: action.payload
-
+        user: action.payload,
       };
     case types.LOGIN_ERROR:
       return { ...state, loginError: action.payload };

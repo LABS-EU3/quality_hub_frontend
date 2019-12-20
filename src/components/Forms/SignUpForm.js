@@ -3,14 +3,12 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-
 import { StyledButton, buttonTheme, invertTheme } from '../Landing';
-import { loadingButtonTheme } from './LoginForm';
-
-import {  
+import {
   GreyBackgroundContainer,
   FormCard,
   FormContainer,
+  loadingButtonTheme,
 } from './LoginForm';
 
 import { register } from '../../state/actions/actionCreators';
@@ -35,7 +33,7 @@ const RegisterCard = styled(FormCard)`
 `;
 
 function SignUpForm(props) {
-  console.log(props)
+  console.log(props);
   return (
     <GreyBackgroundContainer>
       <RegisterCard>
@@ -113,7 +111,7 @@ const FormikSignUpForm = withFormik({
   }),
 
   handleSubmit(values, { props }) {
-    console.log(props.userReducer)
+    console.log(props.userReducer);
     props.register(props, values);
   },
 })(SignUpForm);

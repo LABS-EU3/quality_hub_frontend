@@ -16,8 +16,6 @@ export const login = (props, values) => dispatch => {
       props.history.push('/dashboard');
     })
     .catch(err => {
-      debugger;
-
       dispatch({ type: types.LOGIN_ERROR, payload: err });
     });
 };
