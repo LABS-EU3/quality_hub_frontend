@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-
 import { StyledButton, buttonTheme, invertTheme } from '../Landing';
+import { loadingButtonTheme } from './LoginForm';
 
-import {
+import {  
   GreyBackgroundContainer,
   FormCard,
   FormContainer,
@@ -35,6 +35,7 @@ const RegisterCard = styled(FormCard)`
 `;
 
 function SignUpForm(props) {
+  console.log(props)
   return (
     <GreyBackgroundContainer>
       <RegisterCard>
@@ -42,7 +43,6 @@ function SignUpForm(props) {
         <FormContainer>
           <Form>
             <ShortInputContainer>
-
               <Field
                 type='text'
                 name='first_name'
@@ -55,6 +55,7 @@ function SignUpForm(props) {
               />
             </ShortInputContainer>
             <Field type='email' name='email' placeholder='Email' />
+
             <Field
               type='password'
               name='password'
@@ -66,8 +67,14 @@ function SignUpForm(props) {
               placeholder='Confirm Password'
             />
 
-            <StyledButton theme={buttonTheme} type='submit'>
-
+            <StyledButton
+              theme={
+                props.userReducer.isLoading
+                  ? loadingButtonTheme
+                  : buttonTheme
+              }
+              type='submit'
+            >
               Get Started
             </StyledButton>
           </Form>
@@ -86,10 +93,9 @@ const FormikSignUpForm = withFormik({
     confirm_password,
   }) {
     return {
-
       first_name: first_name || '',
       last_name: last_name || '',
-      email: email || '', 
+      email: email || '',
       password: password || '',
       confirm_password: confirm_password || '',
     };
@@ -101,17 +107,14 @@ const FormikSignUpForm = withFormik({
       .required('Please enter your password')
       .min(6),
     confirm_password: Yup.string().oneOf(
-
       [Yup.ref('password'), null],
       "Your passwords don't match",
     ),
   }),
 
   handleSubmit(values, { props }) {
-    console.log(values);
-
+    console.log(props.userReducer)
     props.register(props, values);
-
   },
 })(SignUpForm);
 

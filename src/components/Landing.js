@@ -14,7 +14,6 @@ const instagramIcon = require('../img/instagram-logo-1.png');
 const linkedInIcon = require('../img/linkedin.png');
 const twitterIcon = require('../img/twitter-1.png');
 
-
 // media queries
 
 const mobileHidden = css`
@@ -91,12 +90,12 @@ const NavbarLink = styled.div`
 
 export const buttonTheme = {
   text: 'white',
-  background: '#408f53'
+  background: '#408f53',
 };
 
 export const invertTheme = {
   text: '#4fad65',
-  background: 'white'
+  background: 'white',
 };
 
 export const StyledButton = styled.button`
@@ -377,7 +376,7 @@ const BottomButton = styled.div`
   }
 `;
 
-//footer
+// footer
 const FooterConatiner = styled.div`
   height: 50vh;
   width: 100%;
@@ -457,24 +456,6 @@ const Icons = styled.div`
 const MiddleSectionContainer = styled.div`
   height: 100vh;
   width: 100%;
-`;
-
-const BgShape = styled.div`
-  height: 100%;
-  margin: 20px;
-  background-image: url(${bgShape});
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-
-  h2 {
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: bold;
-    color: white;
-    padding-top: 160px;
-    font-size: 32px;
-    text-align: center;
-  }
 `;
 
 const SquaresContainer = styled.div`
@@ -571,7 +552,7 @@ const OtherImgDiv = styled.div`
 const SignUp = () => {
   return (
     <SignupContainer>
-      <input placeholder="Enter your email" />
+      <input placeholder='Enter your email' />
       <StyledButton theme={buttonTheme}>Get Started</StyledButton>
     </SignupContainer>
   );
@@ -590,15 +571,15 @@ const Landing = () => {
           </LogoTitleContainer>
           <LinksContainer>
             <NavbarLink>
-              <a href="#">FAQ</a>
+              <a href='#'>FAQ</a>
             </NavbarLink>
             <NavbarLink>
-              <a href="#">About</a>
+              <a href='#'>About</a>
             </NavbarLink>
-            <a href="/login">
+            <a href='/login'>
               <StyledButton theme={buttonTheme}>LOGIN</StyledButton>
             </a>
-            <a href="/register">
+            <a href='/register'>
               <StyledButton theme={invertTheme}>SIGN UP</StyledButton>
             </a>
           </LinksContainer>
@@ -610,10 +591,10 @@ const Landing = () => {
               STRESSFUL.
             </h1>
             <h3>
-              We connect developers looking to improve their interviewing
-              technique with experienced pros who have mastered the technical
-              interview and can coach you through the process from start to
-              finish.
+              We connect developers looking to improve their
+              interviewing technique with experienced pros who have
+              mastered the technical interview and can coach you
+              through the process from start to finish.
             </h3>
             <SignUp />
           </LandingTaglineContainer>
@@ -631,24 +612,26 @@ const Landing = () => {
             <InfoCard>
               <h3>Find your coach.</h3>
               <p>
-                Match with an experienced professional, hand-selected by us for
-                interviewing experience and mentoring ability.
+                Match with an experienced professional, hand-selected
+                by us for interviewing experience and mentoring
+                ability.
               </p>
               <img src={handshakeImg} />
             </InfoCard>
             <InfoCard>
               <h3>Find your coach.</h3>
               <p>
-                Match with an experienced professional, hand-selected by us for
-                interviewing experience and mentoring ability.
+                Match with an experienced professional, hand-selected
+                by us for interviewing experience and mentoring
+                ability.
               </p>
               <img src={analytics} />
             </InfoCard>
             <InfoCard>
               <h3>Get hired! </h3>
               <p>
-                Take advantage of your newfound interview skills and land the
-                job of your dreams.
+                Take advantage of your newfound interview skills and
+                land the job of your dreams.
               </p>
               <img src={startup} />
             </InfoCard>
@@ -660,8 +643,10 @@ const Landing = () => {
           </BottomImgDiv>
           <BottomTextStyle>
             <h2>Ready to get started?</h2>
-            <input placeholder="Enter your email address" />
-            <BottomButton theme={buttonTheme}>Get Started</BottomButton>
+            <input placeholder='Enter your email address' />
+            <BottomButton theme={buttonTheme}>
+              Get Started
+            </BottomButton>
           </BottomTextStyle>
         </BottomSectionContainer>
         <FooterConatiner>
@@ -695,7 +680,7 @@ const Landing = () => {
             </FooterTextStyle>
           </FooterTopSection>
           <FooterBottomSection>
-             <Icons>
+            <Icons>
               <img src={githubIcon} />
             </Icons>
             <Icons>
@@ -713,8 +698,8 @@ const Landing = () => {
           </FooterBottomSection>
           <p>
             {' '}
-            hello@dev-coach.com - copyright © Devcoach 2019. All rights
-            reserved.
+            hello@dev-coach.com - copyright © Devcoach 2019. All
+            rights reserved.
           </p>
         </FooterConatiner>
       </LandingWrapper>
