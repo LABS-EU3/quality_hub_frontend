@@ -24,14 +24,17 @@ function App(props) {
       <Route path={'/marketplace'} component={Marketplace} />
       <Route path={'/booking'} component={Booking} />
       <Route path={'/feedback'} component={Notification} />
-      {/* <Route path={'/settings'} component={Marketplace} /> */}
-      <Route path={'/settings'} component={ProfileSettings} />
+      <Route path={'/profileSettings'} component={ProfileSettings} />
       <Redirect to='/dashboard' />
     </Switch>
   );
   // if (localStorage.getItem('token')) {
   if (props.isLoggedIn) {
-    return <Dashboard routes={routes} />;
+    return (
+      <Route
+        render={props => <Dashboard {...props} routes={routes} />}
+      />
+    );
   }
   return (
     <Switch>

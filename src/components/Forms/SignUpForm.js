@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import LoaderSpinner from '../../utils/LoaderSpinner';
 
-import { StyledButton, buttonTheme, invertTheme } from '../Landing';
+import { StyledButton, buttonTheme } from '../Landing';
 import {
   GreyBackgroundContainer,
   FormCard,

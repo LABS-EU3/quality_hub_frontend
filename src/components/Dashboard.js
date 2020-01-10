@@ -17,7 +17,7 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 // import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -81,6 +81,7 @@ import DashboardNav from './DashboardNav';
 // }
 
 export default function Dashboard(props) {
+  console.log(props);
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -88,6 +89,11 @@ export default function Dashboard(props) {
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleAccountSetttings = e => {
+    props.history.push('/profileSettings');
+    setAnchorEl(null);
   };
 
   const handleClose = () => {
@@ -162,7 +168,9 @@ export default function Dashboard(props) {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleAccountSetttings}>
+                Account Settings
+              </MenuItem>
             </Menu>
           </div>
         </Toolbar>

@@ -14,10 +14,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-export function ProfileSettings({ user }) {
+export function ProfileSettings(props) {
   const classes = useStyles();
 
-  console.log(user);
+  const { user } = props;
 
   const initialUserInfo = {
     first_name: '',
@@ -25,6 +25,7 @@ export function ProfileSettings({ user }) {
     email: '',
     password: '',
     confirm_password: '',
+    avatar_url: '',
   };
 
   const [userInfo, setUserInfo] = useState(initialUserInfo);
@@ -32,10 +33,13 @@ export function ProfileSettings({ user }) {
   const handleChange = e => {
     const { value, name } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
-    console.log(userInfo);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const userToUpdate = user.user;
+    setUserInfo(userToUpdate);
+    console.log(userToUpdate);
+  }, [user]);
 
   return (
     <StyledSettingsWrap>
@@ -160,6 +164,7 @@ const StyledButtonDiv = styled.div`
     text-transform: uppercase;
   }
 `;
+
 const useStyles = makeStyles(theme => ({
   paper: {
     // marginTop: theme.spacing(8),
