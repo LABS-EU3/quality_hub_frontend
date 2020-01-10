@@ -199,25 +199,6 @@ export default function RecipeReviewCard(props) {
             textAlign: 'center',
           }}
         >
-          {/* <StyledButton
-            alignItems='center'
-            style={{
-              position: 'relative',
-              left: '10%',
-              margin: 0,
-              padding: 5,
-            }}
-          >
-            <Link
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-              }}
-              to={props.coach.contact_url}
-            >
-              Book Now
-            </Link>
-          </StyledButton> */}
           <Typography variant='body1'>
             <Link
               style={{
