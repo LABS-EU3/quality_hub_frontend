@@ -1,6 +1,6 @@
 const size = {
   mobile: '500px',
-  tablet: '800px',
+  tablet: '900px',
   large: '1000px',
 };
 
