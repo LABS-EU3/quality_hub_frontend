@@ -5,7 +5,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import devices from './devices';
 import thinking from '../img/thinking.png';
-import woman from '../img/woman.jpg';
 import pink from '../img/pink.jpg';
 import stare from '../img/stare.jpg';
 import mobileCard from '../img/mobileCard.jpg';
@@ -135,14 +134,14 @@ const SearchDiv = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 35vh;
+  min-height: 30vh;
   max-width: 80vw;
   @media ${devices.large} {
-    min-height: 20vh;
+    min-height: 30vh;
   }
   @media ${devices.tablet} {
     background-image: url(${stare});
-    min-height: 15vh;
+    min-height: 35vh;
   }
   @media ${devices.mobile} {
     background-image: url(${mobileCard});
@@ -171,10 +170,10 @@ const SearchDiv = styled.section`
 const SearchBar = styled.div`
   margin: 10px;
   min-width: 80vw;
-  min-height: 30vh;
+  max-height: 30vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 
   @media ${devices.large} {
@@ -183,15 +182,13 @@ const SearchBar = styled.div`
   }
 
   @media ${devices.tablet} {
-    min-width: 80vw;
     max-height: 15vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
   }
   @media ${devices.mobile} {
-    min-width: 30vw;
     min-height: 15vh;
     justify-content: center;
     align-items: center;
@@ -226,10 +223,12 @@ const SearchBar = styled.div`
     font-size: 30px;
     color: black;
     @media ${devices.tablet} {
+      color: rgba(252, 224, 210);
       padding: 0px;
       margin: 5px;
     }
     @media ${devices.mobile} {
+      color: black;
       font-size: 20px;
     }
   }
@@ -285,7 +284,8 @@ function Marketplace(props) {
             placeholder='search topic, name, or location'
             value={searchTerm}
             onChange={handleChange}
-          /> <button onSubmit={handleChange}>Search</button>
+          />
+          <button onSubmit={handleChange}>Search</button>
         </SearchBar>
       </SearchDiv>
       <MainContainer>
