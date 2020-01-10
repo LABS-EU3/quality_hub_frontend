@@ -7,11 +7,11 @@ const greenBackgroundSVG = require('../img/green-slanted-bg-shape.png');
 const handshakeImg = require('../img/handshake.png');
 const analytics = require('../img/analytics-1.png');
 const startup = require('../img/startup-1.png');
-const getStartedVector = require('../img/getstartedVector.png');
+const getStartedVector = require('../img/getstartedvector.png');
 const facebookIcon = require('../img/fb.png');
 const githubIcon = require('../img/github-1.png');
 const instagramIcon = require('../img/instagram-logo-1.png');
-const linkedInIcon = require('../img/linkedIn.png');
+const linkedInIcon = require('../img/linkedin.png');
 const twitterIcon = require('../img/twitter-1.png');
 
 // media queries

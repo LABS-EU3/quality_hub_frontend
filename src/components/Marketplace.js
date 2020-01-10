@@ -130,18 +130,26 @@ const BackgroundContainer = styled.section`
 
 const SearchDiv = styled.section`
   background-image: url(${pink});
+  background-color: black;
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 30vh;
-  max-width: 80vw;
+  border: 2px dashed orange;
+  margin: 0px;
+  padding: 0px;
+  min-height: 35vh;
+  max-height: 40vh;
+  min-width: 80vw;
+  max-width: 90vw;
+
   @media ${devices.large} {
-    min-height: 30vh;
+    min-width: 80vw;
+    max-width: 90vw;
+    min-height: 20vh;
+    max-height: 25vh;
   }
   @media ${devices.tablet} {
     background-image: url(${stare});
-    min-height: 35vh;
+    min-height: 25vh;
+    max-height: 30vw;
   }
   @media ${devices.mobile} {
     background-image: url(${mobileCard});
@@ -169,16 +177,19 @@ const SearchDiv = styled.section`
 
 const SearchBar = styled.div`
   margin: 10px;
-  min-width: 80vw;
+  /* min-width: 70vw;
+  max-width: 75vw; */
   max-height: 30vh;
   display: flex;
   flex-direction: column;
+  border: 2px dotted purple;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
 
   @media ${devices.large} {
     max-height: 15vh;
-    min-width: 80vw;
+    /* min-width: 75vw;
+    max-width: 80vw; */
   }
 
   @media ${devices.tablet} {
@@ -236,9 +247,13 @@ const SearchBar = styled.div`
 
 // MAIN SECTION COMPONENTS
 const MainContainer = styled.section`
-  background-color: rgba(0, 0, 0, 0.115);
+  background-color: rgba(0, 0, 0, 0.11);
+  margin: 0px;
+  padding: 0px;
+  min-width: 75vw;
   max-width: 80vw;
   @media ${devices.large} {
+    min-width: 75vw;
     max-width: 80vw;
   }
   display: flex;
@@ -277,15 +292,17 @@ function Marketplace(props) {
     <BackgroundContainer>
       <SearchDiv>
         <SearchBar>
-          <h1>Take your career seriously</h1>
-          <input
-            type='text'
-            name='searchTerm'
-            placeholder='search topic, name, or location'
-            value={searchTerm}
-            onChange={handleChange}
-          />
-          <button onSubmit={handleChange}>Search</button>
+          <div>
+            <h1>Take your career seriously</h1>
+            <input
+              type='text'
+              name='searchTerm'
+              placeholder='search topic, name, or location'
+              value={searchTerm}
+              onChange={handleChange}
+            />
+            <button onSubmit={handleChange}>Search</button>
+          </div>
         </SearchBar>
       </SearchDiv>
       <MainContainer>

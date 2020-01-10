@@ -12,7 +12,7 @@ import Payment from './PaymentFaq';
 const facebookIcon = require('../../img/fb.png');
 const githubIcon = require('../../img/github-1.png');
 const instagramIcon = require('../../img/instagram-logo-1.png');
-const linkedInIcon = require('../../img/linkedIn.png');
+const linkedInIcon = require('../../img/linkedin.png');
 const twitterIcon = require('../../img/twitter-1.png');
 
 // Nav Bar

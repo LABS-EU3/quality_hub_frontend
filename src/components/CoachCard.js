@@ -30,7 +30,7 @@ const StyledButton = withStyles({
     boxShadow: '0 4px 4px rgba(0, 0, 0, .25)',
     borderRadius: 4,
     height: 50,
-    width: 150,
+    width: 200,
     fontSize: 16,
     alignItems: 'center',
     justify: 'center',
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     minWidth: 250,
     maxWidth: 300,
-    maxHeight: 400,
+    maxHeight: 600,
     border: '1px solid rgba(0, 0, 0, .25)',
     boxShadow: '0 2px 3px rgba(0,0,0,0.2)',
   },
@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
   },
   top: {
     // backgroundColor: 'red',
-    backgroundImage: `url(${card})`
+    backgroundImage: `url(${card})`,
   },
 }));
 
@@ -110,20 +110,26 @@ export default function RecipeReviewCard(props) {
           padding: 0,
           paddingTop: 10,
           position: 'relative',
-          top: '-50px',
+          top: '-55px',
         }}
         title={props.coach.first_name}
         subheader={props.coach.location}
       ></CardHeader>
-      <CardContent style={{ margin: 10, padding: 0, marginTop: 5, maxHeight: 20 }}>
+      <CardContent
+        style={{
+          marginTop: 5,
+          margin: 5,
+          padding: 5,
+          marginBottom: 5,
+          paddingTop: 10,
+          paddingBottom: 5,
+        }}
+      >
         <Typography
           style={{
-            marginTop: 5,
-            paddingTop: 10,
-            paddingBottom: 5,
             minHeight: 10,
             position: 'relative',
-            top: '-30px',
+            top: '-40px',
           }}
           variant='body1'
           color='textPrimary'
@@ -134,7 +140,14 @@ export default function RecipeReviewCard(props) {
       </CardContent>
 
       <CardContent
-        style={{ margin: 10, padding: 0, marginTop: 5, fontSize: 10 }}
+        style={{
+          margin: 10,
+          padding: 0,
+          marginTop: 5,
+          fontSize: 10,
+          position: 'relative',
+          top: '-40px',
+        }}
       >
         <Typography variant='body2'>
           <IconButton
@@ -181,11 +194,11 @@ export default function RecipeReviewCard(props) {
             paddingTop: 10,
           }}
         >
-          <StyledButton
+          {/* <StyledButton
             alignItems='center'
             style={{
               position: 'relative',
-              left: '20%',
+              left: '10%',
               margin: 0,
               padding: 5,
             }}
@@ -199,7 +212,10 @@ export default function RecipeReviewCard(props) {
             >
               Book Now
             </Link>
-          </StyledButton>
+          </StyledButton> */}
+          <Typography>Book Now
+ 
+          </Typography>
         </CardContent>
       </CardContent>
       {/* </Collapse> */}
