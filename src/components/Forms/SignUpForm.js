@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
+import LoaderSpinner from '../../utils/LoaderSpinner';
+
 import { StyledButton, buttonTheme, invertTheme } from '../Landing';
 
 import {
@@ -14,33 +16,7 @@ import {
 
 import { register } from '../../state/actions/authenticationActions';
 
-const ShortInputContainer = styled.div`
-  display: flex;
-  width: 75%;
-  justify-content: space-between;
-
-  input {
-    width: 82%;
-  }
-`;
-
-const RegisterCard = styled(FormCard)`
-  width: 30em;
-  height: 35em;
-
-  h1 {
-    font-size: 24px;
-  }
-`;
-
-const StyledError = styled.p`
-  padding: 0;
-  margin: 0;
-  color: red;
-  font-size: 0.8rem;
-`;
-
-function SignUpForm({ userReducer, isSubmitting, errors, touched }) {
+function SignUpForm({ user, isSubmitting, errors, touched }) {
   return (
     <GreyBackgroundContainer>
       <RegisterCard>
@@ -71,8 +47,8 @@ function SignUpForm({ userReducer, isSubmitting, errors, touched }) {
             </ShortInputContainer>
             <div>
               <Field type='email' name='email' placeholder='Email' />
-              {userReducer.signUpError ? (
-                <StyledError>{userReducer.signUpError}</StyledError>
+              {user.signUpError ? (
+                <StyledError>{user.signUpError}</StyledError>
               ) : (
                 errors.email &&
                 touched.email && (
@@ -103,13 +79,17 @@ function SignUpForm({ userReducer, isSubmitting, errors, touched }) {
             </div>
 
             <div>
-              <StyledButton
-                disabled={isSubmitting}
-                theme={buttonTheme}
-                type='submit'
-              >
-                Get Started
-              </StyledButton>
+              {!!user.isLoading ? (
+                <LoaderSpinner />
+              ) : (
+                <StyledButton
+                  disabled={isSubmitting}
+                  theme={buttonTheme}
+                  type='submit'
+                >
+                  Get Started
+                </StyledButton>
+              )}
             </div>
           </Form>
         </FormContainer>
@@ -159,6 +139,38 @@ const FormikSignUpForm = withFormik({
   },
 })(SignUpForm);
 
-export default connect(state => state, { register })(
+const mapStateToProps = state => {
+  return {
+    user: state.userReducer,
+  };
+};
+
+export default connect(mapStateToProps, { register })(
   FormikSignUpForm,
 );
+
+const ShortInputContainer = styled.div`
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+
+  input {
+    width: 82%;
+  }
+`;
+
+const RegisterCard = styled(FormCard)`
+  width: 30em;
+  height: 35em;
+
+  h1 {
+    font-size: 24px;
+  }
+`;
+
+const StyledError = styled.p`
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
+`;

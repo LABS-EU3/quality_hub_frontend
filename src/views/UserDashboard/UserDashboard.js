@@ -7,6 +7,8 @@ import {
   cancelAppointment,
 } from '../../state/actions/appointmentActions';
 import AppointmentCard from '../../components/Cards/AppointmentCard';
+import LoaderSpinner from '../../utils/LoaderSpinner';
+import ProfileSettings from '../../components/Forms/ProfileSettings';
 
 const StyledUserDashboard = styled.div`
   display: flex;
@@ -22,10 +24,15 @@ const UserDashboard = props => {
       1000,
     );
   }, []);
+  if (!!props.loading) {
+    return <LoaderSpinner />;
+  }
   return (
-    <StyledContainer>
-      {props.appointments
-        ? props.appointments.map(appointment => (
+    <div>
+      <ProfileSettings />
+      <StyledContainer>
+        {props.appointments &&
+          props.appointments.map(appointment => (
             <AppointmentCard
               key={uuid()}
               first_name={appointment.first_name}
@@ -38,16 +45,17 @@ const UserDashboard = props => {
               cancel={() => props.cancelAppointment(appointment.id)}
               className='appointment-card'
             />
-          ))
-        : null}
-    </StyledContainer>
+          ))}
+      </StyledContainer>
+    </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    user: state.userReducer.user,
+    user: state.userReducer,
     appointments: state.appointmentsReducer.appointments,
+    loading: state.appointmentsReducer.isLoading,
   };
 };
 

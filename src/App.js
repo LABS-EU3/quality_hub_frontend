@@ -14,6 +14,7 @@ import StudentForm from './components/Forms/StudentForm';
 import UserTypePage from './components/UserType/UserTypePage';
 import MainFaq from './components/FAQ/Main';
 import Booking from './components/Booking/Booking';
+import ProfileSettings from './components/Forms/ProfileSettings';
 import Notification from './components/Notifications/Notification';
 
 function App(props) {
@@ -23,7 +24,8 @@ function App(props) {
       <Route path={'/marketplace'} component={Marketplace} />
       <Route path={'/booking'} component={Booking} />
       <Route path={'/feedback'} component={Notification} />
-      <Route path={'/settings'} component={Marketplace} />
+      {/* <Route path={'/settings'} component={Marketplace} /> */}
+      <Route path={'/settings'} component={ProfileSettings} />
       <Redirect to='/dashboard' />
     </Switch>
   );

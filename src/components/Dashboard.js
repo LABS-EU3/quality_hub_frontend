@@ -78,9 +78,7 @@ function Dashboard(props) {
         {props.routes}
         <div className={classes.appBarSpacer} />
         <Container maxWidth='lg' className={classes.container}>
-          <Grid container spacing={3}>
-         
-          </Grid>
+          <Grid container spacing={3}></Grid>
           <Box pt={4}>
             <Copyright />
           </Box>
@@ -105,15 +103,16 @@ const useStyles = makeStyles(theme => ({
   toolbarIcon: {
     backgroundImage: `url(${logo})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'left',
-    backgroundSize: '4rem',
+    backgroundPosition: 'center',
+    padding: '10px',
+    backgroundSize: '2rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: '0 8px',
+    padding: '0 4px',
     ...theme.mixins.toolbar,
     color: '#4fad65',
-    fontSize: '.8rem',
+    fontSize: '.4rem',
   },
   appBar: {
     boxShadow: 'none',
