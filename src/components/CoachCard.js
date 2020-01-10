@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     minWidth: 250,
     maxWidth: 300,
-    maxHeight: 600,
+    maxHeight: 330,
     border: '1px solid rgba(0, 0, 0, .25)',
     boxShadow: '0 2px 3px rgba(0,0,0,0.2)',
   },
@@ -141,7 +141,7 @@ export default function RecipeReviewCard(props) {
 
       <CardContent
         style={{
-          margin: 10,
+          margin: 0,
           padding: 0,
           marginTop: 5,
           fontSize: 10,
@@ -152,7 +152,7 @@ export default function RecipeReviewCard(props) {
         <Typography variant='body2'>
           <IconButton
             aria-label='rate review of coach'
-            style={{ margin: 0, padding: 0, paddingRight: 5 }}
+            style={{ marginLeft: 10, padding: 0, paddingRight: 5 }}
           >
             <RateReviewIcon style={{ fontSize: 'medium' }} />
           </IconButton>
@@ -161,7 +161,7 @@ export default function RecipeReviewCard(props) {
         <Typography variant='body2'>
           <IconButton
             aria-label='rate review of coach'
-            style={{ margin: 0, padding: 0, paddingRight: 5 }}
+            style={{ marginLeft: 10, padding: 0, paddingRight: 5 }}
           >
             <WorkOutlineIcon style={{ fontSize: 'medium' }} />
           </IconButton>
@@ -170,7 +170,7 @@ export default function RecipeReviewCard(props) {
         <Typography variant='body2'>
           <IconButton
             aria-label='rate review of coach'
-            style={{ margin: 0, padding: 0, paddingRight: 5 }}
+            style={{ marginLeft: 10, padding: 0, paddingRight: 5 }}
           >
             <WorkIcon style={{ fontSize: 'medium' }} />
           </IconButton>
@@ -179,7 +179,7 @@ export default function RecipeReviewCard(props) {
         <Typography variant='body2'>
           <IconButton
             aria-label='rate review of coach'
-            style={{ margin: 0, padding: 0, paddingRight: 5 }}
+            style={{ marginLeft: 10, padding: 0, paddingRight: 5 }}
           >
             <MonetizationOnIcon style={{ fontSize: 'medium' }} />
           </IconButton>
@@ -188,10 +188,15 @@ export default function RecipeReviewCard(props) {
         <CardContent
           alignItems='center'
           style={{
+            borderTop: '1px solid rgba(0,0,0,0.15)',
             width: 250,
-            margin: 0,
+            marginLeft: 0,
+            marginTop: 10,
             padding: 0,
             paddingTop: 10,
+            height: '50px',
+            lineHeight: '50px',
+            textAlign: 'center',
           }}
         >
           {/* <StyledButton
@@ -213,8 +218,18 @@ export default function RecipeReviewCard(props) {
               Book Now
             </Link>
           </StyledButton> */}
-          <Typography>Book Now
- 
+          <Typography variant='body1'>
+            <Link
+              style={{
+                fontSize: '17px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                color: 'green',
+              }}
+              to={props.coach.contact_url}
+            >
+              Book Now
+            </Link>
           </Typography>
         </CardContent>
       </CardContent>

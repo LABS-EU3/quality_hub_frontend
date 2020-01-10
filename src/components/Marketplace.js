@@ -132,7 +132,9 @@ const SearchDiv = styled.section`
   background-image: url(${pink});
   background-color: black;
   background-repeat: no-repeat;
-  border: 2px dashed orange;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0px;
   padding: 0px;
   min-height: 35vh;
@@ -143,8 +145,6 @@ const SearchDiv = styled.section`
   @media ${devices.large} {
     min-width: 80vw;
     max-width: 90vw;
-    min-height: 20vh;
-    max-height: 25vh;
   }
   @media ${devices.tablet} {
     background-image: url(${stare});
@@ -153,16 +153,10 @@ const SearchDiv = styled.section`
   }
   @media ${devices.mobile} {
     background-image: url(${mobileCard});
-    /* background-color: #4fad65; */
     min-height: 20vh;
   }
   margin: 0px;
   border-bottom: 10px solid black;
-
-  h1 {
-    color: white;
-    margin: 30px 0px 5px 0px;
-  }
 
   img {
     width: 15vw;
@@ -176,24 +170,19 @@ const SearchDiv = styled.section`
 `;
 
 const SearchBar = styled.div`
-  margin: 10px;
-  /* min-width: 70vw;
-  max-width: 75vw; */
-  max-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  border: 2px dotted purple;
-  justify-content: flex-end;
-  align-items: flex-end;
+  margin: 0;
+  margin-right: 30px;
+  padding: 0;
 
   @media ${devices.large} {
-    max-height: 15vh;
-    /* min-width: 75vw;
-    max-width: 80vw; */
+    justify-content: flex-end;
+    align-items: center;
   }
 
   @media ${devices.tablet} {
+    margin: 10px;
     max-height: 15vh;
+    min-width: 75vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -204,11 +193,36 @@ const SearchBar = styled.div`
     justify-content: center;
     align-items: center;
   }
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    color: black;
+    @media ${devices.tablet} {
+      padding: 0px;
+      margin: 5px;
+    }
+    @media ${devices.mobile} {
+      color: black;
+      font-size: 20px;
+    }
+  } 
+`;
+
+const InputButtonDiv = styled.div`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
   input {
     background-color: white;
     padding: 5px;
-    min-width: 17vw;
+    min-width: 15vw;
+    @media ${devices.large} {
+      min-width: 15vw;
+    }
     @media ${devices.tablet} {
       min-width: 35vw;
     }
@@ -220,27 +234,14 @@ const SearchBar = styled.div`
     border-radius: 2px;
   }
   button {
-    border: none;
+    border: 1px solid black;
     background-color: #4fad65;
     border-radius: 2px;
     color: white;
-    margin: 5px;
+    margin: 0px;
     padding: 5px 20px;
     @media ${devices.tablet} {
       background-color: black;
-    }
-  }
-  h1 {
-    font-size: 30px;
-    color: black;
-    @media ${devices.tablet} {
-      color: rgba(252, 224, 210);
-      padding: 0px;
-      margin: 5px;
-    }
-    @media ${devices.mobile} {
-      color: black;
-      font-size: 20px;
     }
   }
 `;
@@ -292,8 +293,8 @@ function Marketplace(props) {
     <BackgroundContainer>
       <SearchDiv>
         <SearchBar>
-          <div>
-            <h1>Take your career seriously</h1>
+          <h1>Take your career seriously</h1>
+          <InputButtonDiv>
             <input
               type='text'
               name='searchTerm'
@@ -302,7 +303,7 @@ function Marketplace(props) {
               onChange={handleChange}
             />
             <button onSubmit={handleChange}>Search</button>
-          </div>
+          </InputButtonDiv>
         </SearchBar>
       </SearchDiv>
       <MainContainer>
