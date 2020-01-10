@@ -50,8 +50,8 @@ const useStyles = makeStyles(theme => ({
     margin: 10,
     padding: 0,
     minWidth: 250,
-    maxWidth: 300,
-    maxHeight: 360,
+    maxWidth: 250,
+    minHeight: 500,
     border: '1px solid rgba(0, 0, 0, .25)',
     boxShadow: '0 2px 3px rgba(0,0,0,0.2)',
   },
@@ -121,9 +121,10 @@ export default function RecipeReviewCard(props) {
       >
         <Typography
           style={{
-            minHeight: 10,
+            height: 55,
             position: 'relative',
             top: '-40px',
+            marginBottom: 10,
           }}
           variant='body1'
           color='textPrimary'

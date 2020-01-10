@@ -307,15 +307,15 @@ function Marketplace(props) {
         </SearchBar>
       </SearchDiv>
       <MainContainer>
-        {marketplaceCoaches.map(coach => (
+        {/* {marketplaceCoaches.map(coach => (
           <CoachCard key={coach.first_name} coach={coach} />
-        ))}
+        ))} */}
 
-        {/* {props.coaches
+        {props.coaches
           ? props.coaches.map(coach => (
               <CoachCard key={coach.first_name} coach={coach} />
             ))
-          : null} */}
+          : null}
       </MainContainer>
     </BackgroundContainer>
   );
