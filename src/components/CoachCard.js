@@ -17,10 +17,10 @@ import RateReviewIcon from '@material-ui/icons/RateReview';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import WorkIcon from '@material-ui/icons/Work';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import card from '../img/card.jpg';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import card from '../img/card.jpg';
 
 const StyledButton = withStyles({
   root: {
@@ -30,7 +30,7 @@ const StyledButton = withStyles({
     boxShadow: '0 4px 4px rgba(0, 0, 0, .25)',
     borderRadius: 4,
     height: 50,
-    width: 200,
+    width: 225,
     fontSize: 16,
     alignItems: 'center',
     justify: 'center',
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     minWidth: 250,
     maxWidth: 300,
-    maxHeight: 330,
+    maxHeight: 360,
     border: '1px solid rgba(0, 0, 0, .25)',
     boxShadow: '0 2px 3px rgba(0,0,0,0.2)',
   },
@@ -59,7 +59,6 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 5, // 16:9
   },
   top: {
-    // backgroundColor: 'red',
     backgroundImage: `url(${card})`,
   },
 }));
@@ -69,17 +68,12 @@ export default function RecipeReviewCard(props) {
   const classes = useStyles();
   // const [expanded, setExpanded] = React.useState(false);
 
-  // const handleExpandClick = () => {
-  //   setExpanded(!expanded);
-  // };
-
   return (
     <Card className={classes.card}>
       <CardHeader
         className={classes.top}
         style={{
           height: 60,
-          // backgroundImage: url('../img/card.jpg'),
         }}
       />
       <CardHeader
@@ -199,19 +193,23 @@ export default function RecipeReviewCard(props) {
             textAlign: 'center',
           }}
         >
-          <Typography variant='body1'>
+          <StyledButton
+            alignItems='center'
+            style={{
+              margin: 0,
+              padding: 5,
+            }}
+          >
             <Link
               style={{
-                fontSize: '17px',
-                fontWeight: 600,
                 textDecoration: 'none',
-                color: 'green',
+                color: 'white',
               }}
               to={props.coach.contact_url}
             >
               Book Now
             </Link>
-          </Typography>
+          </StyledButton>
         </CardContent>
       </CardContent>
       {/* </Collapse> */}
