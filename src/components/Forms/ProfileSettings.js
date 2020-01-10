@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
@@ -14,31 +14,28 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    marginTop: '80px',
-    padding: '50px',
-    backgroundColor: '#81827c',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-export function ProfileSettings(props) {
+export function ProfileSettings({ user }) {
   const classes = useStyles();
 
-  console.log(props.user);
+  console.log(user);
+
+  const initialUserInfo = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    confirm_password: '',
+  };
+
+  const [userInfo, setUserInfo] = useState(initialUserInfo);
+
+  const handleChange = e => {
+    const { value, name } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+    console.log(userInfo);
+  };
+
+  useEffect(() => {}, []);
 
   return (
     <StyledSettingsWrap>
@@ -54,12 +51,14 @@ export function ProfileSettings(props) {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete='fname'
-                  name='firstName'
+                  name='first_name'
                   variant='outlined'
                   required
                   fullWidth
-                  id='firstName'
+                  id='first_name'
                   label='First Name'
+                  value={userInfo.first_name}
+                  onChange={handleChange}
                   autoFocus
                 />
               </Grid>
@@ -70,8 +69,10 @@ export function ProfileSettings(props) {
                   fullWidth
                   id='lastName'
                   label='Last Name'
-                  name='lastName'
+                  name='last_name'
                   autoComplete='lname'
+                  value={userInfo.last_name}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -83,6 +84,8 @@ export function ProfileSettings(props) {
                   label='Email Address'
                   name='email'
                   autoComplete='email'
+                  value={userInfo.email}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -94,7 +97,8 @@ export function ProfileSettings(props) {
                   label='new password'
                   type='password'
                   id='password'
-                  autoComplete='current-password'
+                  value={userInfo.password}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -102,11 +106,12 @@ export function ProfileSettings(props) {
                   variant='outlined'
                   required
                   fullWidth
-                  name='password'
+                  name='confirm_password'
                   label='confirm new password'
                   type='password'
                   id='password'
-                  autoComplete='confirm-password'
+                  value={userInfo.confirm_password}
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>
@@ -127,9 +132,11 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {})(ProfileSettings);
 
+// Styles for the Component //
+
 const StyledSettingsWrap = styled.div`
-  margin-top: 0px;
   padding: 50px;
+  padding-top: 0px;
   margin: 0 auto;
   font-family: ABeeZee;
   border: 1px solid #dbe2e8;
@@ -153,3 +160,25 @@ const StyledButtonDiv = styled.div`
     text-transform: uppercase;
   }
 `;
+const useStyles = makeStyles(theme => ({
+  paper: {
+    // marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    marginTop: '40px',
+    padding: '50px',
+    paddingTop: '0px',
+    backgroundColor: '#81827c',
+    borderRadius: '50%',
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: '5px',
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));

@@ -109,10 +109,11 @@ export const StyledButton = styled.button`
   border: none;
   font-family: Ubuntu;
   font-size: 14px;
-  transition: opacity 0.2s;
-  transition: transform 0.1s;
+  transition: ease-out 0.2s;
 
   :hover {
+    cursor: pointer;
+    transition: ease-in 0.2s;
     opacity: 0.8;
   }
 
@@ -367,12 +368,19 @@ const BottomButton = styled.div`
   margin-top: 2em;
   text-align: center;
   vertical-align: middle;
+  transition: ease-out 0.2s;
+
   :focus {
     outline: none;
   }
   :active {
     outline: none;
     transform: translateY(2px);
+  }
+  :hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: ease-in 0.2s;
   }
 `;
 

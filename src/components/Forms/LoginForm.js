@@ -113,22 +113,24 @@ export const GreyBackgroundContainer = styled.div`
   background: #f2f2f2;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 export const FormCard = styled.div`
   background: white;
   height: 30em;
+  margin-top: 6rem;
   width: 25em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: 1px solid #cdc7c7;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  /* border: 1px solid #cdc7c7; */
+  border-radius: 6px;
 
   h1 {
     color: #292d38;
-    margin: 1.2em;
+    margin-top: 1em;
   }
 `;
 
@@ -144,26 +146,30 @@ export const FormContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-  }
 
-  div {
-    width: 75%;
-    height: 60px;
+    div {
+      width: 70%;
+      height: 60px;
+      align-self: center;
+    }
   }
 
   input {
-    background: #f2f2f2;
+    align-self: center;
+    background: #f7f7f7;
     height: 2em;
-    width: 91%;
+    width: 92%;
     font-family: Ubuntu, sans-serif;
     border-radius: 4px;
     border: 1px solid #c8c8c8;
     padding: 0.5em;
     font-size: 16px;
     color: #808080;
+    transition: ease-out 0.1s;
 
     :hover {
       background: #ffffff;
+      transition: ease-in 0.1s;
     }
 
     :focus {
@@ -172,7 +178,7 @@ export const FormContainer = styled.div`
   }
 
   button {
-    width: 96%;
+    width: 98%;
   }
 `;
 

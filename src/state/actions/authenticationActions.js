@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 import * as types from './actionTypes';
 
 const url = process.env.REACT_APP_BASE_URL;
@@ -43,18 +44,57 @@ export const register = (props, values) => dispatch => {
     });
 };
 
-export const chooseUserRole = (props, values) => dispatch => {
+export const setStudentDetails = values => {
+  const id = localStorage.getItem('id');
+  axiosWithAuth()
+    .post(`${url}profile/students`, {
+      experience_level: values.experience,
+      confidence_level: values.confidence,
+      user_id: id,
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const setCoachDetails = values => {
+  const id = localStorage.getItem('id');
+  axiosWithAuth()
+    .post(`${url}profile/coaches`, {
+      experience_level: values.experience,
+      skill_level: values.confidence,
+      user_id: id,
+    })
+    .catch(err => console.log(err));
+};
+
+export const chooseUserRole = (props, values, role) => dispatch => {
+  // tempuser is a temporary token for when we have registered, but not completed part 2 of signup
   const token = localStorage.getItem('tempuser');
   const id = localStorage.getItem('id');
   axios
+    // set the user's role to coach or student
     .put(`${url}user/${id}`, {
-      role_id: '1',
+      role_id: role,
+      location: values.studentLocation,
     })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-  localStorage.setItem('token', token);
-  localStorage.removeItem('tempuser');
-  localStorage.removeItem('id');
-  window.location.reload();
-  dispatch({ type: types.LOGIN_SUCCESSFUL });
+    .then(res => {
+      console.log(res);
+      dispatch({ type: types.USER_ROLE_CHOSEN, role });
+      if (role === 2) {
+        setStudentDetails(values);
+      } else {
+        setCoachDetails(values);
+      }
+    })
+    .then(() => {
+      // once we have finished setting the user's data, destroy the temporary token and set login token
+      localStorage.setItem('token', token);
+      localStorage.removeItem('tempuser');
+      localStorage.removeItem('id');
+      window.location.reload();
+    })
+    .catch(err =>
+      dispatch({ type: types.USER_ROLE_ERROR, error: err }),
+    );
 };

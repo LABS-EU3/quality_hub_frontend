@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const STRIPE_PAYMENT_START = 'STRIPE_PAYMENT_START';
 export const STRIPE_PAYMENT_ERROR = 'STRIPE_PAYMENT_ERROR';
@@ -22,10 +22,13 @@ export const handleStripePayment = (
     price,
   };
 
-  const response = await axios.post(`${url}payment/stripe`, {
-    token,
-    product,
-  });
+  const response = await axiosWithAuth().post(
+    `${url}payment/stripe`,
+    {
+      token,
+      product,
+    },
+  );
   const { status } = response.data;
   if (status === 'success') {
     success();

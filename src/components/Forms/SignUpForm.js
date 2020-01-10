@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 import LoaderSpinner from '../../utils/LoaderSpinner';
 
 import { StyledButton, buttonTheme, invertTheme } from '../Landing';
-
 import {
   GreyBackgroundContainer,
   FormCard,
@@ -20,7 +19,7 @@ function SignUpForm({ user, isSubmitting, errors, touched }) {
   return (
     <GreyBackgroundContainer>
       <RegisterCard>
-        <h1>Sign up to get started now</h1>
+        <h1>Sign Up To Get Started Now</h1>
         <FormContainer>
           <Form>
             <ShortInputContainer>
@@ -28,8 +27,8 @@ function SignUpForm({ user, isSubmitting, errors, touched }) {
                 <Field
                   type='text'
                   name='first_name'
-                  placeholder='First name'
-                />{' '}
+                  placeholder='First Name'
+                />
                 {errors.first_name && touched.first_name && (
                   <StyledError>{errors.first_name}</StyledError>
                 )}
@@ -38,8 +37,8 @@ function SignUpForm({ user, isSubmitting, errors, touched }) {
                 <Field
                   type='text'
                   name='last_name'
-                  placeholder='Last name'
-                />{' '}
+                  placeholder='Last Name'
+                />
                 {errors.last_name && touched.last_name && (
                   <StyledError>{errors.last_name}</StyledError>
                 )}
@@ -61,7 +60,7 @@ function SignUpForm({ user, isSubmitting, errors, touched }) {
                 type='password'
                 name='password'
                 placeholder='Password'
-              />{' '}
+              />
               {errors.password && touched.password && (
                 <StyledError>{errors.password}</StyledError>
               )}
@@ -71,7 +70,7 @@ function SignUpForm({ user, isSubmitting, errors, touched }) {
                 type='password'
                 name='confirm_password'
                 placeholder='Confirm Password'
-              />{' '}
+              />
               {errors.confirm_password &&
                 touched.confirm_password && (
                   <StyledError>{errors.confirm_password}</StyledError>
@@ -115,8 +114,8 @@ const FormikSignUpForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    first_name: Yup.string().required('Please enter your first name'),
-    last_name: Yup.string().required('Please enter your last name'),
+    first_name: Yup.string().required('Please enter first name'),
+    last_name: Yup.string().required('Please enter last name'),
     email: Yup.string()
       .email('Please enter a valid email')
       .required('Please enter your email'),
@@ -151,8 +150,8 @@ export default connect(mapStateToProps, { register })(
 
 const ShortInputContainer = styled.div`
   display: flex;
-  width: 75%;
   justify-content: space-between;
+  align-items: center;
 
   input {
     width: 82%;
@@ -173,4 +172,5 @@ const StyledError = styled.p`
   margin: 0;
   color: red;
   font-size: 0.8rem;
+  align-self: flex-start;
 `;

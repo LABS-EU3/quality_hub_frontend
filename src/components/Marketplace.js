@@ -1,230 +1,314 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
+import { connect } from 'react-redux';
 import devices from './devices';
-import logo from '../img/firelogo.png';
+import thinking from '../img/thinking.png';
+import woman from '../img/woman.jpg';
+import pink from '../img/pink.jpg';
+import stare from '../img/stare.jpg';
+import mobileCard from '../img/mobileCard.jpg';
+import CoachCard from './CoachCard';
+
+import {
+  getCoaches,
+  searchCoaches,
+} from '../state/actions/marketplaceActions';
+// import StyledButton from './Landing';
 
 // DUMMY DATA //
-const marketplaceUsers = [
-  {
-    first_name: 'Jayne',
-    last_name: 'Carmichael Norrie',
-    email: 'jayne@musicisourforte.co.uk',
-    password: 'chico',
-    role_id: 2,
-  },
-  {
-    first_name: 'Liam',
-    last_name: 'Sutton',
-    email: 'liam@google.com',
-    password: 'liam',
-    role_id: 2,
-  },
-  {
-    first_name: 'Funmi',
-    last_name: 'Talabi',
-    email: 'funmi@google.com',
-    password: 'funmi',
-    role_id: 2,
-  },
-];
 
 const marketplaceCoaches = [
   {
+    id: 1,
+    first_name: 'Jayne',
+    last_name: 'Carmichael Norrie',
+    email: 'jayne@musicisourforte.co.uk',
+    password:
+      '$2a$10$3LmQzlDtk/1NYys6kn5Ea.FH680/SzfqPWNTC3X9qZQ9.a.I1Z3vi',
+    location: 'Aberdeen',
+    role_id: 2,
     user_id: 1,
     avatar_url: 'https://bit.ly/325XJrX',
     experience_level: 1,
     skill_level: 1,
     description: 'Jayne is an expert in HTML',
+    rating: 4.7,
+    hourly_rate: 30,
+    contact_url:
+      'https://grok.appointedd.com/app/5df3a618fd49237ee763a793',
   },
   {
+    id: 2,
+    first_name: 'Liam',
+    last_name: 'Sutton',
+    email: 'liam@google.com',
+    password:
+      '$2a$10$XgS80caZEgW20Uj38NE9zuSe5jALbx28C8s6Z80Rf4o4BMz4iEe9W',
+    location: 'London',
+    role_id: 2,
     user_id: 2,
-    avatar_url: 'https://bit.ly/36SwAec',
-    experience_level: 1,
-    skill_level: 1,
-    description: 'Funmi is an expert in React',
+    avatar_url: 'https://bit.ly/2Q0cbgm',
+    experience_level: 2,
+    skill_level: 2,
+    description: 'Liam is an expert in Node.js',
+    rating: 4.8,
+    hourly_rate: 35,
+    contact_url:
+      'https://grok.appointedd.com/app/5dee69e59fec053a906edd03',
   },
   {
+    id: 3,
+    first_name: 'Funmi',
+    last_name: 'Talabi',
+    email: 'funmi@google.com',
+    password:
+      '$2a$10$GN5PGxtMHX5fkAugZ5KYB.Z3/xfZoFc033frjUlTW.0OaD6mY0n8K',
+    location: 'Lagos',
+    role_id: 2,
     user_id: 3,
-    avatar_url: 'https://bit.ly/2Q0cbgm',
-    experience_level: 1,
-    skill_level: 1,
-    description: 'Liam is an expert in Node.js',
+    avatar_url: 'https://bit.ly/36SwAec',
+    experience_level: 3,
+    skill_level: 3,
+    description: 'Funmi is an expert in React',
+    rating: 4.9,
+    hourly_rate: 40,
+    contact_url:
+      'https://grok.appointedd.com/app/5dee6934c5b42f3bcf70b393',
+  },
+  {
+    id: 4,
+    first_name: 'Oladimeji',
+    last_name: 'Ojo',
+    email: 'ola@google.com',
+    password:
+      '$2a$10$GN5PGxtMHX5fkAugZ5KYB.Z3/xfZoFc033frjUlTW.0OaD6mY0n8K',
+    location: 'Lagos',
+    role_id: 2,
+    user_id: 3,
+    avatar_url: 'https://bit.ly/35I1kOT',
+    experience_level: 3,
+    skill_level: 3,
+    description: 'Oladimeji is an expert in React',
+    rating: 4.9,
+    hourly_rate: 45,
+    contact_url:
+      'https://grok.appointedd.com/app/5dee6a896dd393114b473a73',
+  },
+  {
+    id: 4,
+    first_name: 'Dom',
+    last_name: 'Eccleston',
+    email: 'dom@google.com',
+    password:
+      '$2a$10$GN5PGxtMHX5fkAugZ5KYB.Z3/xfZoFc033frjUlTW.0OaD6mY0n8K',
+    location: 'Sheffield',
+    role_id: 2,
+    user_id: 3,
+    avatar_url: 'https://bit.ly/2FtdD5O',
+    experience_level: 3,
+    skill_level: 3,
+    description: 'Dom is an expert in React',
+    rating: 4.9,
+    hourly_rate: 40,
+    contact_url: 'https://www.youtube.com/watch?v=_EPM2vlPHpE',
   },
 ];
 
 // STYLED COMPONENTS //
 const BackgroundContainer = styled.section`
+  position: fixed;
+  margin-top: 70px;
   height: 100vh;
-  background: #f2f2f2;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid blue;
-
-  @media ${devices.tablet} {
-    border: 3px solid orange;
-  }
-
-  @media ${devices.mobile} {
-    border: 3px solid green;
-  }
 `;
 
-// NAVIGATION STYLED COMPONENTS //
-const NavigationContainer = styled.div`
-  display: flex;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: 1px solid #cdc7c7;
-`;
-const LogoAndNameContainer = styled.div`
-  font-family: Ubuntu;
-  font-size: 18px;
-  background: white;
-  height: 3em;
-  width: 70vw;
-  display: flex;
-  align-items: center;
-`;
-const Logo = styled.div`
-  height: 10em;
-  width: 5em;
-  background-image: url(${logo});
+// SEARCH SECTION
+
+const SearchDiv = styled.section`
+  background-image: url(${pink});
   background-repeat: no-repeat;
-  padding: none;
-  margin: none;
-  position: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 35vh;
+  max-width: 80vw;
+  @media ${devices.large} {
+    min-height: 20vh;
+  }
+  @media ${devices.tablet} {
+    background-image: url(${stare});
+    min-height: 15vh;
+  }
+  @media ${devices.mobile} {
+    background-image: url(${mobileCard});
+    /* background-color: #4fad65; */
+    min-height: 20vh;
+  }
+  margin: 0px;
+  border-bottom: 10px solid black;
+
+  h1 {
+    color: white;
+    margin: 30px 0px 5px 0px;
+  }
+
+  img {
+    width: 15vw;
+    margin-top: 30px;
+    padding: 20px 20px;
+
+    @media ${devices.tablet} {
+      display: none;
+    }
+  }
 `;
 
-const TitleContainer = styled.div`
-  font-family: Ubuntu;
-  font-style: normal;
-  font-weight: normal;
-  color: #459a59;
-  font-size: 18px;
+const SearchBar = styled.div`
+  margin: 10px;
+  min-width: 80vw;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media ${devices.large} {
+    max-height: 15vh;
+    min-width: 80vw;
+  }
 
   @media ${devices.tablet} {
-    font-size: 16px;
+    min-width: 80vw;
+    max-height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
-
   @media ${devices.mobile} {
-    font-size: 12px;
+    min-width: 30vw;
+    min-height: 15vh;
+    justify-content: center;
+    align-items: center;
   }
-`;
 
-const NavLinkContainer = styled.div`
-  font-family: Ubuntu;
-  font-size: 18px;
-  background: white;
-  height: 3em;
-  width: 28vw;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  a {
-    text-decoration: none;
+  input {
+    background-color: white;
+    padding: 5px;
+    min-width: 17vw;
+    @media ${devices.tablet} {
+      min-width: 35vw;
+    }
+    @media ${devices.mobile} {
+      min-width: 50vw;
+    }
+    border: 1px solid black;
+    margin: 5px 5px 5px 0px;
+    border-radius: 2px;
+  }
+  button {
+    border: none;
+    background-color: #4fad65;
+    border-radius: 2px;
+    color: white;
+    margin: 5px;
+    padding: 5px 20px;
+    @media ${devices.tablet} {
+      background-color: black;
+    }
+  }
+  h1 {
+    font-size: 30px;
     color: black;
+    @media ${devices.tablet} {
+      padding: 0px;
+      margin: 5px;
+    }
+    @media ${devices.mobile} {
+      font-size: 20px;
+    }
   }
-`;
-
-const NavLink = styled.h4`
-  font-family: Ubuntu;
-  color: black;
-  padding: 0px 10px;
 `;
 
 // MAIN SECTION COMPONENTS
 const MainContainer = styled.section`
-  background-color: #ffffff;
-  height: 80vh;
-  width: 98vw;
+  background-color: rgba(0, 0, 0, 0.115);
+  max-width: 80vw;
+  @media ${devices.large} {
+    max-width: 80vw;
+  }
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: 3px solid pink;
 
   img {
     width: 8vw;
     border-radius: 50%;
-  }
-
-  @media ${devices.tablet} {
-    border: 3px solid yellow;
-  }
-
-  @media ${devices.mobile} {
-    border: 3px solid red;
-  }
-`;
-
-const CoachCard = styled.div`
-  display: flex;
-  width: 250px;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: 1px solid #cdc7c7;
-
-  @media ${devices.tablet} {
-    flex-wrap: wrap;
-  }
-
-  @media ${devices.mobile} {
-    border: 3px solid red;
-  }
-
-  button {
-    width: 8vw;
-    border: none;
-    background-color: dodgerblue;
-    color: white;
 
     @media ${devices.tablet} {
-      background-color: #4fda65;
+      width: 15vw;
     }
     @media ${devices.mobile} {
-      border: 3px solid red;
+      width: 20vw;
     }
   }
 `;
 
 function Marketplace(props) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [coaches, setCoaches] = useState(marketplaceCoaches);
+
+  const handleChange = event => {
+    setSearchTerm(event.target.value.toLowerCase());
+    props.searchCoaches(searchTerm);
+  };
+
+  useEffect(() => {
+    props.getCoaches();
+  }, []);
+
   return (
     <BackgroundContainer>
-      <NavigationContainer>
-        <LogoAndNameContainer>
-          <Logo />
-          <TitleContainer>
-            <h2>Dev Coach</h2>
-          </TitleContainer>
-        </LogoAndNameContainer>
-
-        <NavLinkContainer>
-          <NavLink>FAQ</NavLink>
-          <NavLink>
-            <Link to='/dashboard'>Settings</Link>
-          </NavLink>
-        </NavLinkContainer>
-      </NavigationContainer>
-
-      <h1>Choose your Dev Coach</h1>
+      <SearchDiv>
+        <SearchBar>
+          <h1>Take your career seriously</h1>
+          <input
+            type='text'
+            name='searchTerm'
+            placeholder='search topic, name, or location'
+            value={searchTerm}
+            onChange={handleChange}
+          /> <button onSubmit={handleChange}>Search</button>
+        </SearchBar>
+      </SearchDiv>
       <MainContainer>
-        {marketplaceCoaches.map(info => (
-          <CoachCard>
-            <img src={info.avatar_url} />
-            <h2>{info.first_name}</h2>
-            <p>{info.description}</p>
-            <button>Book Now</button>
-          </CoachCard>
+        {marketplaceCoaches.map(coach => (
+          <CoachCard key={coach.first_name} coach={coach} />
         ))}
+
+        {/* {props.coaches
+          ? props.coaches.map(coach => (
+              <CoachCard key={coach.first_name} coach={coach} />
+            ))
+          : null} */}
       </MainContainer>
     </BackgroundContainer>
   );
 }
+const mapStateToProps = state => {
+  return {
+    coaches: state.marketplaceReducer.coaches,
+  };
+};
 
-export default Marketplace;
+export default connect(mapStateToProps, {
+  getCoaches,
+  searchCoaches,
+})(Marketplace);

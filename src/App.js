@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// import PrivateRoute from './utils/PrivateRoute';
 import LoginForm from './components/Forms/LoginForm';
 import SignUpForm from './components/Forms/SignUpForm';
 import Dashboard from './components/Dashboard';
@@ -16,6 +15,7 @@ import MainFaq from './components/FAQ/Main';
 import Booking from './components/Booking/Booking';
 import ProfileSettings from './components/Forms/ProfileSettings';
 import Notification from './components/Notifications/Notification';
+import Feedback from './views/Feedback/Feedback';
 
 function App(props) {
   const routes = (
@@ -37,6 +37,7 @@ function App(props) {
     <Switch>
       <Route exact path='/' component={Landing} />
       <Route path='/login/' component={LoginForm} />
+      <Route path='/marketplace' component={Marketplace} />
       <Route path='/register' component={SignUpForm} />
       <Route path='/userrole' component={UserTypePage} />
       <Route path='/interviewer' component={InterviewerForm} />

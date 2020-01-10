@@ -4,7 +4,10 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { StyledButton, buttonTheme } from '../Landing';
-import { chooseUserRole } from '../../state/actions/authenticationActions';
+import {
+  chooseUserRole,
+  setStudentDetails,
+} from '../../state/actions/authenticationActions';
 import {
   GreyBackgroundContainer,
   FormCard,
@@ -12,31 +15,42 @@ import {
 } from './LoginForm';
 
 const RegisterCard = styled(FormCard)`
-  width: 30em;
-  height: 35em;
+  /* width: 30em; */
+  /* height: 30em; */
   font-family: ABeeZee;
 
   h1 {
     font-size: 24px;
   }
   div {
-    width: 75%;
+    width: 93%;
     margin: 0.5rem 0;
     p {
       margin: 0.2rem 0;
     }
 
     input {
-      width: 95%;
+      width: 91%;
+    }
+
+    button {
+      width: 98%;
     }
   }
+`;
+
+const StyledError = styled.p`
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
 `;
 
 const ThisGreyBackgroundContainer = styled(GreyBackgroundContainer)`
   font-family: ABeeZee;
 `;
 
-function StudentForm({ touched, errors, isSubmitting }, props) {
+function StudentForm({ touched, errors, isSubmitting }) {
   return (
     <ThisGreyBackgroundContainer>
       <RegisterCard>
@@ -44,43 +58,44 @@ function StudentForm({ touched, errors, isSubmitting }, props) {
         <FormContainer>
           <Form>
             <div>
-              {' '}
-              {errors.studentLocation && touched.studentLocation && (
-                <p>{errors.studentLocation}</p>
-              )}
               <Field
                 type='text'
                 name='studentLocation'
                 placeholder='Location'
               />
+              {errors.studentLocation && touched.studentLocation && (
+                <StyledError>{errors.studentLocation}</StyledError>
+              )}
             </div>
             <div>
-              {errors.experience && touched.experience && (
-                <p>{errors.experience}</p>
-              )}
               <Field
                 type='text'
                 name='experience'
                 placeholder='Select Level Of Experience'
               />
+              {errors.experience && touched.experience && (
+                <StyledError>{errors.experience}</StyledError>
+              )}
             </div>
             <div>
-              {errors.confidence && touched.confidence && (
-                <p>{errors.confidence}</p>
-              )}
               <Field
                 type='text'
                 name='confidence'
                 placeholder='Select Confidence Level'
               />
+              {errors.confidence && touched.confidence && (
+                <StyledError>{errors.confidence}</StyledError>
+              )}
             </div>
-            <StyledButton
-              type='submit'
-              disabled={isSubmitting}
-              theme={buttonTheme}
-            >
-              Submit
-            </StyledButton>
+            <div>
+              <StyledButton
+                type='submit'
+                disabled={isSubmitting}
+                theme={buttonTheme}
+              >
+                Submit
+              </StyledButton>
+            </div>
           </Form>
         </FormContainer>
       </RegisterCard>
@@ -108,10 +123,11 @@ const FormikStudentForm = withFormik({
   handleSubmit(values, { resetForm, setSubmitting, props }) {
     resetForm();
     setSubmitting(false);
-    props.chooseUserRole(props, values);
+    props.chooseUserRole(props, values, 2);
   },
 })(StudentForm);
 
-export default connect(state => state, { chooseUserRole })(
-  FormikStudentForm,
-);
+export default connect(state => state, {
+  chooseUserRole,
+  setStudentDetails,
+})(FormikStudentForm);

@@ -27,9 +27,9 @@ const UserDashboard = props => {
   if (!!props.loading) {
     return <LoaderSpinner />;
   }
+
   return (
     <div>
-      <ProfileSettings />
       <StyledContainer>
         {props.appointments &&
           props.appointments.map(appointment => (
@@ -47,6 +47,7 @@ const UserDashboard = props => {
             />
           ))}
       </StyledContainer>
+      <ProfileSettings />
     </div>
   );
 };
