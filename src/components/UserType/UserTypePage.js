@@ -5,13 +5,16 @@ import { login } from '../../state/actions/authenticationActions';
 import { StyledButton, buttonTheme } from '../Landing';
 import StyledUserType from './styles';
 
-function UserTypePage(props) {
+const UserTypePage = () => {
   return (
     <StyledUserType>
       <div className='container'>
         <div className='user-type-intro'>
           <h2>
-            How Would You Like To Use <span>DevCoach?</span>
+            How Would You Like To Use
+            <Link to='/'>
+              <span> DevCoach?</span>
+            </Link>
           </h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -75,6 +78,6 @@ function UserTypePage(props) {
       </div>
     </StyledUserType>
   );
-}
+};
 
 export default connect(state => state, { login })(UserTypePage);

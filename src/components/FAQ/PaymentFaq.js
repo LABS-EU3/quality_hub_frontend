@@ -44,7 +44,7 @@ const Payment = props => {
             }}
           >
             <p>How do I update my profile?</p>
-            {<img src={icons[getImage1()]} />}
+            {<img src={icons[getImage1()]} alt='icon' />}
           </AskedQuestionDiv>
           {text1 && (
             <AnsweredQuestionDiv>
@@ -65,7 +65,7 @@ const Payment = props => {
             }}
           >
             <p>Is it compulsory to have a picture?</p>
-            {<img src={icons[getImage2()]} />}
+            {<img src={icons[getImage2()]} alt='icon' />}
           </AskedQuestionDiv>
           {text2 && (
             <AnsweredQuestionDiv>
@@ -86,7 +86,7 @@ const Payment = props => {
             }}
           >
             <p>How do I update my profile?</p>
-            {<img src={icons[getImage3()]} />}
+            {<img src={icons[getImage3()]} alt='icon' />}
           </AskedQuestionDiv>
           {text3 && (
             <AnsweredQuestionDiv>

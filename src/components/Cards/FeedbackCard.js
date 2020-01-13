@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FeedbackCard(props) {
+const FeedbackCard = props => {
   const classes = useStyles();
   const {
     rating,
@@ -51,4 +51,6 @@ export default function FeedbackCard(props) {
       </CardActions>
     </Card>
   );
-}
+};
+
+export default FeedbackCard;

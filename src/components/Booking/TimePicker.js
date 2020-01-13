@@ -7,7 +7,7 @@ import {
   KeyboardTimePicker,
 } from '@material-ui/pickers';
 
-export default function TimePicker(props) {
+const TimePicker = props => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify='space-around'>
@@ -24,4 +24,6 @@ export default function TimePicker(props) {
       </Grid>
     </MuiPickersUtilsProvider>
   );
-}
+};
+
+export default TimePicker;

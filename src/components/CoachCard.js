@@ -1,26 +1,20 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { green } from '@material-ui/core/colors';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import RateReviewIcon from '@material-ui/icons/RateReview';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import WorkIcon from '@material-ui/icons/Work';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import card from '../img/card.jpg';
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import card from '../img/card.jpg';
 
 const StyledButton = withStyles({
   root: {
@@ -60,11 +54,11 @@ const useStyles = makeStyles(theme => ({
   },
   top: {
     // backgroundColor: 'red',
-    backgroundImage: `url(${card})`
+    backgroundImage: `url(${card})`,
   },
 }));
 
-export default function RecipeReviewCard(props) {
+const RecipeReviewCard = props => {
   console.log(props);
   const classes = useStyles();
   // const [expanded, setExpanded] = React.useState(false);
@@ -115,7 +109,14 @@ export default function RecipeReviewCard(props) {
         title={props.coach.first_name}
         subheader={props.coach.location}
       ></CardHeader>
-      <CardContent style={{ margin: 10, padding: 0, marginTop: 5, maxHeight: 20 }}>
+      <CardContent
+        style={{
+          margin: 10,
+          padding: 0,
+          marginTop: 5,
+          maxHeight: 20,
+        }}
+      >
         <Typography
           style={{
             marginTop: 5,
@@ -173,7 +174,7 @@ export default function RecipeReviewCard(props) {
           Rate: £ {props.coach.hourly_rate} per hr
         </Typography>
         <CardContent
-          alignItems='center'
+          alignitems='center'
           style={{
             width: 250,
             margin: 0,
@@ -182,7 +183,7 @@ export default function RecipeReviewCard(props) {
           }}
         >
           <StyledButton
-            alignItems='center'
+            alignitems='center'
             style={{
               position: 'relative',
               left: '20%',
@@ -205,4 +206,6 @@ export default function RecipeReviewCard(props) {
       {/* </Collapse> */}
     </Card>
   );
-}
+};
+
+export default RecipeReviewCard;

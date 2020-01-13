@@ -25,6 +25,9 @@ const StyledUserType = styled.div`
       span {
         color: #4fad65;
       }
+      a {
+        text-decoration: none;
+      }
     }
   }
 
@@ -39,7 +42,7 @@ const StyledUserType = styled.div`
   .user-type-container {
     align-items: center;
     background: #fff;
-    border-radius: 2px;
+    border-radius: 6px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;

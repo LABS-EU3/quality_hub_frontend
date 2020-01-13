@@ -44,7 +44,7 @@ const General = props => {
             }}
           >
             <p>What is DevCoach?</p>
-            {<img src={icons[getImage1()]} />}
+            {<img src={icons[getImage1()]} alt='icon' />}
           </AskedQuestionDiv>
           {text1 && (
             <AnsweredQuestionDiv>
@@ -65,7 +65,7 @@ const General = props => {
             }}
           >
             <p>How does it work?</p>
-            {<img src={icons[getImage2()]} />}
+            {<img src={icons[getImage2()]} alt='icon' />}
           </AskedQuestionDiv>
           {text2 && (
             <AnsweredQuestionDiv>
@@ -85,7 +85,7 @@ const General = props => {
             }}
           >
             <p>How does it work?</p>
-            {<img src={icons[getImage3()]} />}
+            {<img src={icons[getImage3()]} alt='icon' />}
           </AskedQuestionDiv>
           {text3 && (
             <AnsweredQuestionDiv>

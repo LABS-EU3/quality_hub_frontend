@@ -16,6 +16,7 @@ import Booking from './components/Booking/Booking';
 import ProfileSettings from './components/Forms/ProfileSettings';
 import Notification from './components/Notifications/Notification';
 import Feedback from './views/Feedback/Feedback';
+import VideoChat from './components/VideoChat';
 
 function App(props) {
   const routes = (
@@ -25,6 +26,9 @@ function App(props) {
       <Route path={'/booking'} component={Booking} />
       <Route path={'/feedback'} component={Notification} />
       <Route path={'/profileSettings'} component={ProfileSettings} />
+      <Route path={'/feedback'} component={Feedback} />
+      <Route path={'/settings'} component={VideoChat} />
+      <Route path={'/interview'} component={VideoChat} />
       <Redirect to='/dashboard' />
     </Switch>
   );

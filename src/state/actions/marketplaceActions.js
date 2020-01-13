@@ -27,5 +27,5 @@ export const getCoaches = () => dispatch => {
 };
 
 export const searchCoaches = searchTerm => {
-  return { type: SEARCH_COACHES, payload: searchTerm }
-}
+  return { type: SEARCH_COACHES, payload: searchTerm };
+};

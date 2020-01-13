@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonIcon from '@material-ui/icons/Person';
@@ -9,11 +9,11 @@ import General from './GeneralFaq';
 import Profile from './ProfileFaq';
 import Payment from './PaymentFaq';
 
-const facebookIcon = require('../../img/fb.png');
-const githubIcon = require('../../img/github-1.png');
-const instagramIcon = require('../../img/instagram-logo-1.png');
-const linkedInIcon = require('../../img/linkedIn.png');
-const twitterIcon = require('../../img/twitter-1.png');
+import facebookIcon from '../../img/fb.png';
+import githubIcon from '../../img/github-1.png';
+import instagramIcon from '../../img/instagram-logo-1.png';
+import linkedInIcon from '../../img/linkedin.png';
+import twitterIcon from '../../img/twitter-1.png';
 
 // Nav Bar
 const mobileHidden = css`
@@ -254,7 +254,7 @@ const MainFaq = () => {
             <a href='/faq/general'>FAQ</a>
           </NavbarLink>
           <NavbarLink>
-            <a href='#'>About</a>
+            <a href='/about'>About</a>
           </NavbarLink>
           <NavbarLink>
             <a href='/login'>Login</a>
@@ -326,19 +326,19 @@ const MainFaq = () => {
         </FooterTopSection>
         <FooterBottomSection>
           <Icons>
-            <img src={githubIcon} />
+            <img src={githubIcon} alt='social link' />
           </Icons>
           <Icons>
-            <img src={facebookIcon} />
+            <img src={facebookIcon} alt='social link' />
           </Icons>
           <Icons>
-            <img src={instagramIcon} />
+            <img src={instagramIcon} alt='social link' />
           </Icons>
           <Icons>
-            <img src={linkedInIcon} />
+            <img src={linkedInIcon} alt='social link' />
           </Icons>
           <Icons>
-            <img src={twitterIcon} />
+            <img src={twitterIcon} alt='social link' />
           </Icons>
         </FooterBottomSection>
         <p>

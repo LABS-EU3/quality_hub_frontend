@@ -2,17 +2,17 @@ import styled, { css } from 'styled-components';
 import React from 'react';
 import logo from '../img/firelogo.png';
 
-const vector2 = require('../img/landingvector.png');
-const greenBackgroundSVG = require('../img/green-slanted-bg-shape.png');
-const handshakeImg = require('../img/handshake.png');
-const analytics = require('../img/analytics-1.png');
-const startup = require('../img/startup-1.png');
-const getStartedVector = require('../img/getstartedVector.png');
-const facebookIcon = require('../img/fb.png');
-const githubIcon = require('../img/github-1.png');
-const instagramIcon = require('../img/instagram-logo-1.png');
-const linkedInIcon = require('../img/linkedIn.png');
-const twitterIcon = require('../img/twitter-1.png');
+import vector2 from '../img/landingvector.png';
+import greenBackgroundSVG from '../img/green-slanted-bg-shape.png';
+import handshakeImg from '../img/handshake.png';
+import analytics from '../img/analytics-1.png';
+import startup from '../img/startup-1.png';
+import getStartedVector from '../img/getstartedvector.png';
+import facebookIcon from '../img/fb.png';
+import githubIcon from '../img/github-1.png';
+import instagramIcon from '../img/instagram-logo-1.png';
+import linkedInIcon from '../img/linkedin.png';
+import twitterIcon from '../img/twitter-1.png';
 
 // media queries
 
@@ -44,7 +44,7 @@ const NavbarContainer = styled.div`
   }
 `;
 
-const Logo = styled.div`
+export const Logo = styled.div`
   width: 4.5em;
   height: 5em;
   background-image: url(${logo});
@@ -282,10 +282,6 @@ const InfoCardsContainer = styled.div`
   }
 `;
 
-const BottomLandingContainer = styled.div`
-  height: 100vh;
-`;
-
 const InfoCard = styled.div`
   height: 20em;
   width: 16em;
@@ -487,7 +483,7 @@ const Landing = () => {
               <a href='/faq/general'>FAQ</a>
             </NavbarLink>
             <NavbarLink>
-              <a href='#'>About</a>
+              <a href='/about'>About</a>
             </NavbarLink>
             <a href='/login'>
               <StyledButton theme={buttonTheme}>LOGIN</StyledButton>
@@ -513,7 +509,7 @@ const Landing = () => {
           </LandingTaglineContainer>
           <LandingRightContainer>
             <LandingVectorImageContainer>
-              <img src={vector2} />
+              <img src={vector2} alt='main' />
             </LandingVectorImageContainer>
           </LandingRightContainer>
         </TopLandingContainer>
@@ -529,7 +525,7 @@ const Landing = () => {
                 by us for interviewing experience and mentoring
                 ability.
               </p>
-              <img src={handshakeImg} />
+              <img src={handshakeImg} alt='feature' />
             </InfoCard>
             <InfoCard>
               <h3>Find your coach.</h3>
@@ -538,7 +534,7 @@ const Landing = () => {
                 by us for interviewing experience and mentoring
                 ability.
               </p>
-              <img src={analytics} />
+              <img src={analytics} alt='feature' />
             </InfoCard>
             <InfoCard>
               <h3>Get hired! </h3>
@@ -546,13 +542,13 @@ const Landing = () => {
                 Take advantage of your newfound interview skills and
                 land the job of your dreams.
               </p>
-              <img src={startup} />
+              <img src={startup} alt='feature' />
             </InfoCard>
           </InfoCardsContainer>
         </InfoboxContainer>
         <BottomSectionContainer>
           <BottomImgDiv>
-            <img src={getStartedVector} />
+            <img src={getStartedVector} alt='call to action' />
           </BottomImgDiv>
           <BottomTextStyle>
             <h2>Ready to get started?</h2>
@@ -594,19 +590,19 @@ const Landing = () => {
           </FooterTopSection>
           <FooterBottomSection>
             <Icons>
-              <img src={githubIcon} />
+              <img src={githubIcon} alt='icon' />
             </Icons>
             <Icons>
-              <img src={facebookIcon} />
+              <img src={facebookIcon} alt='icon' />
             </Icons>
             <Icons>
-              <img src={instagramIcon} />
+              <img src={instagramIcon} alt='icon' />
             </Icons>
             <Icons>
-              <img src={linkedInIcon} />
+              <img src={linkedInIcon} alt='icon' />
             </Icons>
             <Icons>
-              <img src={twitterIcon} />
+              <img src={twitterIcon} alt='icon' />
             </Icons>
           </FooterBottomSection>
           <p>

@@ -10,7 +10,6 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 // import Paper from '@material-ui/core/Paper';
@@ -80,7 +79,7 @@ import DashboardNav from './DashboardNav';
 //   );
 // }
 
-export default function Dashboard(props) {
+const Dashboard = props => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -103,8 +102,15 @@ export default function Dashboard(props) {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    setAnchorEl(null);
+    window.location.reload();
   };
 
   return (
@@ -168,9 +174,8 @@ export default function Dashboard(props) {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleAccountSetttings}>
-                Account Settings
-              </MenuItem>
+              <MenuItem onClick={handleClose}>My Account</MenuItem>
+              <MenuItem onClick={logout}>Logout</MenuItem>
             </Menu>
           </div>
         </Toolbar> */}
@@ -230,126 +235,6 @@ export default function Dashboard(props) {
       </main>
     </div>
   );
-}
+};
 
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' href='https://dev-coach.com/'>
-        Dev-Coach
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-    background: '#ffff',
-  },
-
-  toolbarIcon: {
-    backgroundImage: `url(${logo})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    padding: '10px',
-    backgroundSize: '2rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 4px',
-    ...theme.mixins.toolbar,
-    color: '#4fad65',
-    fontSize: '.7rem',
-    fontFamily: 'ABeeZee',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
-  },
-  title: {
-    flexGrow: 1,
-    color: '#4fad65',
-  },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
-    },
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  gridContainer: {
-    // height: '100vh',
-  },
-  // paper: {
-  //   // padding: theme.spacing(2),
-  //   display: 'flex',
-  //   // overflow: 'auto',
-  //   // flexDirection: 'column',
-  //   width: '100%',
-  // },
-  // fixedHeight: {
-  //   height: '80vh',
-  // },
-  copyright: {
-    textAlign: 'center',
-  },
-}));
-// const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+export default Dashboard;

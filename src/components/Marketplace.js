@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import devices from './devices';
-import thinking from '../img/thinking.png';
-import woman from '../img/woman.jpg';
 import pink from '../img/pink.jpg';
 import stare from '../img/stare.jpg';
 import mobileCard from '../img/mobileCard.jpg';
@@ -15,10 +11,8 @@ import {
   getCoaches,
   searchCoaches,
 } from '../state/actions/marketplaceActions';
-// import StyledButton from './Landing';
 
-// DUMMY DATA //
-
+// DUMMY DATA
 const marketplaceCoaches = [
   {
     id: 1,
@@ -118,8 +112,8 @@ const marketplaceCoaches = [
 
 // STYLED COMPONENTS //
 const BackgroundContainer = styled.section`
-  position: fixed;
-  margin-top: 70px;
+  /* position: fixed; */
+  /* margin-top: 70px; */
   height: 100vh;
   background: #ffffff;
   display: flex;
@@ -128,7 +122,6 @@ const BackgroundContainer = styled.section`
 `;
 
 // SEARCH SECTION
-
 const SearchDiv = styled.section`
   background-image: url(${pink});
   background-repeat: no-repeat;
@@ -261,18 +254,18 @@ const MainContainer = styled.section`
   }
 `;
 
-function Marketplace(props) {
+const Marketplace = ({ searchCoaches, getCoaches }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [coaches, setCoaches] = useState(marketplaceCoaches);
+  // const [coaches, setCoaches] = useState(marketplaceCoaches);
 
   const handleChange = event => {
     setSearchTerm(event.target.value.toLowerCase());
-    props.searchCoaches(searchTerm);
+    searchCoaches(searchTerm);
   };
 
   useEffect(() => {
-    props.getCoaches();
-  }, []);
+    getCoaches();
+  }, [getCoaches]);
 
   return (
     <BackgroundContainer>
@@ -285,7 +278,8 @@ function Marketplace(props) {
             placeholder='search topic, name, or location'
             value={searchTerm}
             onChange={handleChange}
-          /> <button onSubmit={handleChange}>Search</button>
+          />{' '}
+          <button onSubmit={handleChange}>Search</button>
         </SearchBar>
       </SearchDiv>
       <MainContainer>
@@ -301,7 +295,7 @@ function Marketplace(props) {
       </MainContainer>
     </BackgroundContainer>
   );
-}
+};
 const mapStateToProps = state => {
   return {
     coaches: state.marketplaceReducer.coaches,

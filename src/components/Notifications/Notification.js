@@ -45,7 +45,7 @@ const useStyles1 = makeStyles(theme => ({
   },
 }));
 
-export default function Notification(props) {
+const Notification = props => {
   const classes = useStyles1();
   const {
     className,
@@ -92,7 +92,7 @@ export default function Notification(props) {
       />
     </Snackbar>
   );
-}
+};
 
 Notification.propTypes = {
   className: PropTypes.string,
@@ -101,3 +101,5 @@ Notification.propTypes = {
   variant: PropTypes.oneOf(['error', 'info', 'success', 'warning'])
     .isRequired,
 };
+
+export default Notification;

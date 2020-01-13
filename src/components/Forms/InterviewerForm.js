@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { withFormik, Form, Field, FieldArray } from 'formik';
@@ -11,8 +12,9 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import TextField from '@material-ui/core/TextField';
 import InputBase from '@material-ui/core/InputBase';
 import * as Yup from 'yup';
+
 import { chooseUserRole } from '../../state/actions/authenticationActions';
-import { StyledButton, buttonTheme } from '../Landing';
+import { StyledButton, buttonTheme, Logo } from '../Landing';
 import {
   GreyBackgroundContainer,
   FormCard,
@@ -69,62 +71,75 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function CoachForm({ errors, touched }) {
+const CoachForm = ({ errors, touched }) => {
   const handleUserRoleSubmit = () => {};
   return (
-    <ThisGreyBackgroundContainer>
-      <RegisterCard>
-        <h1>Coach Form</h1>
-        <FormContainer>
-          <Form>
-            <div>
-              <Field type='text' name='city' placeholder='Location' />
-              {errors.city && touched.city && (
-                <StyledError>{errors.city}</StyledError>
-              )}
-            </div>
-            <div>
-              <Field
-                type='text'
-                name='experience'
-                placeholder='Select Level Of Experience'
-              />
-              {errors.experience && touched.experience && (
-                <StyledError>{errors.experience}</StyledError>
-              )}
-            </div>
-            <div>
-              <Field type='text' name='skills' placeholder='Skills' />
-              {errors.skills && touched.skills && (
-                <StyledError>{errors.skills}</StyledError>
-              )}
-            </div>
-            <div>
-              <Field
-                type='text'
-                name='description'
-                placeholder='Description'
-              />
-              {errors.description && touched.description && (
-                <StyledError>{errors.description}</StyledError>
-              )}
-            </div>
-            <div>
-              <StyledButton
-                theme={buttonTheme}
-                onClick={handleUserRoleSubmit}
-                type='submit'
-              >
-                {' '}
-                Submit{' '}
-              </StyledButton>
-            </div>
-          </Form>
-        </FormContainer>
-      </RegisterCard>
-    </ThisGreyBackgroundContainer>
+    <div>
+      <ThisGreyBackgroundContainer>
+        <RegisterCard>
+          <Link to='/userrole'>
+            <Logo />
+          </Link>
+          <h1>Coach Form</h1>
+          <FormContainer>
+            <Form>
+              <div>
+                <Field
+                  type='text'
+                  name='city'
+                  placeholder='Location'
+                />
+                {errors.city && touched.city && (
+                  <StyledError>{errors.city}</StyledError>
+                )}
+              </div>
+              <div>
+                <Field
+                  type='text'
+                  name='experience'
+                  placeholder='Select Level Of Experience'
+                />
+                {errors.experience && touched.experience && (
+                  <StyledError>{errors.experience}</StyledError>
+                )}
+              </div>
+              <div>
+                <Field
+                  type='text'
+                  name='skills'
+                  placeholder='Skills'
+                />
+                {errors.skills && touched.skills && (
+                  <StyledError>{errors.skills}</StyledError>
+                )}
+              </div>
+              <div>
+                <Field
+                  type='text'
+                  name='description'
+                  placeholder='Description'
+                />
+                {errors.description && touched.description && (
+                  <StyledError>{errors.description}</StyledError>
+                )}
+              </div>
+              <div>
+                <StyledButton
+                  theme={buttonTheme}
+                  onClick={handleUserRoleSubmit}
+                  type='submit'
+                >
+                  {' '}
+                  Submit{' '}
+                </StyledButton>
+              </div>
+            </Form>
+          </FormContainer>
+        </RegisterCard>
+      </ThisGreyBackgroundContainer>
+    </div>
   );
-}
+};
 
 const FormikCoachForm = withFormik({
   mapPropsToValues({ city, experience, skills, description }) {
