@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import {
+  showErrorMessage,
+  showSuccessMessage,
+  closeMessage,
+} from '../../state/actions/notificationActions';
+import Notification from '../Notifications/Notification';
 import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -13,11 +19,16 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import liam from '../../img/liam.PNG';
+import { be } from 'date-fns/locale';
+import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
+import { updateUserInfo } from '../../state/actions/userSettingsActions';
 
 export function ProfileSettings(props) {
   const classes = useStyles();
 
-  const { user } = props;
+  const { user, updateUserInfo } = props;
 
   const initialUserInfo = {
     first_name: '',
@@ -30,23 +41,45 @@ export function ProfileSettings(props) {
 
   const [userInfo, setUserInfo] = useState(initialUserInfo);
 
+  useEffect(() => {
+    const newUpdate = {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      password: user.password,
+    };
+    setUserInfo(newUpdate);
+  }, [user]);
+
   const handleChange = e => {
     const { value, name } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  useEffect(() => {
-    const userToUpdate = user.user;
-    setUserInfo(userToUpdate);
-    console.log(userToUpdate);
-  }, [user]);
+  const handleSubmit = e => {
+    e.preventDefault();
+    updateUserInfo(user.id, userInfo);
+  };
+
+  const handleCancel = e => {
+    e.preventDefault();
+    props.history.push('/dashboard');
+  };
 
   return (
     <StyledSettingsWrap>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}></Avatar>
+          <img
+            src={liam}
+            style={{
+              paddingTop: '20px',
+              width: '40%',
+              borderRadius: '50%',
+            }}
+          />
+
           <Typography component='h1' variant='h5'>
             Personal Information
           </Typography>
@@ -60,7 +93,7 @@ export function ProfileSettings(props) {
                   required
                   fullWidth
                   id='first_name'
-                  label='First Name'
+                  label={userInfo.first_name}
                   value={userInfo.first_name}
                   onChange={handleChange}
                   autoFocus
@@ -72,7 +105,7 @@ export function ProfileSettings(props) {
                   required
                   fullWidth
                   id='lastName'
-                  label='Last Name'
+                  label={userInfo.last_name}
                   name='last_name'
                   autoComplete='lname'
                   value={userInfo.last_name}
@@ -85,7 +118,7 @@ export function ProfileSettings(props) {
                   required
                   fullWidth
                   id='email'
-                  label='Email Address'
+                  label={userInfo.email}
                   name='email'
                   autoComplete='email'
                   value={userInfo.email}
@@ -120,21 +153,40 @@ export function ProfileSettings(props) {
               </Grid>
             </Grid>
             <StyledButtonDiv>
-              <button>cancel</button>
-              <button>save changes</button>
+              <button onClick={handleCancel}>cancel</button>
+              <button onClick={handleSubmit}>save changes</button>
             </StyledButtonDiv>
           </form>
         </div>
       </Container>
+      <Notification
+        onClose={props.closeMessage}
+        variant='success'
+        message={res.data.message}
+        open={props.success}
+      />
+      <Notification
+        onClose={props.closeMessage}
+        variant='error'
+        message={err.response.data.message}
+        open={props.error}
+      />
     </StyledSettingsWrap>
   );
 }
 
 const mapStateToProps = state => ({
-  user: state.userReducer,
+  user: state.userReducer.user,
+  success: state.notificationsReducer.success,
+  error: state.notificationsReducer.error,
 });
 
-export default connect(mapStateToProps, {})(ProfileSettings);
+export default connect(mapStateToProps, {
+  updateUserInfo,
+  showErrorMessage,
+  showSuccessMessage,
+  closeMessage,
+})(ProfileSettings);
 
 // Styles for the Component //
 
@@ -154,6 +206,8 @@ const StyledButtonDiv = styled.div`
   button {
     width: 48%;
     background-color: #1976d2;
+    background-color: #4fad65;
+
     padding: 18px;
     font-family: ABeeZee, Roboto, Helvetica, Arial, sans-serif;
     border-radius: 4px;

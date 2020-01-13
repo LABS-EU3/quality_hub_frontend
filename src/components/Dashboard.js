@@ -81,7 +81,6 @@ import DashboardNav from './DashboardNav';
 // }
 
 export default function Dashboard(props) {
-  console.log(props);
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -92,6 +91,7 @@ export default function Dashboard(props) {
   };
 
   const handleAccountSetttings = e => {
+    e.preventDefault();
     props.history.push('/profileSettings');
     setAnchorEl(null);
   };
@@ -115,7 +115,7 @@ export default function Dashboard(props) {
         position='absolute'
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
-        <Toolbar className={classes.toolbar}>
+        {/* <Toolbar className={classes.toolbar}>
           <IconButton
             edge='start'
             color='inherit'
@@ -134,21 +134,21 @@ export default function Dashboard(props) {
             color='inherit'
             noWrap
             className={classes.title}
-          >
-            Dashboard
-          </Typography>
-          {/* <IconButton color='inherit'>
+          > */}
+        {/* Dashboard */}
+        {/* </Typography> */}
+        {/* <IconButton color='inherit'>
             <Badge badgeContent={4} color='secondary'>
               <NotificationsIcon />
             </Badge>
           </IconButton> */}
-          <div>
+        {/* <div>
             <IconButton
               aria-label='account of current user'
               aria-controls='menu-appbar'
               aria-haspopup='true'
               onClick={handleMenu}
-              color='inherit'
+              color='grey'
             >
               <AccountCircle />
             </IconButton>
@@ -173,7 +173,7 @@ export default function Dashboard(props) {
               </MenuItem>
             </Menu>
           </div>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
       <Drawer
         variant='permanent'
@@ -253,7 +253,7 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
-    // background: '#4FAD65',
+    background: '#ffff',
   },
 
   toolbarIcon: {

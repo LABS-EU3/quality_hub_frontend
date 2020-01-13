@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import DashboardNavDropDown from './DashboardNavDropDown';
 import SearchIcon from '@material-ui/icons/Search';
-import ben from '../img/ben.PNG';
 import TextField from '@material-ui/core/TextField';
 
 const DashboardNav = () => {
@@ -43,7 +42,7 @@ const DashboardNav = () => {
       <nav className='rightNav'>
         <div className='profileMenu'>
           <p>Benjamin</p>
-          <img src={ben} alt='' />
+          {/* <img src={ben} alt='' /> */}
         </div>
         <DashboardNavDropDown
           overlay={DashboardNavDropDown}
