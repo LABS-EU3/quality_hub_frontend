@@ -16,7 +16,6 @@ const initialState = {
 };
 
 function userReducer(state = initialState, action) {
-  console.log(state.user);
   switch (action.type) {
     case types.LOGIN_START:
       return {
@@ -78,6 +77,11 @@ function userReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         userUpdateError: action.error,
+      };
+    case types.FECTH_USER_SUCCESSFULLY:
+      return {
+        ...state,
+        user: action.payload,
       };
   }
 }

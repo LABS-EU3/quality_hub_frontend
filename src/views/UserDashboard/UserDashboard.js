@@ -25,12 +25,13 @@ const UserDashboard = props => {
       1000,
     );
   }, []);
-  if (!!props.loading) {
-    return <LoaderSpinner />;
-  }
+  // if (!!props.loading) {
+  //   return <LoaderSpinner />;
+  // }
 
   return (
     <div>
+      Dashboard
       <StyledContainer>
         {props.appointments &&
           props.appointments.map(appointment => (
@@ -50,7 +51,7 @@ const UserDashboard = props => {
             />
           ))}
       </StyledContainer>
-      <ProfileSettings />
+      {/* <ProfileSettings /> */}
     </div>
   );
 };

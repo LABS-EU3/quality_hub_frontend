@@ -16,7 +16,6 @@ export const login = (props, values) => dispatch => {
       window.location.reload();
     })
     .catch(err => {
-      debugger;
       dispatch({
         type: types.LOGIN_ERROR,
         payload: err.response.data.message,

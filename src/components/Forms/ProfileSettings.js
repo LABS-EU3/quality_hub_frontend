@@ -23,14 +23,19 @@ import liam from '../../img/liam.PNG';
 import { be } from 'date-fns/locale';
 import axios from 'axios';
 import axiosWithAuth from '../../utils/axiosWithAuth';
-import { updateUserInfo } from '../../state/actions/userSettingsActions';
+import {
+  updateUserInfo,
+  fetchUser,
+} from '../../state/actions/userSettingsActions';
 
 export function ProfileSettings(props) {
   const classes = useStyles();
+  console.log(props);
 
   const {
     user,
     updateUserInfo,
+    fetchUser,
     success,
     error,
     showErrorMessage,
@@ -48,15 +53,18 @@ export function ProfileSettings(props) {
 
   const [userInfo, setUserInfo] = useState(initialUserInfo);
   const refUser = useRef(user);
-
   useEffect(() => {
-    const newUpdate = {
-      first_name: user.first_name,
-      last_name: user.last_name,
-      email: user.email,
-      password: user.password,
-    };
-    setUserInfo(newUpdate);
+    fetchUser();
+    setTimeout(
+      user &&
+        setUserInfo({
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email,
+          password: user.password,
+        }),
+      2000,
+    );
   }, [refUser]);
 
   const handleChange = e => {
@@ -204,6 +212,7 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   updateUserInfo,
+  fetchUser,
   showErrorMessage,
   showSuccessMessage,
   closeMessage,

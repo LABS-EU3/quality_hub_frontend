@@ -19,12 +19,33 @@ export const updateUserInfo = (
         payload: res.data,
         message: res.data.message,
       });
-      console.log();
     })
     .catch(err => {
       showError();
       dispatch({
         type: types.USER_INFO_UPDATE_FAILED,
+        payload: err.response.data.message,
+      });
+    });
+};
+
+export const fetchUser = () => dispatch => {
+  const userId = localStorage.getItem('id');
+
+  dispatch({ type: types.FECTH_USER });
+  axios
+    .get(`http://localhost:5000/user/${userId}`)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: types.FECTH_USER_SUCCESSFULLY,
+        payload: res.data.user,
+      });
+      window.location.reload();
+    })
+    .catch(err => {
+      dispatch({
+        type: types.FECTH_USER_FAILED,
         payload: err.response.data.message,
       });
     });
