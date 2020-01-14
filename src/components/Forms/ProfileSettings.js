@@ -70,13 +70,15 @@ export function ProfileSettings(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     updateUserInfo(
       user.id,
       userInfo,
       showErrorMessage,
       showSuccessMessage,
     );
+    setTimeout(() => {
+      props.history.push('/dashboard');
+    }, 2500);
   };
 
   const handleCancel = e => {
