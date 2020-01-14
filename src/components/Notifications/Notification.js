@@ -45,7 +45,7 @@ const useStyles1 = makeStyles(theme => ({
   },
 }));
 
-const Notification = props => {
+function Notification(props) {
   const classes = useStyles1();
   const {
     className,
@@ -92,7 +92,7 @@ const Notification = props => {
       />
     </Snackbar>
   );
-};
+}
 
 Notification.propTypes = {
   className: PropTypes.string,

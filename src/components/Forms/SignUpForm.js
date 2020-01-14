@@ -192,30 +192,3 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, { register })(
   FormikSignUpForm,
 );
-
-const ShortInputContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  input {
-    width: 82%;
-  }
-`;
-
-const RegisterCard = styled(FormCard)`
-  width: 30em;
-  height: 35em;
-
-  h1 {
-    font-size: 24px;
-  }
-`;
-
-const StyledError = styled.p`
-  padding: 0;
-  margin: 0;
-  color: red;
-  font-size: 0.8rem;
-  align-self: flex-start;
-`;

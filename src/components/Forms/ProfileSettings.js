@@ -162,13 +162,13 @@ export function ProfileSettings(props) {
       <Notification
         onClose={props.closeMessage}
         variant='success'
-        message={res.data.message}
+        message='your profile has been updated successfully'
         open={props.success}
       />
       <Notification
         onClose={props.closeMessage}
         variant='error'
-        message={err.response.data.message}
+        message='unable to update user profile'
         open={props.error}
       />
     </StyledSettingsWrap>
