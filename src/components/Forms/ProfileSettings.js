@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import {
   showErrorMessage,
@@ -28,18 +28,26 @@ import { updateUserInfo } from '../../state/actions/userSettingsActions';
 export function ProfileSettings(props) {
   const classes = useStyles();
 
-  const { user, updateUserInfo } = props;
+  const {
+    user,
+    updateUserInfo,
+    success,
+    error,
+    showErrorMessage,
+    showSuccessMessage,
+    closeMessage,
+  } = props;
 
   const initialUserInfo = {
     first_name: '',
     last_name: '',
     email: '',
     password: '',
-    confirm_password: '',
     avatar_url: '',
   };
 
   const [userInfo, setUserInfo] = useState(initialUserInfo);
+  const refUser = useRef(user);
 
   useEffect(() => {
     const newUpdate = {
@@ -49,16 +57,26 @@ export function ProfileSettings(props) {
       password: user.password,
     };
     setUserInfo(newUpdate);
-  }, [user]);
+  }, [refUser]);
 
   const handleChange = e => {
     const { value, name } = e.target;
-    setUserInfo({ ...userInfo, [name]: value });
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
+    });
+    console.log(userInfo);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    updateUserInfo(user.id, userInfo);
+
+    updateUserInfo(
+      user.id,
+      userInfo,
+      showErrorMessage,
+      showSuccessMessage,
+    );
   };
 
   const handleCancel = e => {
@@ -163,13 +181,14 @@ export function ProfileSettings(props) {
         onClose={props.closeMessage}
         variant='success'
         message='your profile has been updated successfully'
-        open={props.success}
+        open={success}
       />
+
       <Notification
         onClose={props.closeMessage}
         variant='error'
         message='unable to update user profile'
-        open={props.error}
+        open={error}
       />
     </StyledSettingsWrap>
   );

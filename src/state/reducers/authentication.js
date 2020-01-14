@@ -16,6 +16,7 @@ const initialState = {
 };
 
 function userReducer(state = initialState, action) {
+  console.log(state.user);
   switch (action.type) {
     case types.LOGIN_START:
       return {
@@ -69,8 +70,9 @@ function userReducer(state = initialState, action) {
       return {
         ...state,
         userUpdated: true,
-        user: action.payload,
+        user: action.payload.updateUser,
       };
+      console.log(state.user);
     case types.USER_INFO_UPDATE_FAILED:
       return {
         ...state,
