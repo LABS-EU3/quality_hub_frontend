@@ -6,10 +6,7 @@ import * as Yup from 'yup';
 import { connect } from 'react-redux';
 
 import { StyledButton, buttonTheme, Logo } from '../Landing';
-import {
-  chooseUserRole,
-  setStudentDetails,
-} from '../../state/actions/authenticationActions';
+import { chooseUserRole } from '../../state/actions/authenticationActions';
 import {
   GreyBackgroundContainer,
   FormCard,
@@ -23,14 +20,6 @@ const NavLogo = styled(Logo)`
   }
 `;
 
-const RegisterCard = styled(FormCard)`
-  font-family: ABeeZee;
-
-  h1 {
-    font-size: 24px;
-  }
-`;
-
 const StyledError = styled.p`
   padding: 0;
   margin: 0;
@@ -39,14 +28,16 @@ const StyledError = styled.p`
 `;
 
 const ThisGreyBackgroundContainer = styled(GreyBackgroundContainer)`
+  /* fonts should be global
   font-family: ABeeZee;
+   */
 `;
 
 const StudentForm = ({ touched, errors, isSubmitting }) => {
   return (
     <div>
       <ThisGreyBackgroundContainer>
-        <RegisterCard>
+        <FormCard>
           <Link to='/userrole'>
             <NavLogo />
           </Link>
@@ -56,15 +47,12 @@ const StudentForm = ({ touched, errors, isSubmitting }) => {
               <div>
                 <Field
                   type='text'
-                  name='studentLocation'
+                  name='userLocation'
                   placeholder='Location'
                 />
-                {errors.studentLocation &&
-                  touched.studentLocation && (
-                    <StyledError>
-                      {errors.studentLocation}
-                    </StyledError>
-                  )}
+                {errors.userLocation && touched.userLocation && (
+                  <StyledError>{errors.userLocation}</StyledError>
+                )}
               </div>
               <div>
                 <Field
@@ -97,22 +85,22 @@ const StudentForm = ({ touched, errors, isSubmitting }) => {
               </div>
             </Form>
           </FormContainer>
-        </RegisterCard>
+        </FormCard>
       </ThisGreyBackgroundContainer>
     </div>
   );
 };
 
 const FormikStudentForm = withFormik({
-  mapPropsToValues({ studentLocation, experience, confidence }) {
+  mapPropsToValues({ userLocation, experience, confidence }) {
     return {
-      studentLocation: studentLocation || '',
+      userLocation: userLocation || '',
       experience: experience || '',
       confidence: confidence || '',
     };
   },
   validationSchema: Yup.object().shape({
-    studentLocation: Yup.string().required('Please enter a location'),
+    userLocation: Yup.string().required('Please enter a location'),
     experience: Yup.string().required(
       'Please enter Your experience level',
     ),
@@ -123,11 +111,10 @@ const FormikStudentForm = withFormik({
   handleSubmit(values, { resetForm, setSubmitting, props }) {
     resetForm();
     setSubmitting(false);
-    props.chooseUserRole(props, values, 2);
+    props.chooseUserRole(props, values, 1);
   },
 })(StudentForm);
 
 export default connect(state => state, {
   chooseUserRole,
-  setStudentDetails,
 })(FormikStudentForm);

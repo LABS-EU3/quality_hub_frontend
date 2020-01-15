@@ -1,6 +1,7 @@
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const LOGOUT = 'LOGOUT';
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_UP_ERROR = 'SIGN_UP_ERROR';
 export const SIGN_UP_SUCCESSFUL = 'SIGN_UP_SUCCESSFUL';
@@ -14,3 +15,5 @@ export const LOGOUT = 'LOGOUT';
 export const FECTH_USER = 'FETCH_USER';
 export const FECTH_USER_FAILED = 'FETCH_USER_FAILED';
 export const FECTH_USER_SUCCESSFULLY = 'FETCH_USER_SUCCESSFULLY';
+export const SET_STUDENT_ID = 'SET_STUDENT_ID';
+export const SET_COACH_ID = 'SET_COACH_ID';

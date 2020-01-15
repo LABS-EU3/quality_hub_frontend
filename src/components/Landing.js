@@ -32,9 +32,9 @@ const NavbarContainer = styled.div`
   height: 4em;
   width: 100%;
   background: white;
-  display: flex;
-  justify-content: space-between;
   position: sticky;
+  display: flex;
+  justify-content: center;
   top: 0;
   z-index: 11;
   box-shadow: 0px 3px 4px -2px rgba(150, 150, 150, 1);
@@ -42,6 +42,13 @@ const NavbarContainer = styled.div`
   @media only screen and (max-width: 600px) {
     justify-content: space-evenly;
   }
+`;
+
+const NavbarSubContainer = styled.div`
+  width: 95%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Logo = styled.div`
@@ -71,7 +78,7 @@ const NavTitleContainer = styled.div`
 const LinksContainer = styled.div`
   width: 30%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding-right: 0.2em;
 `;
@@ -103,8 +110,6 @@ export const StyledButton = styled.button`
   color: ${props => props.theme.text};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  height: 100%;
-  width: 100%;
   padding: 1em 2em;
   border: none;
   font-family: Ubuntu;
@@ -138,12 +143,22 @@ const TopLandingContainer = styled.div`
   height: 60vh;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: nowrap;
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
     height: 120vh;
   }
+`;
+
+const TopLandingSubContainer = styled.div`
+  width: 95%;
+  padding-top: 1em;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 `;
 
 const LandingTaglineContainer = styled.div`
@@ -225,7 +240,6 @@ const LandingVectorImageContainer = styled.div`
   z-index: 1;
 
   img {
-    padding-right: 3em;
     padding-top: 2em;
     height: 100%;
     transform: scale(1.05);
@@ -283,8 +297,8 @@ const InfoCardsContainer = styled.div`
 `;
 
 const InfoCard = styled.div`
-  height: 20em;
-  width: 16em;
+  height: 120%;
+  width: 25%;
   background: white;
   border: 1px solid #a3a3a3;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -472,46 +486,55 @@ const Landing = () => {
     <div>
       <LandingWrapper>
         <NavbarContainer>
-          <LogoTitleContainer>
-            <Logo />
-            <NavTitleContainer>
-              <h1>DevCoach</h1>
-            </NavTitleContainer>
-          </LogoTitleContainer>
-          <LinksContainer>
-            <NavbarLink>
-              <a href='/faq/general'>FAQ</a>
-            </NavbarLink>
-            <NavbarLink>
-              <a href='/about'>About</a>
-            </NavbarLink>
-            <a href='/login'>
-              <StyledButton theme={buttonTheme}>LOGIN</StyledButton>
-            </a>
-            <a href='/register'>
-              <StyledButton theme={invertTheme}>SIGN UP</StyledButton>
-            </a>
-          </LinksContainer>
+          <NavbarSubContainer>
+            <LogoTitleContainer>
+              <Logo />
+              <NavTitleContainer>
+                <h1>DevCoach</h1>
+              </NavTitleContainer>
+            </LogoTitleContainer>
+            <LinksContainer>
+              <NavbarLink>
+                <a href='/faq/general'>FAQ</a>
+              </NavbarLink>
+              <NavbarLink>
+                <a href='#'>About</a>
+              </NavbarLink>
+              <a href='/login'>
+                <StyledButton theme={buttonTheme}>LOGIN</StyledButton>
+              </a>
+              <a href='/register'>
+                <StyledButton
+                  theme={invertTheme}
+                  style={{ 'white-space': 'nowrap' }}
+                >
+                  SIGN UP
+                </StyledButton>
+              </a>
+            </LinksContainer>
+          </NavbarSubContainer>
         </NavbarContainer>
         <TopLandingContainer>
-          <LandingTaglineContainer>
-            <h1>
-              INTERVIEWING ISN'T EASY. THAT DOESN'T MEANT IT HAS TO BE
-              STRESSFUL.
-            </h1>
-            <h3>
-              We connect developers looking to improve their
-              interviewing technique with experienced pros who have
-              mastered the technical interview and can coach you
-              through the process from start to finish.
-            </h3>
-            <SignUp />
-          </LandingTaglineContainer>
-          <LandingRightContainer>
-            <LandingVectorImageContainer>
-              <img src={vector2} alt='main' />
-            </LandingVectorImageContainer>
-          </LandingRightContainer>
+          <TopLandingSubContainer>
+            <LandingTaglineContainer>
+              <h1>
+                INTERVIEWING ISN'T EASY. THAT DOESN'T MEANT IT HAS TO
+                BE STRESSFUL.
+              </h1>
+              <h3>
+                We connect developers looking to improve their
+                interviewing technique with experienced pros who have
+                mastered the technical interview and can coach you
+                through the process from start to finish.
+              </h3>
+              <SignUp />
+            </LandingTaglineContainer>
+            <LandingRightContainer>
+              <LandingVectorImageContainer>
+                <img src={vector2} />
+              </LandingVectorImageContainer>
+            </LandingRightContainer>
+          </TopLandingSubContainer>
         </TopLandingContainer>
         <InfoboxContainer>
           <InfoBoxTitleContainer>

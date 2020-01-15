@@ -6,25 +6,22 @@ import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-// import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import NotificationsIcon from '@material-ui/icons/Notifications';
-// import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { connect } from 'react-redux';
-import { ListComponent, mainListItems } from '../utils/dashboardList';
+import { ListComponent } from '../utils/dashboardList';
 import logo from '../img/firelogo.png';
 import { logout } from '../state/actions/authenticationActions';
+
 function Copyright() {
   return (
     <Typography variant='body2' color='textSecondary' align='center'>
@@ -43,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   toolbar: {
-    background: '#FAFAFA',
+    background: '#FFFFFF',
     zIndex: -10,
   },
   toolbarIcon: {
@@ -140,6 +137,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   container: {
+    background: '#FFFFFF',
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
     height: '100vh',
@@ -148,19 +146,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  gridContainer: {
-    // height: '100vh',
-  },
-  // paper: {
-  //   // padding: theme.spacing(2),
-  //   display: 'flex',
-  //   // overflow: 'auto',
-  //   // flexDirection: 'column',
-  //   width: '100%',
-  // },
-  // fixedHeight: {
-  //   height: '80vh',
-  // },
+
   copyright: {
     textAlign: 'center',
   },
@@ -173,7 +159,6 @@ const useStyles = makeStyles(theme => ({
     transition: 'visibility 5s, opacity 0s linear',
   },
 }));
-// const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 const Dashboard = props => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -223,11 +208,6 @@ const Dashboard = props => {
             noWrap
             className={classes.title}
           ></Typography>
-          {/* <IconButton color='inherit'>
-            <Badge badgeContent={4} color='secondary'>
-              <NotificationsIcon />
-            </Badge>
-          </IconButton> */}
           <div className={classes.profileMenu}>
             <IconButton
               aria-label='account of current user'
@@ -255,7 +235,7 @@ const Dashboard = props => {
             >
               <MenuItem onClick={handleClose}>Profile</MenuItem>
               <MenuItem onClick={handleClose}>My Account</MenuItem>
-              <MenuItem onClick={logout}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
         </Toolbar>
@@ -277,7 +257,6 @@ const Dashboard = props => {
           }
           onClick={() => setOpen(!open)}
         >
-          <img className={classes.toolbarLogoImg}></img>
           <h1
             className={open ? classes.toolbarTitle : classes.hidden}
           >
@@ -285,7 +264,7 @@ const Dashboard = props => {
           </h1>
           {
             <IconButton
-              className={!open && classes.hidden}
+              className={!open ? classes.hidden : null}
               onClick={handleDrawerClose}
             >
               <ChevronLeftIcon />

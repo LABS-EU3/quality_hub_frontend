@@ -9,14 +9,15 @@ import FeedbackCard from '../../components/Cards/FeedbackCard';
 const StyledFeedback = styled.div``;
 
 const Feedback = props => {
+  const { getFeedback, user, feedback } = props;
+
   React.useEffect(() => {
-    props.getFeedback(props.user.id, props.user.role_id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    getFeedback(user.id, user.role_id);
+  }, [getFeedback, user.id, user.role_id]);
   return (
     <StyledFeedback>
-      {props.feedback &&
-        props.feedback.map(feedback => (
+      {feedback &&
+        feedback.map(feedback => (
           <FeedbackCard
             key={uuid()}
             rating={<FeedbackRating rating={feedback.rating} />}

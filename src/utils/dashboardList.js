@@ -10,6 +10,10 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+
+>>>>>>> e819687bd947f2aa39e7457579d7f439b6ef0ea2
 const useStyles = makeStyles(theme => ({
   listItem: {
     textDecoration: 'none',
@@ -19,6 +23,10 @@ const useStyles = makeStyles(theme => ({
     background: '#4fad65',
   },
 }));
+<<<<<<< HEAD
+=======
+
+>>>>>>> e819687bd947f2aa39e7457579d7f439b6ef0ea2
 const customListItemStyles = {
   root: {
     borderRadius: '15px',
@@ -50,7 +58,13 @@ const customListItemStyles = {
     },
   },
 };
+<<<<<<< HEAD
 const CustomListItem = withStyles(customListItemStyles)(ListItem);
+=======
+
+const CustomListItem = withStyles(customListItemStyles)(ListItem);
+
+>>>>>>> e819687bd947f2aa39e7457579d7f439b6ef0ea2
 export const ListComponent = props => {
   const classes = useStyles();
   return (
@@ -100,6 +114,10 @@ export const ListComponent = props => {
     </List>
   );
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> e819687bd947f2aa39e7457579d7f439b6ef0ea2
 export const mainListItems = (
   <div>
     <Link to='/dashboard'>

@@ -11,12 +11,12 @@ const initialState = {
   welcomeMessage: '',
   userHasChosenRole: false,
   userRoleError: '',
-  id: null,
-  role_id: null,
 };
 
 function userReducer(state = initialState, action) {
   switch (action.type) {
+    default:
+      return state;
     case types.LOGIN_START:
       return {
         ...state,
@@ -47,13 +47,14 @@ function userReducer(state = initialState, action) {
         isLoading: false,
         isLoggedIn: false,
       };
-    default:
-      return state;
     case types.USER_ROLE_CHOSEN:
       return {
         ...state,
         userHasChosenRole: true,
-        userRole: action.role,
+        user: {
+          ...state.user,
+          role_id: action.role,
+        },
       };
     case types.USER_ROLE_ERROR:
       return {
@@ -82,6 +83,28 @@ function userReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+      };
+    case types.SET_COACH_ID:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          coach_id: action.id,
+        },
+      };
+    case types.SET_STUDENT_ID:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          student_id: action.id,
+        },
+      };
+    case types.LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: null,
       };
   }
 }

@@ -86,11 +86,11 @@ const CoachForm = ({ errors, touched }) => {
               <div>
                 <Field
                   type='text'
-                  name='city'
+                  name='userLocation'
                   placeholder='Location'
                 />
-                {errors.city && touched.city && (
-                  <StyledError>{errors.city}</StyledError>
+                {errors.userLocation && touched.userLocation && (
+                  <StyledError>{errors.userLocation}</StyledError>
                 )}
               </div>
               <div>
@@ -142,23 +142,23 @@ const CoachForm = ({ errors, touched }) => {
 };
 
 const FormikCoachForm = withFormik({
-  mapPropsToValues({ city, experience, skills, description }) {
+  mapPropsToValues({ userLocation, experience, skills, description }) {
     return {
-      city: city || '',
+      userLocation: userLocation || '',
       experience: experience || '',
       skills: skills || '',
       description: description || '',
     };
   },
   validationSchema: Yup.object().shape({
-    city: Yup.string().required('Please enter your location'),
+    userLocation: Yup.string().required('Please enter your location'),
     experience: Yup.string().required('Please enter your experience'),
     skills: Yup.string().required('Please enter your skills'),
     description: Yup.string().required('Please enter a description'),
   }),
   handleSubmit(values, { props, resetForm }) {
     resetForm();
-    props.chooseUserRole(props, values, 1);
+    props.chooseUserRole(props, values, 2);
   },
 })(CoachForm);
 

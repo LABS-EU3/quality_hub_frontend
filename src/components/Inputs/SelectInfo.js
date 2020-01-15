@@ -6,7 +6,15 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { saveSelect } from '../../state/actions/bookingActions';
+
+const StyledSelectInfo = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+`;
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -19,7 +27,7 @@ const SelectInfo = props => {
   const classes = useStyles();
 
   return (
-    <div>
+    <StyledSelectInfo>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor='grouped-select'>Length</InputLabel>
         <Select
@@ -57,7 +65,7 @@ const SelectInfo = props => {
           <MenuItem value={6}>React</MenuItem>
         </Select>
       </FormControl>
-    </div>
+    </StyledSelectInfo>
   );
 };
 
