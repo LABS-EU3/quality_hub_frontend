@@ -30,8 +30,6 @@ import {
 
 export function ProfileSettings(props) {
   const classes = useStyles();
-  console.log(props);
-
   const {
     user,
     updateUserInfo,
@@ -44,28 +42,28 @@ export function ProfileSettings(props) {
   } = props;
 
   const initialUserInfo = {
-    first_name: '',
-    last_name: '',
-    email: '',
+    first_name: user && user.first_name,
+    last_name: user && user.last_name,
+    email: user && user.email,
     password: '',
-    avatar_url: '',
+    confirm_password: '',
   };
 
   const [userInfo, setUserInfo] = useState(initialUserInfo);
-  const refUser = useRef(user);
-  useEffect(() => {
-    fetchUser();
-    setTimeout(
-      user &&
-        setUserInfo({
-          first_name: user.first_name,
-          last_name: user.last_name,
-          email: user.email,
-          password: user.password,
-        }),
-      2000,
-    );
-  }, [refUser]);
+  // const refUser = useRef(user);
+  // useEffect(() => {
+  //   // fetchUser();
+  //   // setTimeout(
+  //   user &&
+  //     setUserInfo({
+  //       first_name: user.first_name,
+  //       last_name: user.last_name,
+  //       email: user.email,
+  //       password: user.password,
+  //     });
+  //   //   2000,
+  //   // );
+  // }, [refUser]);
 
   const handleChange = e => {
     const { value, name } = e.target;

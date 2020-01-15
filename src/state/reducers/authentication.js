@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  user: null,
+  user: [],
   loginError: '',
   signUpError: '',
   isLoading: false,
@@ -69,7 +69,7 @@ function userReducer(state = initialState, action) {
       return {
         ...state,
         userUpdated: true,
-        user: action.payload.updateUser,
+        user: action.payload,
       };
       console.log(state.user);
     case types.USER_INFO_UPDATE_FAILED:

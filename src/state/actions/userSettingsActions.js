@@ -13,14 +13,16 @@ export const updateUserInfo = (
   axios
     .put(`http://localhost:5000/user/${userId}`, userInfo)
     .then(res => {
+      console.log(res);
       showSuccess();
       dispatch({
         type: types.USER_INFO_UPDATE_SUCCESSFUL,
-        payload: res.data,
+        payload: res.data.updatedUser,
         message: res.data.message,
       });
     })
     .catch(err => {
+      console.log(err);
       showError();
       dispatch({
         type: types.USER_INFO_UPDATE_FAILED,
