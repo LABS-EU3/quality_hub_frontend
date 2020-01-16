@@ -50,8 +50,8 @@ const AppointmentCardDiv = styled.div`
         img {
           display: inline;
           margin: 0 auto;
-          height: 100%;
-          width: auto;
+          /* height: 100%;
+          width: auto; */
         }
       }
     }

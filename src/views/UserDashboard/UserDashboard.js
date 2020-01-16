@@ -25,9 +25,6 @@ const UserDashboard = props => {
       1000,
     );
   }, []);
-  // if (!!props.loading) {
-  //   return <LoaderSpinner />;
-  // }
 
   return (
     <div>
@@ -51,7 +48,6 @@ const UserDashboard = props => {
             />
           ))}
       </StyledContainer>
-      {/* <ProfileSettings /> */}
     </div>
   );
 };
