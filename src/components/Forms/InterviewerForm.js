@@ -2,14 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { withFormik, Form, Field, FieldArray } from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import TextField from '@material-ui/core/TextField';
 import InputBase from '@material-ui/core/InputBase';
 import * as Yup from 'yup';
 
@@ -142,7 +136,12 @@ const CoachForm = ({ errors, touched }) => {
 };
 
 const FormikCoachForm = withFormik({
-  mapPropsToValues({ userLocation, experience, skills, description }) {
+  mapPropsToValues({
+    userLocation,
+    experience,
+    skills,
+    description,
+  }) {
     return {
       userLocation: userLocation || '',
       experience: experience || '',

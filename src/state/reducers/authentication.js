@@ -72,7 +72,6 @@ function userReducer(state = initialState, action) {
         userUpdated: true,
         user: action.payload,
       };
-      console.log(state.user);
     case types.USER_INFO_UPDATE_FAILED:
       return {
         ...state,
