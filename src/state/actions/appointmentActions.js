@@ -2,8 +2,7 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const APPOINTMENTS_START = 'APPOINTMENTS_START';
 export const APPOINTMENTS_ERROR = 'APPOINTMENTS_ERROR';
-export const GET_APPOINTMENTS_SUCCESSFUL =
-  'GET_APPOINTMENTS_SUCCESSFUL';
+export const APPOINTMENTS_SUCCESSFUL = 'APPOINTMENTS_SUCCESSFUL';
 export const CANCEL_APPOINTMENT_SUCCESSFUL =
   'CANCEL_APPOINTMENT_SUCCESSFUL';
 
@@ -20,7 +19,7 @@ export const getAppointment = (
     })
     .then(res => {
       dispatch({
-        type: GET_APPOINTMENTS_SUCCESSFUL,
+        type: APPOINTMENTS_SUCCESSFUL,
         payload: res.data.appointments,
       });
     })

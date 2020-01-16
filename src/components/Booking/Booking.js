@@ -11,6 +11,7 @@ import {
   handleStripePayment,
   handlePaypalPayment,
   saveDate,
+  bookAppointment,
 } from '../../state/actions/bookingActions';
 import DatePicker from './DatePicker';
 import Select from '../Inputs/SelectInfo';
@@ -38,6 +39,8 @@ const Booking = props => {
     handlePaypalPayment,
     saveDate,
     select,
+    bookAppointment,
+    user,
   } = props;
 
   return (
@@ -69,6 +72,12 @@ const Booking = props => {
                 coach.hourly_rate,
                 showSuccessMessage,
                 showErrorMessage,
+                bookAppointment,
+                coach,
+                user,
+                date,
+                select.topic_id,
+                select.length_id,
               )
             }
             amount={coach.hourly_rate * 100}
@@ -110,4 +119,5 @@ export default connect(mapStateToProps, {
   closeMessage,
   handlePaypalPayment,
   saveDate,
+  bookAppointment,
 })(Booking);

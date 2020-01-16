@@ -8,6 +8,10 @@ export const PAYPAL_PAYMENT_SUCCESSFUL = 'PAYPAL_PAYMENT_SUCCESSFUL';
 export const SAVE_DATE = 'SAVE_DATE';
 export const SAVE_SELECT = 'SAVE_SELECT';
 export const SAVE_COACH = 'SAVE_COACH';
+export const BOOK_APPOINTMENT_START = 'BOOK_APPOINTMENT_START';
+export const BOOK_APPOINTMENT_ERROR = 'BOOK_APPOINTMENT_ERROR';
+export const BOOK_APPOINTMENT_SUCCESSFUL =
+  'BOOK_APPOINTMENT_SUCCESSFUL';
 
 const url = process.env.REACT_APP_BASE_URL;
 
@@ -17,6 +21,12 @@ export const handleStripePayment = (
   price,
   success,
   error,
+  bookAppointment,
+  coach,
+  user,
+  date,
+  topic_id,
+  length_id,
 ) => async dispatch => {
   dispatch({ type: STRIPE_PAYMENT_START });
 
@@ -35,6 +45,7 @@ export const handleStripePayment = (
   const { status } = response.data;
   if (status === 'success') {
     success();
+    bookAppointment(coach, user, date, topic_id, length_id);
     dispatch({ type: STRIPE_PAYMENT_SUCCESSFUL });
   } else {
     error();
@@ -87,4 +98,70 @@ export const saveSelect = event => {
 
 export const saveCoach = coach => {
   return { type: SAVE_COACH, payload: coach };
+};
+
+export const bookAppointment = (
+  coach,
+  student,
+  appointment_datetime,
+  topic_id,
+  length_id,
+) => dispatch => {
+  dispatch({ type: BOOK_APPOINTMENT_START });
+  const appointment = {
+    coach_id: coach.id,
+    student_id: student.id,
+    topic_id,
+    length_id,
+    appointment_datetime,
+  };
+
+  axiosWithAuth()
+    .post(`${url}appointment`, appointment)
+    .then(res => {
+      const coach_email = {
+        email: coach.email,
+        text: `Hello ${coach.first_name} ${coach.last_name},
+        you have a new appointment for the date: ${appointment_datetime},
+        please get in touch with ${student.first_name} ${student.last_name} if you don't can 
+        make it on the date. The email adress from your coach is: ${student.email}
+        `,
+        subject: 'Quality Hub appointment',
+      };
+
+      return axiosWithAuth()
+        .post(`${url}appointment/email`, coach_email)
+        .then(res => {
+          const student_email = {
+            email: student.email,
+            text: `Hello ${student.first_name} ${student.last_name},
+            you have a new appointment for the date: ${appointment_datetime},
+            please get in touch with ${coach.first_name} ${coach.last_name} if you don't can 
+            make it on the date. The email adress from your coach is: ${coach.email}
+            `,
+            subject: 'Quality Hub appointment',
+          };
+
+          return axiosWithAuth()
+            .post(`${url}appointment/email`, student_email)
+            .then(res => {
+              dispatch({
+                type: BOOK_APPOINTMENT_SUCCESSFUL,
+                payload: res.data.appointments,
+              });
+            })
+            .catch(err => {
+              dispatch({
+                type: BOOK_APPOINTMENT_ERROR,
+                payload: err,
+              });
+            });
+        })
+        .catch(err => {
+          dispatch({ type: BOOK_APPOINTMENT_ERROR, payload: err });
+        });
+    })
+    .catch(err => {
+      dispatch({ type: BOOK_APPOINTMENT_ERROR, payload: err });
+    });
 };

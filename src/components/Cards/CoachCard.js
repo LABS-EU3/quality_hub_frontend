@@ -104,7 +104,8 @@ const CoachCard = props => {
       </div>
 
       <div className='description'>
-        <p>{`${coach.description.slice(0, 50)}...`}</p>{' '}
+        <p>{`${coach.description &&
+          coach.description.slice(0, 50)}...`}</p>{' '}
       </div>
 
       <div className='reviews'>

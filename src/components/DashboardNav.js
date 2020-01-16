@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import DashboardNavDropDown from './DashboardNavDropDown';
-import SearchIcon from '@material-ui/icons/Search';
-import TextField from '@material-ui/core/TextField';
+import ben from '../img/ben.PNG';
 
 const DashboardNav = () => {
   const [dropDown, setDropDown] = useState(null);
@@ -17,28 +16,6 @@ const DashboardNav = () => {
 
   return (
     <NavContainer>
-      <nav className='leftNav'>
-        <div>
-          <form>
-            {/* <TextField
-            id='outlined-primary'
-            label='search by coach name'
-            variant='outlined'
-            color='primary'
-            prefix={
-              <SearchIcon
-                type='search'
-                style={{
-                  color: 'rgba(0,0,0,.25)',
-                  marginLeft: '3em',
-                }}
-              />
-            }
-          /> */}
-          </form>
-        </div>
-      </nav>
-
       <nav className='rightNav'>
         <div className='profileMenu'>
           <p>Benjamin</p>

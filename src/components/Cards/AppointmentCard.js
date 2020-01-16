@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -14,26 +8,96 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import styled from 'styled-components';
 
-const StyledAppointmentCard = styled.div`
-  .card {
-    width: 100%;
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+const AppointmentCardDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
 
-  .content {
-  }
-  .media {
-    height: 10rem;
-    border-radius: 50%;
-    background-size: 50%;
+  .cardContainer {
+    width: 85%;
+    height: 100%;
+    background: white;
+    border-radius: 8px;
+    justify-content: center;
+    border: 1px solid #dadce0;
+    padding: 25px;
+    box-shadow: 0 6px 10px rgba(50, 50, 93, 0.1);
+
+    .topSection {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h3 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        color: black;
+        text-align: center;
+        width: 40%;
+      }
+
+      .imgDiv {
+        width: 90px;
+        height: 90px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 auto;
+        img {
+          display: inline;
+          margin: 0 auto;
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
+
+    .textDiv {
+      margin-top: 30px;
+
+      .flexText {
+        display: flex;
+        align-items: center;
+        margin-top: -30px;
+        color: #4fad65;
+
+        p {
+          font-family: 'Ubuntu, sans-serif';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1.03rem;
+          color: #3c4043;
+          margin-left: 12px;
+        }
+      }
+    }
   }
 `;
 
-const AppointmentCard = props => {
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background: #4fad65;
+    border: none;
+    color: white;
+    width: 38%;
+    height: 2.1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #1e3f1f;
+  }
+`;
+
+export default function AppointmentCard(props) {
   const {
     first_name,
     last_name,
@@ -63,63 +127,54 @@ const AppointmentCard = props => {
     setOpenCancelModal(false);
   };
 
+  const date = appointment_datetime;
+  const dateSliced = date.slice(0, 15);
+
+  const time = appointment_datetime;
+  const timeSliced = time.slice(16);
+
   return (
-    <StyledAppointmentCard>
-      <Card>
-        <CardActionArea>
-          <CardMedia
-            class='card-thumbnail'
-            image={
-              avatar_url
-                ? avatar_url
-                : 'https://images.pexels.com/photos/1261427/pexels-photo-1261427.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-            }
-            title='Coach / Student'
-          />
-          <CardContent class-className='card-description'>
-            <Typography gutterBottom variant='h5' component='h2'>
-              {`${first_name} ${last_name}`}
-            </Typography>
-            <Typography
-              variant='body2'
-              color='textSecondary'
-              component='p'
+    <>
+      <AppointmentCardDiv>
+        <div className='cardContainer'>
+          <div className='topSection'>
+            <h3>{`${first_name} ${last_name}`}</h3>
+            <div className='imgDiv'>
+              <img
+                src={
+                  avatar_url
+                    ? avatar_url
+                    : 'https://images.pexels.com/photos/1261427/pexels-photo-1261427.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                }
+              />
+            </div>
+          </div>
+          <div className='textDiv'>
+            <div className='flexText'>
+              <i class='fas fa-shopping-bag'></i>
+              <p>{appointment_topic}</p>
+            </div>
+            <div className='flexText'>
+              <i class='far fa-calendar-check'></i>
+              <p className='dateTime'>{dateSliced}</p>
+            </div>
+            <div className='flexText'>
+              <i class='far fa-clock'></i>
+              <p>{timeSliced}</p>
+            </div>
+            <p>{description}</p>
+          </div>
+          <ButtonDiv>
+            <button onClick={handleCancelModalOpen}>Cancel</button>
+            <button
+            // onClick={handleCancelModalOpen}
             >
-              {appointment_topic}
-            </Typography>
-            <Typography
-              variant='body2'
-              color='textSecondary'
-              component='p'
-            >
-              {appointment_datetime}
-            </Typography>
-            <Typography
-              variant='body2'
-              color='textSecondary'
-              component='p'
-            >
-              {description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          {canceled ? (
-            <p>Canceled</p>
-          ) : (
-            <Button onClick={cancel} size='small' color='primary'>
-              Do you want to Cancel
-            </Button>
-          )}
-          <Button
-            size='small'
-            color='primary'
-            onClick={startInterview}
-          >
-            Start Interview
-          </Button>
-        </CardActions>
-      </Card>
+              Message
+            </button>
+          </ButtonDiv>
+        </div>
+      </AppointmentCardDiv>
+
       <Dialog
         open={openCancelModal}
         TransitionComponent={Transition}
@@ -143,8 +198,6 @@ const AppointmentCard = props => {
           </Button>
         </DialogActions>
       </Dialog>
-    </StyledAppointmentCard>
+    </>
   );
-};
-
-export default AppointmentCard;
+}

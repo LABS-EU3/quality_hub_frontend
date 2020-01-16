@@ -7,7 +7,7 @@ import Rating from '../DataVisualization/Rating';
 
 const StyledCoachModal = styled.div`
   .see-more {
-    color: #4fad65;
+    color: #3282b8;
     cursor: pointer;
   }
 `;
