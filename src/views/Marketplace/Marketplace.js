@@ -23,6 +23,10 @@ const StyledMarketplace = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    .keyword {
+      margin-top: 1rem;
+    }
   }
 
   .coaches {
@@ -38,34 +42,13 @@ const StyledMarketplace = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* pointer-events: none; */
-    &:hover {
-      color: #4fad65;
-    }
 
     .ant-pagination-item-active {
       border-color: #4fad65;
-      /* pointer-events: none; */
-      &:hover {
-        color: #4fad65;
-      }
     }
 
     .ant-pagination-item-active a {
       color: #4fad65;
-      /* pointer-events: none; */
-      /* cursor: pointer; */
-      &:hover {
-        color: #4fad65;
-      }
-    }
-
-    .ant-pagination-item-active a:hover {
-      color: #4fad65;
-
-      &:hover {
-        color: #4fad65;
-      }
     }
   }
 `;

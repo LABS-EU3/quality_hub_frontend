@@ -5,6 +5,7 @@ const SearchForKeyword = props => {
   return (
     <Input
       placeholder='Keyword'
+      className='keyword'
       inputProps={{ 'aria-label': 'description' }}
       onChange={props.searchForKeyword}
     />

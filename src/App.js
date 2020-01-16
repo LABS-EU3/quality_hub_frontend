@@ -17,6 +17,7 @@ import ProfileSettings from './components/Forms/ProfileSettings';
 import Notification from './components/Notifications/Notification';
 import Feedback from './views/Feedback/Feedback';
 import VideoChat from './components/VideoChat';
+import GiveFeedback from './views/Feedback/GiveFeedback';
 import 'antd/dist/antd.css';
 
 const globalTheme = createMuiTheme({
@@ -25,7 +26,7 @@ const globalTheme = createMuiTheme({
   },
 });
 
-function App(props) {
+function App() {
   const routes = (
     <Switch>
       <Route path={'/dashboard'} component={UserDashboard} />
@@ -35,8 +36,8 @@ function App(props) {
       <Route path={'/profileSettings'} component={ProfileSettings} />
       <Route path={'/appointment'} component={Booking} />
       <Route path={'/feedback'} component={Feedback} />
-      <Route path={'/settings'} component={VideoChat} />
       <Route path={'/interview'} component={VideoChat} />
+      <Route path={'/givefeedback'} component={GiveFeedback} />
       <Redirect to='/dashboard' />
     </Switch>
   );

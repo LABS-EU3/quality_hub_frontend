@@ -8,6 +8,7 @@ import Rating from '../DataVisualization/Rating';
 const StyledCoachModal = styled.div`
   .see-more {
     color: #4fad65;
+    cursor: pointer;
   }
 `;
 
@@ -40,7 +41,7 @@ export default function App(props) {
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <p style={{ width: '75%' }}>{coach.description}</p>
             <Avatar
-              style={{ width: '25%', height: '4rem' }}
+              style={{ width: '25%', height: '6rem' }}
               alt='Coach'
               src={coach.avatar_url}
             />

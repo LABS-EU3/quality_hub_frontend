@@ -53,7 +53,7 @@ const customListItemStyles = {
 
 const CustomListItem = withStyles(customListItemStyles)(ListItem);
 
-export const ListComponent = props => {
+export const ListComponent = () => {
   const classes = useStyles();
   return (
     <List>
@@ -82,7 +82,7 @@ export const ListComponent = props => {
             <ListItemText primary='Feedback' />
           </CustomListItem>
         </Link>
-        <Link to='/booking' className={classes.listItem}>
+        <Link to='/givefeedback' className={classes.listItem}>
           <CustomListItem button>
             <ListItemIcon>
               <LayersIcon />
@@ -102,47 +102,3 @@ export const ListComponent = props => {
     </List>
   );
 };
-export const mainListItems = (
-  <div>
-    <Link to='/dashboard'>
-      <ListItem button>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary='Dashboard' />
-      </ListItem>
-    </Link>
-    <Link to='/marketplace'>
-      <ListItem button>
-        <ListItemIcon>
-          <PeopleIcon />
-        </ListItemIcon>
-        <ListItemText primary='Coaches' />
-      </ListItem>
-    </Link>
-    <Link to='/feedback'>
-      <ListItem button>
-        <ListItemIcon>
-          <BarChartIcon />
-        </ListItemIcon>
-        <ListItemText primary='Feedback' />
-      </ListItem>
-    </Link>
-    <Link to='/booking'>
-      <ListItem button>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary='FAQ' />
-      </ListItem>
-    </Link>
-    <Link to='/settings'>
-      <ListItem button>
-        <ListItemIcon>
-          <ShoppingCartIcon />
-        </ListItemIcon>
-        <ListItemText primary='Blog' />
-      </ListItem>
-    </Link>
-  </div>
-);
