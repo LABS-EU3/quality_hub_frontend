@@ -82,19 +82,20 @@ class VideoChat extends Component {
   };
 
   setupPusher = () => {
+    // `${process.env.REACT_APP_BASE_URL}video`
     Pusher.logToConsole = true;
     this.pusher = new Pusher(APP_KEY, {
       authEndpoint: `http://localhost:5000/video`,
       cluster: 'eu',
-      // auth: {
-      //   params: this.state.user.id,
-      //   headers: {
-      //     'X-CRSF-Token': localStorage.getItem('token'),
-      //   },
-      // },
+      auth: {
+        params: this.state.user.id,
+        headers: {
+          'authorization': localStorage.getItem('token'),
+        },
+      },
     });
 
-    this.channel = this.pusher.subscribe(`private-video-channel`);
+    this.channel = this.pusher.subscribe(`presence-video-channel`);
 
     this.channel.bind(
       `client-signal-${this.state.user.id}`,
@@ -150,6 +151,7 @@ class VideoChat extends Component {
   };
 
   callTo = userId => {
+    console.log(userId)
     this.peers[userId] = this.startPeer(userId);
   };
 

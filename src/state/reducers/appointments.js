@@ -14,7 +14,7 @@ function appointmentsReducer(state = initialState, action) {
         isLoading: true,
       };
 
-    case types.GET_APPOINTMENTS_SUCCESSFUL:
+    case types.APPOINTMENTS_SUCCESSFUL:
       return {
         ...state,
         isLoading: false,

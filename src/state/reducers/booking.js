@@ -1,9 +1,7 @@
 import * as types from '../actions/bookingActions';
 
 const initialState = {
-  coach_id: 1,
-  coach_price: 20, // we need to add the coach here
-  timePicker: false,
+  coach: null,
   date: null,
   select: {},
   error: '',
@@ -30,7 +28,6 @@ function bookingReducer(state = initialState, action) {
     case types.SAVE_DATE:
       return {
         ...state,
-        timePicker: !state.timePicker,
         date: action.payload.toString(),
       };
 
@@ -39,10 +36,15 @@ function bookingReducer(state = initialState, action) {
 
       copyOfSelect[action.payload.target.name] =
         action.payload.target.value;
-
       return {
         ...state,
         select: copyOfSelect,
+      };
+
+    case types.SAVE_COACH:
+      return {
+        ...state,
+        coach: action.payload,
       };
 
     default:
