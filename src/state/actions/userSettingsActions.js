@@ -11,9 +11,8 @@ export const updateUserInfo = (
 ) => dispatch => {
   dispatch({ type: types.USER_INFO_UPDATE });
   axios
-    .put(`http://localhost:5000/user/${userId}`, userInfo)
+    .put(`${url}${userId}`, userInfo)
     .then(res => {
-      console.log(res);
       showSuccess();
       dispatch({
         type: types.USER_INFO_UPDATE_SUCCESSFUL,
@@ -22,7 +21,6 @@ export const updateUserInfo = (
       });
     })
     .catch(err => {
-      console.log(err);
       showError();
       dispatch({
         type: types.USER_INFO_UPDATE_FAILED,
@@ -36,9 +34,8 @@ export const fetchUser = () => dispatch => {
 
   dispatch({ type: types.FECTH_USER });
   axios
-    .get(`http://localhost:5000/user/${userId}`)
+    .get(`${url}${userId}`)
     .then(res => {
-      console.log(res);
       dispatch({
         type: types.FECTH_USER_SUCCESSFULLY,
         payload: res.data.user,

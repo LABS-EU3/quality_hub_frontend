@@ -1,43 +1,3 @@
-// import axios from 'axios';
-// import * as types from './actionTypes';
-
-// const url = process.env.REACT_APP_BASE_URL;
-
-// export const login = (props, values) => dispatch => {
-//   dispatch({ type: types.LOGIN_START });
-//   axios
-//     .post(`${url}user/login`, values)
-//     .then(res => {
-//       dispatch({
-//         type: types.LOGIN_SUCCESSFUL,
-//         payload: res.data.user,
-//       });
-//       localStorage.setItem('token', res.data.token);
-//       props.history.push('/dashboard');
-//       console.log(res.data.user);
-//     })
-//     .catch(err => {
-//       dispatch({ type: types.LOGIN_ERROR, payload: err });
-//     });
-// };
-
-// export const register = (props, values) => dispatch => {
-//   dispatch({ type: types.SIGN_UP });
-//   dispatch({ type: types.LOGIN_START });
-//   axios
-//     .post(`${url}user/register`, values)
-//     .then(res => {
-//       dispatch({ type: types.SIGN_UP_SUCCESSFUL });
-//       localStorage.setItem('user', JSON.stringify(res.data));
-//       dispatch({ type: types.LOGIN_SUCCESSFUL });
-//       localStorage.setItem('token', res.data.token);
-//       props.history.push('/dashboard');
-//     })
-//     .catch(err => {
-//       dispatch({ type: types.SIGN_UP_ERROR, payload: err });
-//     });
-// };
-
 import axios from 'axios';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import * as types from './actionTypes';
@@ -68,7 +28,6 @@ export const register = (props, values) => dispatch => {
   axios
     .post(`${url}user/register`, values)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: types.SIGN_UP_SUCCESSFUL });
       dispatch({
         type: types.LOGIN_SUCCESSFUL,
@@ -106,7 +65,7 @@ export const setCoachDetails = values => {
       skill_level: values.confidence,
       user_id: id,
     })
-    .catch(err => console.log(err));
+    .catch(err => err);
 };
 export const chooseUserRole = (props, values, role) => dispatch => {
   // tempuser is a temporary token for when we have registered, but not completed part 2 of signup
@@ -119,7 +78,6 @@ export const chooseUserRole = (props, values, role) => dispatch => {
       location: values.studentLocation,
     })
     .then(res => {
-      console.log(res);
       dispatch({ type: types.USER_ROLE_CHOSEN, role, id });
       if (role === 2) {
         setStudentDetails(values);

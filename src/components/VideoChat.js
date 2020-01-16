@@ -151,7 +151,6 @@ class VideoChat extends Component {
   };
 
   callTo = userId => {
-    console.log(userId)
     this.peers[userId] = this.startPeer(userId);
   };
 

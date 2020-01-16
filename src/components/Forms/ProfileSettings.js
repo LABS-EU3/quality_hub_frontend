@@ -14,8 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import liam from '../../img/liam.PNG';
-import axios from 'axios';
-import axiosWithAuth from '../../utils/axiosWithAuth';
 import {
   updateUserInfo,
   fetchUser,
@@ -50,7 +48,6 @@ export function ProfileSettings(props) {
       ...userInfo,
       [name]: value,
     });
-    console.log(userInfo);
   };
 
   const handleSubmit = e => {

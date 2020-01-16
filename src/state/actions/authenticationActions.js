@@ -28,7 +28,6 @@ export const register = (props, values) => dispatch => {
   axios
     .post(`${url}user/register`, values)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: types.SIGN_UP_SUCCESSFUL });
       dispatch({
         type: types.LOGIN_SUCCESSFUL,
@@ -55,7 +54,7 @@ export const setStudentDetails = values => {
       user_id: id,
     })
     .catch(err => {
-      console.log(err);
+      return err;
     });
 };
 export const setCoachDetails = values => {
@@ -66,7 +65,7 @@ export const setCoachDetails = values => {
       skill_level: values.confidence,
       user_id: id,
     })
-    .catch(err => console.log(err));
+    .catch(err => err);
 };
 
 export const chooseUserRole = (props, values, role) => dispatch => {

@@ -41,8 +41,6 @@ function App() {
       <Redirect to='/dashboard' />
     </Switch>
   );
-  // if (localStorage.getItem('token')) {
-
   if (localStorage.getItem('token')) {
     return (
       <ThemeProvider theme={globalTheme}>
