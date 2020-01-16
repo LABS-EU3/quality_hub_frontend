@@ -7,11 +7,11 @@ import greenBackgroundSVG from '../img/green-slanted-bg-shape.png';
 import handshakeImg from '../img/handshake.png';
 import analytics from '../img/analytics-1.png';
 import startup from '../img/startup-1.png';
-import getStartedVector from '../img/getstartedVector.png';
+import getStartedVector from '../img/getstartedvector.png';
 import facebookIcon from '../img/fb.png';
 import githubIcon from '../img/github-1.png';
 import instagramIcon from '../img/instagram-logo-1.png';
-import linkedInIcon from '../img/linkedIn.png';
+import linkedInIcon from '../img/linkedin.png';
 import twitterIcon from '../img/twitter-1.png';
 
 // media queries
