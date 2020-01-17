@@ -57,6 +57,8 @@ const StyledCoachCard = styled.div`
   .reviews {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
   }
 
   .footer {
@@ -107,7 +109,6 @@ const CoachCard = props => {
             : 'Beginner in interviewing'}
         </p>
       </div>
-
       <div className='description'>
         <p>{`${coach.description &&
           coach.description.slice(0, 50)}...`}</p>{' '}

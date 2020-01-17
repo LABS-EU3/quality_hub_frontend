@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 
 const Rating = props => {
   return (
-    <Box component='fieldset' mb={3} borderColor='transparent'>
+    <Box component='fieldset' p={0} borderColor='transparent'>
       <MatRating
         size={props.size}
         name='read-only'

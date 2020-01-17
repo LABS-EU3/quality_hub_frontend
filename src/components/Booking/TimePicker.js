@@ -12,7 +12,6 @@ const TimePicker = props => {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify='space-around'>
         <KeyboardTimePicker
-          margin='normal'
           id='time-picker'
           label='Time picker'
           value={props.date}

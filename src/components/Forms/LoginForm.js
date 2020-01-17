@@ -108,12 +108,12 @@ export const GreyBackgroundContainer = styled.div`
   background: #f2f2f2;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const FormCard = styled.div`
   background: white;
   height: 30em;
-  margin-top: 2rem;
   width: 25em;
   display: flex;
   flex-direction: column;

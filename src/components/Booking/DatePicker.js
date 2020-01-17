@@ -9,13 +9,15 @@ import TimePicker from './TimePicker';
 
 const StyledCalendar = styled.div`
   display: flex;
+  float: left;
+  align-items: center;
 
-  .right {
+  /* .right {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-  }
+  } */
 `;
 
 const DatePicker = props => {

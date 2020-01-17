@@ -5,12 +5,14 @@ import uuid from 'uuid';
 import { getFeedback } from '../../state/actions/feedbackActions';
 import FeedbackRating from '../../components/DataVisualization/Rating';
 import FeedbackCard from '../../components/Cards/FeedbackCard';
+import EmptyFeedback from '../../components/Cards/EmptyFeedbackCard';
 
 const StyledFeedback = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 1rem;
 `;
 
 const Feedback = ({ user, getFeedback, feedback }) => {
@@ -20,7 +22,7 @@ const Feedback = ({ user, getFeedback, feedback }) => {
 
   return (
     <StyledFeedback className='feedback-card-container'>
-      {feedback &&
+      {feedback && feedback.length ? (
         feedback.map(feedback => (
           <FeedbackCard
             key={uuid()}
@@ -30,8 +32,12 @@ const Feedback = ({ user, getFeedback, feedback }) => {
             date={feedback.appointment_datetime.slice(0, 15)}
             coachFirstName={feedback.first_name}
             coachLastName={feedback.last_name}
+            avatarUrl={feedback.avatar_url}
           />
-        ))}
+        ))
+      ) : (
+        <EmptyFeedback />
+      )}
     </StyledFeedback>
   );
 };

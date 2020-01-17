@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
+    "@iconify/icons-fa": "^1.0.1",
     "@material-ui/core": "^4.8.0",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.39",
@@ -57,6 +58,9 @@
     ]
   },
   "devDependencies": {
+    "@iconify/icons-fa-brands": "^1.0.9",
+    "@iconify/icons-logos": "^1.0.9",
+    "@iconify/react": "^1.1.1",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",

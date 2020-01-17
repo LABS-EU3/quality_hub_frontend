@@ -2,6 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Icon, InlineIcon } from '@iconify/react';
+import stripeIcon from '@iconify/icons-logos/stripe';
+import mastercardIcon from '@iconify/icons-logos/mastercard';
+import visaIcon from '@iconify/icons-logos/visa';
+import ccPaypal from '@iconify/icons-fa-brands/cc-paypal';
+
 import {
   showErrorMessage,
   showSuccessMessage,
@@ -22,7 +28,7 @@ const StyledBooking = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
 `;
 
 const Booking = props => {
@@ -85,37 +91,45 @@ const Booking = props => {
         message={`Your payment wasn't successful!`}
         open={error}
       />
-      <DatePicker date={date} saveDate={saveDate} />
       <Select />
       {Object.keys(select).length > 1 &&
       date.slice(16, 24) !== '00:00:00' ? (
         <div>
-          <StripeCheckout
-            stripeKey='pk_test_Grqfk8uqKNCJYpAQS2t89UB700wHJklrMa' // this key is only for testing we
-            // will add later our real key to the env file
-            token={token =>
-              handleStripePayment(
-                token,
-                `${coach.first_name} ${coach.last_name}`,
-                coach.hourly_rate,
-                showSuccessMessage,
-                showErrorMessage,
-                bookAppointment,
-                coach,
-                user,
-                date,
-                select.topic_id,
-                select.length_id,
-                props,
-              )
-            }
-            amount={coach.hourly_rate * 100}
-            name={'name'}
-            billingAddress
-            shippingAddress
-          />
+          <DatePicker date={date} saveDate={saveDate} />
+
           <div>
             <div ref={paypalRef} />
+          </div>
+          <div>
+            <StripeCheckout
+              stripeKey='pk_test_Grqfk8uqKNCJYpAQS2t89UB700wHJklrMa' // this key is only for testing we
+              // will add later our real key to the env file
+              token={token =>
+                handleStripePayment(
+                  token,
+                  `${coach.first_name} ${coach.last_name}`,
+                  coach.hourly_rate,
+                  showSuccessMessage,
+                  showErrorMessage,
+                  bookAppointment,
+                  coach,
+                  user,
+                  date,
+                  select.topic_id,
+                  select.length_id,
+                  props,
+                )
+              }
+              amount={coach.hourly_rate * 100}
+              name={'stripe'}
+              billingAddress
+              shippingAddress
+            />
+          </div>
+          <div style={{ marginTop: '60px' }}>
+            WE ACCEPT <Icon icon={visaIcon} />{' '}
+            <Icon icon={mastercardIcon} /> <Icon icon={ccPaypal} />{' '}
+            <Icon icon={stripeIcon} />
           </div>
         </div>
       ) : null}
