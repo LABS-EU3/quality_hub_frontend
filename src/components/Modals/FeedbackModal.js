@@ -26,11 +26,17 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  expandText: {
+    color: '#4fad65',
+    fontSize: '0.8rem',
+    fontWeight: 'bold',
+    marginTop: '0.5rem',
+    cursor: 'pointer',
+  },
 }));
 
 const FeedbackModal = props => {
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const { coachFirstName, coachLastName, feedback } = props;
@@ -45,7 +51,9 @@ const FeedbackModal = props => {
 
   return (
     <div>
-      <p onClick={handleOpen}>Read full review</p>
+      <p className={classes.expandText} onClick={handleOpen}>
+        Read full review
+      </p>
       <Modal
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'

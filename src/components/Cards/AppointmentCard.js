@@ -48,10 +48,9 @@ const AppointmentCardDiv = styled.div`
         border-radius: 50%;
         margin: 0 auto;
         img {
-          display: inline;
           margin: 0 auto;
-          /* height: 100%;
-          width: auto; */
+          height: auto;
+          width: 100%;
         }
       }
     }
@@ -105,9 +104,7 @@ export default function AppointmentCard(props) {
     appointment_datetime,
     appointment_topic,
     description,
-    canceled,
     cancel,
-    startInterview,
   } = props;
 
   const [openCancelModal, setOpenCancelModal] = useState(false);
@@ -131,7 +128,7 @@ export default function AppointmentCard(props) {
   const dateSliced = date.slice(0, 15);
 
   const time = appointment_datetime;
-  const timeSliced = time.slice(16);
+  const timeSliced = time.slice(16, 28);
 
   return (
     <>
@@ -141,6 +138,7 @@ export default function AppointmentCard(props) {
             <h3>{`${first_name} ${last_name}`}</h3>
             <div className='imgDiv'>
               <img
+                alt='user'
                 src={
                   avatar_url
                     ? avatar_url
@@ -151,26 +149,22 @@ export default function AppointmentCard(props) {
           </div>
           <div className='textDiv'>
             <div className='flexText'>
-              <i class='fas fa-shopping-bag'></i>
+              <i className='fas fa-shopping-bag' />
               <p>{appointment_topic}</p>
             </div>
             <div className='flexText'>
-              <i class='far fa-calendar-check'></i>
+              <i className='far fa-calendar-check' />
               <p className='dateTime'>{dateSliced}</p>
             </div>
             <div className='flexText'>
-              <i class='far fa-clock'></i>
+              <i className='far fa-clock' />
               <p>{timeSliced}</p>
             </div>
             <p>{description}</p>
           </div>
           <ButtonDiv>
             <button onClick={handleCancelModalOpen}>Cancel</button>
-            <button
-            // onClick={handleCancelModalOpen}
-            >
-              Message
-            </button>
+            <button>Message</button>
           </ButtonDiv>
         </div>
       </AppointmentCardDiv>

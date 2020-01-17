@@ -11,13 +11,14 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import MatLink from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { ListComponent } from '../utils/dashboardList';
 import logo from '../img/firelogo.png';
 import { logout } from '../state/actions/authenticationActions';
@@ -26,9 +27,9 @@ function Copyright() {
   return (
     <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
-      <Link color='inherit' href='https://dev-coach.com/'>
+      <MatLink color='inherit' href='https://dev-coach.com/'>
         Dev-Coach
-      </Link>{' '}
+      </MatLink>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -105,6 +106,10 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     // todo
   },
+  link: {
+    textDecoration: 'none',
+    color: 'rgba(0, 0, 0, 0.87)',
+  },
   drawerPaper: {
     position: 'relative',
     whiteSpace: 'nowrap',
@@ -135,9 +140,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
+    background: '#f9f9f9',
   },
   container: {
-    background: '#FFFFFF',
+    background: '#f9f9f9',
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
     height: '100vh',
@@ -160,7 +166,8 @@ const Dashboard = props => {
   const [open, setOpen] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openMenu = Boolean(anchorEl);
-  const handleLogout = event => {
+
+  const handleLogout = () => {
     setAnchorEl(null);
     props.logout();
   };
@@ -228,8 +235,9 @@ const Dashboard = props => {
               open={openMenu}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My Account</MenuItem>
+              <Link className={classes.link} to='/settings'>
+                <MenuItem>Settings</MenuItem>
+              </Link>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -16,7 +16,6 @@ import {
 import DatePicker from './DatePicker';
 import Select from '../Inputs/SelectInfo';
 import Notification from '../Notifications/Notification';
-import Paypal from './Paypal';
 
 const StyledBooking = styled.div`
   display: flex;
@@ -43,6 +42,35 @@ const Booking = props => {
     user,
   } = props;
 
+  const paypalRef = useRef();
+
+  useEffect(() => {
+    handlePaypalPayment(
+      `${coach.first_name} ${coach.last_name}`,
+      coach.hourly_rate,
+      paypalRef,
+      showSuccessMessage,
+      showErrorMessage,
+      bookAppointment,
+      coach,
+      user,
+      date,
+      select.topic_id,
+      select.length_id,
+      props,
+    );
+  }, [
+    bookAppointment,
+    coach,
+    date,
+    handlePaypalPayment,
+    props,
+    select.length_id,
+    select.topic_id,
+    showErrorMessage,
+    showSuccessMessage,
+    user,
+  ]);
   return (
     <StyledBooking>
       <Notification
@@ -68,7 +96,7 @@ const Booking = props => {
             token={token =>
               handleStripePayment(
                 token,
-                'title', // title should be appointment topic
+                `${coach.first_name} ${coach.last_name}`,
                 coach.hourly_rate,
                 showSuccessMessage,
                 showErrorMessage,
@@ -78,6 +106,7 @@ const Booking = props => {
                 date,
                 select.topic_id,
                 select.length_id,
+                props,
               )
             }
             amount={coach.hourly_rate * 100}
@@ -85,16 +114,9 @@ const Booking = props => {
             billingAddress
             shippingAddress
           />
-          <Paypal
-            price={coach.hourly_rate}
-            name={'Appointment topic'}
-            description={
-              'Appointment_topic, coach_name, coach_price, appointment_length'
-            }
-            handlePaypalPayment={handlePaypalPayment}
-            success={showSuccessMessage}
-            error={showErrorMessage}
-          />
+          <div>
+            <div ref={paypalRef} />
+          </div>
         </div>
       ) : null}
     </StyledBooking>

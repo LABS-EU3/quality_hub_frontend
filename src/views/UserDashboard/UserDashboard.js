@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import styled from 'styled-components';
@@ -8,63 +8,7 @@ import {
 } from '../../state/actions/appointmentActions';
 import { startInterview } from '../../state/actions/interviewActions';
 import AppointmentCard from '../../components/Cards/AppointmentCard';
-import LoaderSpinner from '../../utils/LoaderSpinner';
-import ProfileSettings from '../../components/Forms/ProfileSettings';
-
-const StyledUserDashboard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-`;
-
-const UserDashboard = props => {
-  React.useEffect(() => {
-    setTimeout(
-      () => props.getAppointment(props.user.id, props.user.role_id),
-      1000,
-    );
-  }, []);
-
-  return (
-    <div>
-      Dashboard
-      <StyledContainer>
-        {props.appointments &&
-          props.appointments.map(appointment => (
-            <AppointmentCard
-              key={uuid()}
-              first_name={appointment.first_name}
-              last_name={appointment.last_name}
-              avatar_url={appointment.avatar_url}
-              appointment_datetime={appointment.appointment_datetime}
-              appointment_topic={appointment.appointment_topic}
-              description={appointment.description}
-              canceled={appointment.canceled}
-              cancel={() => props.cancelAppointment(appointment.id)}
-              startInterview={() =>
-                props.startInterview(appointment.user_id, props)
-              }
-            />
-          ))}
-      </StyledContainer>
-    </div>
-  );
-};
-
-const mapStateToProps = state => {
-  return {
-    user: state.userReducer,
-    appointments: state.appointmentsReducer.appointments,
-    loading: state.appointmentsReducer.isLoading,
-  };
-};
-
-export default connect(mapStateToProps, {
-  getAppointment,
-  cancelAppointment,
-  startInterview,
-})(UserDashboard);
+import EmptyAppointment from '../../components/Cards/EmptyAppointmentCard';
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -132,3 +76,54 @@ const StyledContainer = styled.div`
     }
   }
 `;
+
+const UserDashboard = props => {
+  const {
+    appointments,
+    getAppointment,
+    user,
+    cancelAppointment,
+    startInterview,
+  } = props;
+  React.useEffect(() => {
+    setTimeout(() => getAppointment(user.id, user.role_id), 1000);
+  }, [getAppointment, user.id, user.role_id]);
+
+  return (
+    <StyledContainer>
+      {appointments ? (
+        appointments.map(appointment => (
+          <AppointmentCard
+            key={uuid()}
+            first_name={appointment.first_name}
+            last_name={appointment.last_name}
+            avatar_url={appointment.avatar_url}
+            appointment_datetime={appointment.appointment_datetime}
+            appointment_topic={appointment.appointment_topic}
+            description={appointment.description}
+            canceled={appointment.canceled}
+            cancel={() => cancelAppointment(appointment.id)}
+            startInterview={() =>
+              startInterview(appointment.user_id, props)
+            }
+          />
+        ))
+      ) : (
+        <EmptyAppointment />
+      )}
+    </StyledContainer>
+  );
+};
+
+const mapStateToProps = state => {
+  return {
+    user: state.userReducer.user,
+    appointments: state.appointmentsReducer.appointments,
+  };
+};
+
+export default connect(mapStateToProps, {
+  getAppointment,
+  cancelAppointment,
+  startInterview,
+})(UserDashboard);

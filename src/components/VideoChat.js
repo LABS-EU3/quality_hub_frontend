@@ -90,7 +90,7 @@ class VideoChat extends Component {
       auth: {
         params: this.state.user.id,
         headers: {
-          'authorization': localStorage.getItem('token'),
+          authorization: localStorage.getItem('token'),
         },
       },
     });
@@ -174,13 +174,13 @@ class VideoChat extends Component {
               ref={ref => {
                 this.myVideo = ref;
               }}
-            ></video>
+            />
             <video
               className='user-video'
               ref={ref => {
                 this.userVideo = ref;
               }}
-            ></video>
+            />
           </div>
         </StyledVideoChat>
       </div>
