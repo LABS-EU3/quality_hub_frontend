@@ -1,31 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Empty } from 'antd';
-import { Link } from 'react-router-dom';
 
 const StyledContainer = styled.div`
   width: 700px;
   height: 100%;
   max-width: 100%;
-  margin-left: 20%;
+  margin-top: 50px;
   background: white;
   box-shadow: 0 6px 10px rgba(50, 50, 93, 0.1);
   padding: 40px;
 
   @media only screen and (max-width: 600px) {
+    margin-top: 200px;
     width: 10rem;
-    height: 100%;
+    height: 50%;
     max-width: 80%;
+    margin-left: -5%;
   }
 
   h3 {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     color: gray;
+
+    @media only screen and (max-width: 600px) {
+      margin-top: 35px;
+    }
   }
 
   .imgDiv {
-    width: 20%;
+    width: 50%;
     height: 50%;
     margin-left: 35%;
     padding-top: 30px;
@@ -46,11 +51,6 @@ const StyledContainer = styled.div`
     margin-left: 35%;
     margin-top: 50px;
 
-    @media only screen and (max-width: 600px) {
-      margin-left: 0%;
-      width: 100%;
-    }
-
     .link {
       text-decoration: none;
       color: white;
@@ -62,17 +62,14 @@ const StyledContainer = styled.div`
   }
 `;
 
-const EmptyAppointment = () => {
+const EmptyFeedback = () => {
   return (
     <StyledContainer>
-      <h3>You Have No Appoinment</h3>
+      <h3>You Do Not Have Any Feedback</h3>
       <div className='imgDiv'>
         <Empty description={false} />
       </div>
-      <Link className='link' to='/marketplace'>
-        <button>Book A Coach</button>
-      </Link>
     </StyledContainer>
   );
 };
-export default EmptyAppointment;
+export default EmptyFeedback;

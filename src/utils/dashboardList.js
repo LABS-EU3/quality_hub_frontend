@@ -8,6 +8,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
+import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
@@ -72,7 +73,7 @@ export const ListComponent = () => {
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
-            <ListItemText primary='Coaches' />
+            <ListItemText primary='Find Coaches' />
           </CustomListItem>
         </Link>
         <Link to='/feedback' className={classes.listItem}>
@@ -80,13 +81,21 @@ export const ListComponent = () => {
             <ListItemIcon>
               <BarChartIcon />
             </ListItemIcon>
-            <ListItemText primary='Feedback' />
+            <ListItemText primary='Your Feedback' />
           </CustomListItem>
         </Link>
         <Link to='/givefeedback' className={classes.listItem}>
           <CustomListItem button>
             <ListItemIcon>
               <LayersIcon />
+            </ListItemIcon>
+            <ListItemText primary='Give Feedback' />
+          </CustomListItem>
+        </Link>
+        <Link to='/FAQ' className={classes.listItem}>
+          <CustomListItem button>
+            <ListItemIcon>
+              <LiveHelpIcon />
             </ListItemIcon>
             <ListItemText primary='FAQ' />
           </CustomListItem>

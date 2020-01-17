@@ -4,12 +4,12 @@ import devices from '../devices';
 import FeedbackModal from '../Modals/FeedbackModal';
 
 const CardContainer = styled.div`
-  max-width: 28rem;
+  max-width: 25rem;
   width: 100%;
   background: white;
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: 0 6px 8px #d3d3d3;
-  margin: 2rem;
+  margin: 1rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -31,6 +31,7 @@ const CardContainer = styled.div`
 
   .title {
     font-size: 1.2rem;
+    margin: 0;
   }
 
   .feedback {
@@ -38,8 +39,8 @@ const CardContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    margin: 1.6rem 0;
-    padding: 0 2rem;
+    margin: 0.8rem 0;
+    padding: 0 1.6rem;
 
     @media ${devices.tablet} {
       flex-direction: column-reverse;
@@ -48,11 +49,15 @@ const CardContainer = styled.div`
     }
 
     .feedback-text-container {
-      margin-left: 2rem;
+      margin: 0.2rem 0 0 0.3rem;
 
       @media ${devices.tablet} {
         margin: 0;
         text-align: center;
+      }
+
+      .feedback-text {
+        margin: 0;
       }
     }
   }
@@ -84,6 +89,7 @@ const FeedbackCard = ({
   coachFirstName,
   coachLastName,
   topic,
+  avatarUrl,
 }) => {
   return (
     <CardContainer>
@@ -98,6 +104,10 @@ const FeedbackCard = ({
             coachFirstName={coachFirstName}
             coachLastName={coachLastName}
             feedback={feedback}
+            topic={topic}
+            rating={rating}
+            date={date}
+            avatarUrl={avatarUrl}
           />
         </div>
       </div>

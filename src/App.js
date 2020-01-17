@@ -12,11 +12,12 @@ import InterviewerForm from './components/Forms/InterviewerForm';
 import StudentForm from './components/Forms/StudentForm';
 import UserTypePage from './components/UserType/UserTypePage';
 import MainFaq from './components/FAQ/Main';
+import LandingFaq from './components/FAQ/LandingFaq';
 import Booking from './components/Booking/Booking';
 import Feedback from './views/Feedback/Feedback';
 import VideoChat from './components/VideoChat';
-import GiveFeedback from './views/Feedback/GiveFeedback';
 import Settings from './views/Settings/Settings';
+import GiveFeedback from './views/Feedback/GiveFeedback';
 
 const globalTheme = createMuiTheme({
   typography: {
@@ -31,9 +32,10 @@ function App() {
       <Route path={'/marketplace'} component={Marketplace} />
       <Route path={'/appointment'} component={Booking} />
       <Route path={'/feedback'} component={Feedback} />
-      <Route path={'/interview'} component={VideoChat} />
       <Route path={'/givefeedback'} component={GiveFeedback} />
+      <Route path={'/interview'} component={VideoChat} />
       <Route path={'/Settings'} component={Settings} />
+      <Route path={'/FAQ'} component={MainFaq} />
       <Redirect to='/dashboard' />
     </Switch>
   );
@@ -61,7 +63,7 @@ function App() {
       <Route exact path='/' component={Landing} />
       <Route path='/login/' component={LoginForm} />
       <Route path='/register' component={SignUpForm} />
-      <Route path='/faq' component={MainFaq} />
+      <Route path='/faq' component={LandingFaq} />
       <Redirect to='/' />
     </Switch>
   );

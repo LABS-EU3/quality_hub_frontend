@@ -1,71 +1,92 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import React, { useState } from 'react';
+import { Divider } from '@material-ui/core';
+import Modal from 'antd/lib/modal';
+import Avatar from '@material-ui/core/Avatar';
+import styled from 'styled-components';
+import Rating from '../DataVisualization/Rating';
+import devices from '../devices';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+const ModalContainer = styled.div`
+  .open-modal-text {
+    color: #4fad65;
+    font-size: 0.8rem;
+    cursor: pointer;
+    width: 50%;
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles(theme => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-  expandText: {
-    color: '#4fad65',
-    fontSize: '0.8rem',
-    fontWeight: 'bold',
-    marginTop: '0.5rem',
-    cursor: 'pointer',
-  },
-}));
+    @media ${devices.tablet} {
+      width: 100%;
+    }
+  }
+`;
 
 const FeedbackModal = props => {
-  const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
-  const { coachFirstName, coachLastName, feedback } = props;
+  const {
+    coachFirstName,
+    coachLastName,
+    feedback,
+    avatarUrl,
+    topic,
+    rating,
+  } = props;
+  const [visible, setVisible] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const showModal = () => {
+    setVisible(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCancel = e => {
+    console.log(e);
+    setVisible(false);
   };
 
   return (
-    <div>
-      <p className={classes.expandText} onClick={handleOpen}>
+    <ModalContainer className='modal-container'>
+      <p className='open-modal-text' onClick={showModal}>
         Read full review
       </p>
       <Modal
-        aria-labelledby='simple-modal-title'
-        aria-describedby='simple-modal-description'
-        open={open}
-        onClose={handleClose}
+        title={topic}
+        visible={visible}
+        onCancel={handleCancel}
+        zIndex={10000}
+        footer={null}
       >
-        <div style={modalStyle} className={classes.paper}>
-          <h2 id='simple-modal-title'>{`${coachFirstName} ${coachLastName}`}</h2>
-          <p id='simple-modal-description'>{feedback}</p>
+        <div className='modal-feedback-container'>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: '1.5rem',
+              justifyContent: 'space-around',
+            }}
+          >
+            <p
+              style={{
+                // width: '75%',
+                fontWeight: 'bold',
+                fontSize: '1.3rem',
+              }}
+            >{`${coachFirstName} ${coachLastName}`}</p>
+            <Avatar
+              style={{
+                width: '5rem',
+                height: '5rem',
+                borderRadius: '50%',
+              }}
+              alt='Coach'
+              src={avatarUrl}
+            />
+          </div>
+          <Divider />
+          <div className='feedback-container'>
+            <p style={{ margin: '1rem 0' }} className='feedback-text'>
+              {feedback}
+            </p>
+            <Rating rating={rating.props.rating} />
+          </div>
         </div>
       </Modal>
-    </div>
+    </ModalContainer>
   );
 };
 

@@ -7,8 +7,11 @@ import PaymentIcon from '@material-ui/icons/Payment';
 import General from './GeneralFaq';
 import Profile from './ProfileFaq';
 import Payment from './PaymentFaq';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 // Main content
+
 const MainContainer = styled.div`
   background: #f6f9fc;
   width: 100%;
@@ -39,18 +42,11 @@ const CategoryContainer = styled.div`
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-
-    .link-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+    /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); */
+    box-shadow: 0 6px 10px rgba(50, 50, 93, 0.1);
 
     h3 {
+      text-align: center;
       color: grey;
     }
   }
@@ -70,49 +66,47 @@ const iconStyles = {
   color: '#4fad65',
 };
 
-const MainFaq = () => {
+const LandingFaq = () => {
   return (
-    <MainContainer>
-      <h2>FAQs</h2>
-      <CategoryContainer>
-        <NavLink
-          className='styledBox'
-          activeClassName='activeClassNav'
-          to='/faq/general'
-        >
-          <div className='link-content'>
+    <div>
+      <Navbar />
+      <MainContainer>
+        <h2>FAQs</h2>
+        <CategoryContainer>
+          <NavLink
+            className='styledBox'
+            activeClassName='activeClassNav'
+            to='/faq/general'
+          >
             <h3>General</h3>
             <SearchIcon style={iconStyles} />
-          </div>
-        </NavLink>
+          </NavLink>
 
-        <NavLink
-          className='styledBox'
-          activeClassName='activeClassNav'
-          to='/faq/profile'
-        >
-          <div className='link-content'>
+          <NavLink
+            className='styledBox'
+            activeClassName='activeClassNav'
+            to='/faq/profile'
+          >
             <h3>Profile</h3>
             <PersonIcon style={iconStyles} />
-          </div>
-        </NavLink>
-        <NavLink
-          className='styledBox'
-          activeClassName='activeClassNav'
-          to='/faq/payment'
-        >
-          <div className='link-content'>
+          </NavLink>
+          <NavLink
+            className='styledBox'
+            activeClassName='activeClassNav'
+            to='/faq/payment'
+          >
             <h3>Payment</h3>
             <PaymentIcon style={iconStyles} />
-          </div>
-        </NavLink>
-      </CategoryContainer>
+          </NavLink>
+        </CategoryContainer>
 
-      <Route exact path='/faq/general' component={General} />
-      <Route exact path='/faq/profile' component={Profile} />
-      <Route exact path='/faq/payment' component={Payment} />
-    </MainContainer>
+        <Route exact path='/faq/general' component={General} />
+        <Route exact path='/faq/profile' component={Profile} />
+        <Route exact path='/faq/payment' component={Payment} />
+      </MainContainer>
+      <Footer />
+    </div>
   );
 };
 
-export default MainFaq;
+export default LandingFaq;
