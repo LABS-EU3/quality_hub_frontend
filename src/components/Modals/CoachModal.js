@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Modal, Divider } from 'antd';
+import Modal from 'antd/lib/modal';
+import Divider from 'antd/lib/divider';
+import 'antd/lib/modal/style/index.css';
+import 'antd/lib/divider/style/index.css';
 import Avatar from '@material-ui/core/Avatar';
 import uuid from 'uuid';
 import Rating from '../DataVisualization/Rating';

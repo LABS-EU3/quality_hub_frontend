@@ -29,6 +29,8 @@
     "no-unneeded-ternary": "off",
     "no-underscore-dangle": "off",
     "no-shadow": "off",
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-as-default": "off",
   }
 }

@@ -508,7 +508,7 @@ const Landing = () => {
               <a href='/register'>
                 <StyledButton
                   theme={invertTheme}
-                  style={{ 'white-space': 'nowrap' }}
+                  style={{ whiteSpace: 'nowrap' }}
                 >
                   SIGN UP
                 </StyledButton>

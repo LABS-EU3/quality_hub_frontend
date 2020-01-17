@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import uuid from 'uuid';
@@ -6,16 +6,20 @@ import { getFeedback } from '../../state/actions/feedbackActions';
 import FeedbackRating from '../../components/DataVisualization/Rating';
 import FeedbackCard from '../../components/Cards/FeedbackCard';
 
-const StyledFeedback = styled.div``;
+const StyledFeedback = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
-const Feedback = props => {
-  const { getFeedback, user, feedback } = props;
-
-  React.useEffect(() => {
+const Feedback = ({ user, getFeedback, feedback }) => {
+  useEffect(() => {
     getFeedback(user.id, user.role_id);
-  }, [getFeedback, user.id, user.role_id]);
+  }, [getFeedback, user]);
+
   return (
-    <StyledFeedback>
+    <StyledFeedback className='feedback-card-container'>
       {feedback &&
         feedback.map(feedback => (
           <FeedbackCard

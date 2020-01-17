@@ -9,6 +9,8 @@ const initialState = {
   welcomeMessage: '',
   userHasChosenRole: false,
   userRoleError: '',
+  userUpdated: false,
+  userUpdateError: '',
 };
 
 function userReducer(state = initialState, action) {
@@ -74,6 +76,28 @@ function userReducer(state = initialState, action) {
           ...state.user,
           student_id: action.id,
         },
+      };
+    case types.USER_INFO_UPDATE:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case types.USER_INFO_UPDATE_SUCCESSFUL:
+      return {
+        ...state,
+        userUpdated: true,
+        user: action.payload,
+      };
+    case types.USER_INFO_UPDATE_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        userUpdateError: action.error,
+      };
+    case types.FECTH_USER_SUCCESSFULLY:
+      return {
+        ...state,
+        user: action.payload,
       };
     case types.LOGOUT:
       return {

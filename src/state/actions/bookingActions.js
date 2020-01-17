@@ -27,6 +27,7 @@ export const handleStripePayment = (
   date,
   topic_id,
   length_id,
+  props,
 ) => async dispatch => {
   dispatch({ type: STRIPE_PAYMENT_START });
 
@@ -45,7 +46,7 @@ export const handleStripePayment = (
   const { status } = response.data;
   if (status === 'success') {
     success();
-    bookAppointment(coach, user, date, topic_id, length_id);
+    bookAppointment(coach, user, date, topic_id, length_id, props);
     dispatch({ type: STRIPE_PAYMENT_SUCCESSFUL });
   } else {
     error();
@@ -59,6 +60,13 @@ export const handlePaypalPayment = (
   paypalRef,
   success,
   error,
+  bookAppointment,
+  coach,
+  user,
+  date,
+  topic_id,
+  length_id,
+  props,
 ) => async dispatch => {
   window.paypal
     .Buttons({
@@ -78,6 +86,14 @@ export const handlePaypalPayment = (
       onApprove: async (data, actions) => {
         await actions.order.capture();
         success();
+        bookAppointment(
+          coach,
+          user,
+          date,
+          topic_id,
+          length_id,
+          props,
+        );
         dispatch({ type: PAYPAL_PAYMENT_SUCCESSFUL });
       },
       onError: err => {
@@ -106,6 +122,7 @@ export const bookAppointment = (
   appointment_datetime,
   topic_id,
   length_id,
+  props,
 ) => dispatch => {
   dispatch({ type: BOOK_APPOINTMENT_START });
   const appointment = {
@@ -119,13 +136,14 @@ export const bookAppointment = (
   axiosWithAuth()
     .post(`${url}appointment`, appointment)
     .then(res => {
+      setTimeout(() => props.history.push('/dashboard'), 2000);
+
       const coach_email = {
         email: coach.email,
         text: `Hello ${coach.first_name} ${coach.last_name},
         you have a new appointment for the date: ${appointment_datetime},
         please get in touch with ${student.first_name} ${student.last_name} if you don't can 
-        make it on the date. The email adress from your coach is: ${student.email}
-        `,
+        make it at the date. The email adress from your coach is: ${student.email}`,
         subject: 'Quality Hub appointment',
       };
 
@@ -137,8 +155,7 @@ export const bookAppointment = (
             text: `Hello ${student.first_name} ${student.last_name},
             you have a new appointment for the date: ${appointment_datetime},
             please get in touch with ${coach.first_name} ${coach.last_name} if you don't can 
-            make it on the date. The email adress from your coach is: ${coach.email}
-            `,
+            make it at the date. The email adress from your coach is: ${coach.email}`,
             subject: 'Quality Hub appointment',
           };
 

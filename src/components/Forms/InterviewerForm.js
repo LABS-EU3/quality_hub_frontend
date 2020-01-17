@@ -22,7 +22,6 @@ import {
   FormButton,
   InfoParagraph,
 } from './StudentForm';
-
 const CoachCard = styled(StudentCard)`
   width: 50%;
   height: 35em;
@@ -31,13 +30,10 @@ const CoachCard = styled(StudentCard)`
     font-size: 24px;
   }
 `;
-
 const CoachFormContainer = styled(StudentFormContainer)``;
-
 const ThisGreyBackgroundContainer = styled(GreyBackgroundContainer)`
   font-family: 'Ubuntu';
 `;
-
 const useStyles = makeStyles(theme => ({
   formControl: {
     width: 600,
@@ -59,7 +55,6 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: '2em',
   },
 }));
-
 const CoachForm = props => {
   const classes = useStyles();
   const [formValues, setFormValues] = useState({
@@ -199,5 +194,4 @@ const CoachForm = props => {
     </div>
   );
 };
-
 export default connect(state => state, { chooseUserRole })(CoachForm);

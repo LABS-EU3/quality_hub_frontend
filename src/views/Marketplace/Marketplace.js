@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Pagination } from 'antd';
+import Pagination from 'antd/lib/pagination';
+import 'antd/lib/pagination/style/index.css';
 import CoachCard from '../../components/Cards/CoachCard';
 import {
   getCoaches,

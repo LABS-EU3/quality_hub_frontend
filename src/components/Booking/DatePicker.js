@@ -1,6 +1,10 @@
 import React from 'react';
-import Calendar from 'react-calendar';
 import styled from 'styled-components';
+import Calendar from 'antd/lib/calendar';
+import 'antd/lib/calendar/style/index.css';
+import 'antd/lib/select/style/index.css';
+import 'antd/lib/radio/style/index.css';
+
 import TimePicker from './TimePicker';
 
 const StyledCalendar = styled.div`
@@ -17,10 +21,18 @@ const StyledCalendar = styled.div`
 const DatePicker = props => {
   return (
     <StyledCalendar>
-      <Calendar
-        onChange={date => props.saveDate(date)}
-        value={new Date()}
-      />
+      <div
+        style={{
+          width: 300,
+          border: '1px solid #d9d9d9',
+          borderRadius: 4,
+        }}
+      >
+        <Calendar
+          onSelect={date => props.saveDate(date._d)}
+          fullscreen={false}
+        />
+      </div>
       <div className='right'>
         <TimePicker
           saveDate={date => props.saveDate(date)}
