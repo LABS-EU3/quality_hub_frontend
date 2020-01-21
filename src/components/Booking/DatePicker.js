@@ -9,6 +9,14 @@ import TimePicker from './TimePicker';
 
 const StyledCalendar = styled.div`
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .calender-container {
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 6px 10px #d3d3d3;
+  }
 
   .right {
     display: flex;
@@ -20,15 +28,10 @@ const StyledCalendar = styled.div`
 
 const DatePicker = props => {
   return (
-    <StyledCalendar>
-      <div
-        style={{
-          width: 300,
-          border: '1px solid #d9d9d9',
-          borderRadius: 4,
-        }}
-      >
+    <StyledCalendar className='appointment-container'>
+      <div className='calender-container'>
         <Calendar
+          className='calender'
           onSelect={date => props.saveDate(date._d)}
           fullscreen={false}
         />

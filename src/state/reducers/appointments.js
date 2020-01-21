@@ -15,10 +15,17 @@ function appointmentsReducer(state = initialState, action) {
       };
 
     case types.APPOINTMENTS_SUCCESSFUL:
+      const filterFutureAppointments = action.payload.filter(
+        appointment => {
+          return (
+            new Date(appointment.appointment_datetime) >= new Date()
+          );
+        },
+      );
       return {
         ...state,
         isLoading: false,
-        appointments: action.payload,
+        appointments: filterFutureAppointments,
       };
 
     case types.APPOINTMENTS_ERROR:

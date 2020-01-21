@@ -11,15 +11,16 @@ import { saveSelect } from '../../state/actions/bookingActions';
 
 const StyledSelectInfo = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
 `;
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1),
     minWidth: 120,
+    width: 250,
+    display: 'flex',
   },
 }));
 
@@ -27,7 +28,7 @@ const SelectInfo = props => {
   const classes = useStyles();
 
   return (
-    <StyledSelectInfo>
+    <StyledSelectInfo className='select-container'>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor='grouped-select'>Length</InputLabel>
         <Select

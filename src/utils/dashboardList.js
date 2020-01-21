@@ -7,7 +7,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import { Link } from 'react-router-dom';
 
@@ -84,15 +83,7 @@ export const ListComponent = () => {
             <ListItemText primary='Your Feedback' />
           </CustomListItem>
         </Link>
-        <Link to='/givefeedback' className={classes.listItem}>
-          <CustomListItem button>
-            <ListItemIcon>
-              <LayersIcon />
-            </ListItemIcon>
-            <ListItemText primary='Give Feedback' />
-          </CustomListItem>
-        </Link>
-        <Link to='/FAQ' className={classes.listItem}>
+        <Link to='/FAQ/general' className={classes.listItem}>
           <CustomListItem button>
             <ListItemIcon>
               <LiveHelpIcon />

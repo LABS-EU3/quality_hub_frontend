@@ -17,21 +17,16 @@ const Payment = props => {
   const {
     text1,
     text2,
-    text3,
     image1,
     image2,
-    image3,
     showText1,
     showText2,
-    showText3,
     showImage1,
     showImage2,
-    showImage3,
   } = props;
 
   const getImage1 = () => (image1 ? 'plusIcon' : 'minusIcon');
   const getImage2 = () => (image2 ? 'plusIcon' : 'minusIcon');
-  const getImage3 = () => (image3 ? 'plusIcon' : 'minusIcon');
 
   return (
     <div>
@@ -43,18 +38,31 @@ const Payment = props => {
               showImage1(display);
             }}
           >
-            <p>How do I update my profile?</p>
+            <p>How does our payment system work?</p>
             {<img src={icons[getImage1()]} alt='icon' />}
           </AskedQuestionDiv>
           {text1 && (
             <AnsweredQuestionDiv>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla id tristique magna, et gravida nibh. Phasellus
-              tempus sem a mi consectetur, ac ultricies mauris
-              condimentum. Duis nec metus ante. Morbi feugiat mauris
-              non lectus sodales sodales. Proin eu auctor elit,
-              facilisis tincidunt velit. Sed in lectus non urna varius
-              eleifend ac ut ligula. In eleifend at mi in molestie.
+              <li>Devcoach will take care of the payments</li>
+              <li>
+                Students must pay upfront when scheduling an
+                appointment
+              </li>
+              <li>
+                We are the middleman between the students and the
+                coaches
+              </li>
+              <li>
+                Coaches only get paid if the interview happenend
+              </li>
+              <li>
+                If an appointment doesn't happen, the student will get
+                the money from DevCoach back
+              </li>
+              <li>
+                Both the coach and student are required to prove that
+                the interview happened
+              </li>
             </AnsweredQuestionDiv>
           )}
 
@@ -64,39 +72,14 @@ const Payment = props => {
               showImage2(display);
             }}
           >
-            <p>Is it compulsory to have a picture?</p>
+            <p>Which payments do you provide?</p>
             {<img src={icons[getImage2()]} alt='icon' />}
           </AskedQuestionDiv>
           {text2 && (
             <AnsweredQuestionDiv>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla id tristique magna, et gravida nibh. Phasellus
-              tempus sem a mi consectetur, ac ultricies mauris
-              condimentum. Duis nec metus ante. Morbi feugiat mauris
-              non lectus sodales sodales. Proin eu auctor elit,
-              facilisis tincidunt velit. Sed in lectus non urna varius
-              eleifend ac ut ligula. In eleifend at mi in molestie.
-            </AnsweredQuestionDiv>
-          )}
-
-          <AskedQuestionDiv
-            onClick={display => {
-              showText3(display);
-              showImage3(display);
-            }}
-          >
-            <p>How do I update my profile?</p>
-            {<img src={icons[getImage3()]} alt='icon' />}
-          </AskedQuestionDiv>
-          {text3 && (
-            <AnsweredQuestionDiv>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla id tristique magna, et gravida nibh. Phasellus
-              tempus sem a mi consectetur, ac ultricies mauris
-              condimentum. Duis nec metus ante. Morbi feugiat mauris
-              non lectus sodales sodales. Proin eu auctor elit,
-              facilisis tincidunt velit. Sed in lectus non urna varius
-              eleifend ac ut ligula. In eleifend at mi in molestie.
+              Currently we provide:
+              <li>Stripe</li>
+              <li>Paypal</li>
             </AnsweredQuestionDiv>
           )}
         </FAQContainer>

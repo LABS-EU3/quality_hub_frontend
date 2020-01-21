@@ -191,11 +191,6 @@ const LoginForm = ({
                   Sign in to your account
                 </StyledButton>
               </div>
-              {/*             {props.userReducer.isLoading ? (
-              <h3>Loading</h3>
-            ) : (
-              <h3>Couldn't fetch</h3>
-            )} */}
             </Form>
           </FormContainer>
         </FormCard>

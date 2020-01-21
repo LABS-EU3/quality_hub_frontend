@@ -27,7 +27,6 @@ export const AskedQuestionDiv = styled.div`
   font-size: 24px;
   box-shadow: 0 6px 10px rgba(50, 50, 93, 0.1);
   transition: box-shadow 0.2s;
-  border-left: c
   display: flex;
   align-items: center;
 
@@ -49,4 +48,9 @@ export const AnsweredQuestionDiv = styled.div`
   font-size: 16px;
   width: 45em;
   margin-bottom: 20px;
+
+  .settings {
+    width: 100%;
+    height: 20rem;
+  }
 `;

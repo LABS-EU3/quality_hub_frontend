@@ -48,9 +48,16 @@ function marketplaceReducer(state = initialState, action) {
               .toLowerCase()
               .includes(action.payload.toLowerCase());
           }
-          return coach.location
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
+          if (
+            coach.location
+              .toLowerCase()
+              .includes(action.payload.toLowerCase())
+          ) {
+            return coach.location
+              .toLowerCase()
+              .includes(action.payload.toLowerCase());
+          }
+          return coach;
         }),
       };
 
@@ -63,11 +70,12 @@ function marketplaceReducer(state = initialState, action) {
       };
 
     case types.SEARCH_EXPERIENCE:
+      const filterExperience = state.copyOfCoaches.filter(
+        coach => coach.experience_level === action.payload,
+      );
       return {
         ...state,
-        coaches: state.copyOfCoaches.filter(
-          coach => coach.experience_level >= action.payload,
-        ),
+        coaches: filterExperience,
       };
 
     default:

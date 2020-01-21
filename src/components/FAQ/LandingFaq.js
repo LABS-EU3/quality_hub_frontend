@@ -42,7 +42,6 @@ const CategoryContainer = styled.div`
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); */
     box-shadow: 0 6px 10px rgba(50, 50, 93, 0.1);
 
     h3 {

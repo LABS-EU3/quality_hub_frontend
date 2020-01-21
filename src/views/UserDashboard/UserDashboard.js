@@ -1,17 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import uuid from 'uuid';
 import styled from 'styled-components';
+import uuid from 'uuid';
 import Pagination from 'antd/lib/pagination';
 import 'antd/lib/pagination/style/index.css';
+import Loader from 'react-loader-spinner';
+
 import {
   getAppointment,
   cancelAppointment,
 } from '../../state/actions/appointmentActions';
 import { saveIdRole } from '../../state/actions/feedbackActions';
 import { startInterview } from '../../state/actions/interviewActions';
-import AppointmentCard from '../../components/Cards/AppointmentCard';
+
 import EmptyAppointment from '../../components/Cards/EmptyAppointmentCard';
+import NewAppointmentCard from '../../components/Cards/newAppointmentCard';
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -28,6 +31,7 @@ const StyledContainer = styled.div`
   }
 
   .pagination {
+    padding: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,6 +100,10 @@ const StyledContainer = styled.div`
       margin-bottom: 0;
     }
   }
+  .loaderStyled {
+    margin-left: 30rem;
+    margin-top: 20vh;
+  }
 `;
 
 const UserDashboard = props => {
@@ -126,38 +134,47 @@ const UserDashboard = props => {
   };
   return (
     <StyledContainer>
-      {appointments && appointments.length ? (
-        <div className='appointments'>
-          {appointments.slice(minValue, maxValue).map(appointment => (
-            <AppointmentCard
-              key={uuid()}
-              first_name={appointment.first_name}
-              last_name={appointment.last_name}
-              avatar_url={appointment.avatar_url}
-              appointment_datetime={appointment.appointment_datetime}
-              appointment_topic={appointment.appointment_topic}
-              description={appointment.description}
-              canceled={appointment.canceled}
-              cancel={() => cancelAppointment(appointment.id)}
-              startInterview={() =>
-                startInterview(appointment.user_id, props)
-              }
-              saveIdRole={() =>
-                saveIdRole(appointment.role_id, appointment.id)
-              }
-            />
-          ))}
-          <div className='pagination'>
-            <Pagination
-              defaultCurrent={1}
-              defaultPageSize={6}
-              onChange={handlePagination}
-              total={appointments.length}
-            />
-          </div>
-        </div>
+      {appointments ? (
+        <StyledContainer>
+          {appointments && appointments.length ? (
+            <div className='appointments'>
+              {appointments
+                .slice(minValue, maxValue)
+                .map(appointment => (
+                  <NewAppointmentCard
+                    key={uuid()}
+                    appointment={appointment}
+                    cancel={() => cancelAppointment(appointment.id)}
+                    startInterview={() =>
+                      startInterview(appointment.user_id, props)
+                    }
+                    saveIdRole={() =>
+                      saveIdRole(appointment.role_id, appointment.id)
+                    }
+                  />
+                ))}
+              <div className='pagination'>
+                <Pagination
+                  defaultCurrent={1}
+                  defaultPageSize={6}
+                  onChange={handlePagination}
+                  total={appointments.length}
+                />
+              </div>
+            </div>
+          ) : (
+            <EmptyAppointment />
+          )}
+        </StyledContainer>
       ) : (
-        <EmptyAppointment />
+        <div className='loaderStyled'>
+          <Loader
+            type='TailSpin'
+            color='#2BAD60'
+            height={80}
+            width={80}
+          />
+        </div>
       )}
     </StyledContainer>
   );

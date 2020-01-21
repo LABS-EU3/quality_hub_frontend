@@ -12,7 +12,6 @@ export const MainContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* width: 100%; */
     padding: 0 2rem;
     text-align: center;
   }
@@ -43,7 +42,6 @@ export const MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     background: #292d38;
-    /* width: 100%; */
     margin: 10rem 0;
     padding: 3rem 1rem;
 

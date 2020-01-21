@@ -16,7 +16,13 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 0;
+  max-height: 25rem;
+  height: 13rem;
   transition: all ease-out 0.2s;
+
+  @media ${devices.tablet} {
+    height: inherit;
+  }
 
   &:hover {
     transition: all ease-in 0.1s;

@@ -4,23 +4,18 @@ import Modal from 'antd/lib/modal';
 import Avatar from '@material-ui/core/Avatar';
 import styled from 'styled-components';
 import Rating from '../DataVisualization/Rating';
-import devices from '../devices';
 
 const ModalContainer = styled.div`
   .open-modal-text {
     color: #4fad65;
     font-size: 0.8rem;
     cursor: pointer;
-    width: 50%;
-
-    @media ${devices.tablet} {
-      width: 100%;
-    }
   }
 `;
 
 const FeedbackModal = props => {
   const {
+    date,
     coachFirstName,
     coachLastName,
     feedback,
@@ -55,34 +50,52 @@ const FeedbackModal = props => {
           <div
             style={{
               display: 'flex',
-              alignItems: 'center',
-              marginBottom: '1.5rem',
-              justifyContent: 'space-around',
+              alignItems: 'flex-start',
+              marginBottom: '1.1rem',
             }}
           >
-            <p
-              style={{
-                // width: '75%',
-                fontWeight: 'bold',
-                fontSize: '1.3rem',
-              }}
-            >{`${coachFirstName} ${coachLastName}`}</p>
-            <Avatar
-              style={{
-                width: '5rem',
-                height: '5rem',
-                borderRadius: '50%',
-              }}
-              alt='Coach'
-              src={avatarUrl}
-            />
-          </div>
-          <Divider />
-          <div className='feedback-container'>
-            <p style={{ margin: '1rem 0' }} className='feedback-text'>
-              {feedback}
+            <p style={{ fontSize: '1.1rem', margin: '0 0.3rem 0 0' }}>
+              Rating
             </p>
             <Rating rating={rating.props.rating} />
+          </div>
+          <Divider />
+          <div
+            className='feedback-container'
+            style={{ margin: '1.2rem 0' }}
+          >
+            <p style={{ fontSize: '1.1rem' }}>Feedback</p>
+            <p className='feedback-text'>{feedback}</p>
+          </div>
+          <Divider />
+          <div
+            className='rating'
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              margin: '1rem 0 0 0',
+            }}
+          >
+            <div
+              className='user-info'
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
+              <Avatar
+                style={{
+                  width: '2rem',
+                  height: '2rem',
+                  borderRadius: '50%',
+                }}
+                alt='Coach'
+                src={avatarUrl}
+              />
+              <p
+                style={{ margin: '0 0 0 .3rem' }}
+              >{`${coachFirstName} ${coachLastName}`}</p>
+            </div>
+
+            <p style={{ margin: '0', color: '#a8a8a8' }}>{date}</p>
           </div>
         </div>
       </Modal>

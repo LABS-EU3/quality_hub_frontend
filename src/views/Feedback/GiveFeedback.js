@@ -11,29 +11,53 @@ import GiveRating from '../../components/DataVisualization/GiveRating';
 import FeedbackInput from '../../components/Inputs/FeedbackInput';
 
 const StyledGiveFeedback = styled.div`
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .rating-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
   .button {
     background-color: #4fad65;
     font-weight: 200;
+    width: 8rem;
+    margin-top: 1.2rem;
   }
 `;
 
 function GiveFeedback(props) {
   const { feedback, rating, idRole } = props;
   const { saveFeedback, saveRating, giveFeedback } = props;
+
   return (
-    <StyledGiveFeedback>
-      <GiveRating saveRating={saveRating} />
+    <StyledGiveFeedback className='give-feedback-container'>
+      <h1>Add Your Review</h1>
       <FeedbackInput saveFeedback={saveFeedback} />
-      <Button
-        onClick={() =>
-          giveFeedback({ ...idRole, rating, feedback }, props)
-        }
-        className='button'
-        variant='contained'
-        color='primary'
-      >
-        Submit
-      </Button>
+      <div className='rating-button-container'>
+        <GiveRating saveRating={saveRating} />
+        <Button
+          onClick={() =>
+            giveFeedback({ ...idRole, rating, feedback }, props)
+          }
+          className='button'
+          variant='contained'
+          color='primary'
+        >
+          Submit
+        </Button>
+      </div>
     </StyledGiveFeedback>
   );
 }

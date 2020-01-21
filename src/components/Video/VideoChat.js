@@ -3,7 +3,7 @@ import Pusher from 'pusher-js';
 import Peer from 'simple-peer';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import MediaHandler from '../utils/MediaHandler';
+import MediaHandler from '../../utils/MediaHandler';
 
 const StyledVideoChat = styled.div`
   width: 500px;

@@ -161,11 +161,11 @@ export default function AppointmentCard(props) {
             </div>
             <div className='flexText'>
               <i className='far fa-calendar-check' />
-              <p className='dateTime'>{dateSliced}</p>
+              <p className='dateTime'>{timeSliced}</p>
             </div>
             <div className='flexText'>
               <i className='far fa-clock' />
-              <p>{timeSliced}</p>
+              <p>{dateSliced}</p>
             </div>
             <p>{description}</p>
           </div>

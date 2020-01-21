@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Pagination from 'antd/lib/pagination';
 import 'antd/lib/pagination/style/index.css';
+import Loader from 'react-loader-spinner';
 import CoachCard from '../../components/Cards/CoachCard';
 import {
   getCoaches,
@@ -24,6 +25,7 @@ const StyledMarketplace = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding-top: 1rem;
 
     .keyword {
       margin-top: 1rem;
@@ -51,6 +53,11 @@ const StyledMarketplace = styled.div`
     .ant-pagination-item-active a {
       color: #4fad65;
     }
+  }
+  .loaderStyled {
+    margin-top: 200px;
+    margin-left: 35rem;
+    margin-bottom: 200px;
   }
 `;
 
@@ -91,7 +98,7 @@ const Marketplace = ({
         <SelectExperience searchForExperience={searchForExperience} />
       </div>
       <div className='coaches'>
-        {coaches &&
+        {coaches ? (
           coaches
             .slice(minValue, maxValue)
             .map(coach => (
@@ -102,7 +109,17 @@ const Marketplace = ({
                 getFeedback={getFeedback}
                 feedback={feedback}
               />
-            ))}
+            ))
+        ) : (
+          <div className='loaderStyled'>
+            <Loader
+              type='TailSpin'
+              color='#2BAD60'
+              height={80}
+              width={80}
+            />
+          </div>
+        )}
       </div>
       <div className='pagination'>
         <Pagination
