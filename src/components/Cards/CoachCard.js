@@ -64,20 +64,28 @@ const StyledCoachCard = styled.div`
   .footer {
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: space-around;
 
     a {
       text-decoration: none;
+      width: 35%;
     }
 
     .button {
+      width: 100%;
       background-color: #4fad65;
     }
   }
 `;
 
 export const CoachCard = props => {
-  const { coach, saveCoach, getFeedback, feedback } = props;
+  const {
+    coach,
+    saveCoach,
+    getFeedback,
+    feedback,
+    saveForChat,
+  } = props;
 
   return (
     <StyledCoachCard>
@@ -124,7 +132,16 @@ export const CoachCard = props => {
       </div>
 
       <div className='footer'>
-        <Link to='/appointment' onClick={() => saveCoach(coach)}>
+        <Link to='/start_chat' onClick={saveForChat}>
+          <Button
+            className='button'
+            variant='contained'
+            color='primary'
+          >
+            Chat
+          </Button>
+        </Link>
+        <Link to='/appointment' onClick={saveCoach}>
           <Button
             className='button'
             variant='contained'

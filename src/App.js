@@ -16,6 +16,8 @@ import LandingFaq from './components/FAQ/LandingFaq';
 import Booking from './components/Booking/Booking';
 import Feedback from './views/Feedback/Feedback';
 import VideoChat from './components/Video/VideoChat';
+import Chat from './components/Chat/ChatScreen';
+import StartChat from './components/Chat/Chat';
 import Settings from './views/Settings/Settings';
 import GiveFeedback from './views/Feedback/GiveFeedback';
 
@@ -36,6 +38,8 @@ function App() {
       <Route path={'/interview'} component={VideoChat} />
       <Route path={'/Settings'} component={Settings} />
       <Route path={'/FAQ'} component={MainFaq} />
+      <Route path={'/start_chat'} component={StartChat} />
+      <Route path={'/chat'} component={Chat} />
       <Redirect to='/dashboard' />
     </Switch>
   );

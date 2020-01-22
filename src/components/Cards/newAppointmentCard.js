@@ -9,7 +9,6 @@ import CodeIcon from '@material-ui/icons/Code';
 import TodayIcon from '@material-ui/icons/Today';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 import ScheduleIcon from '@material-ui/icons/Schedule';
-import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -122,22 +121,14 @@ const mapExperience = experience => {
 
 export const NewAppointmentCard = props => {
   const { appointment, saveIdRole } = props;
+  const [open, setOpen] = React.useState(false);
 
-  const [openCancelModal, setOpenCancelModal] = React.useState(false);
-
-  const Transition = React.forwardRef(function Transition(
-    props,
-    ref,
-  ) {
-    return <Slide direction='up' ref={ref} {...props} />;
-  });
-
-  const handleCancelModalOpen = () => {
-    setOpenCancelModal(true);
+  const handleClickOpen = () => {
+    setOpen(true);
   };
 
-  const handleCancelModalClose = () => {
-    setOpenCancelModal(false);
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const time = appointment.appointment_datetime.slice(0, 15);
@@ -189,7 +180,7 @@ export const NewAppointmentCard = props => {
 
         <div className='footer'>
           <Button
-            onClick={handleCancelModalOpen}
+            onClick={handleClickOpen}
             size='small'
             className='cancel-button'
             variant='contained'
@@ -213,24 +204,22 @@ export const NewAppointmentCard = props => {
         </div>
       </StyledCoachCard>
       <Dialog
-        open={openCancelModal}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleCancelModalClose}
-        aria-labelledby='alert-dialog-slide-title'
-        aria-describedby='alert-dialog-slide-description'
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
       >
-        <DialogTitle id='alert-dialog-slide-title'> </DialogTitle>
+        <DialogTitle id='alert-dialog-title'></DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-slide-description'>
-            Are you sure you want to cancel your appointment ?
+          <DialogContentText id='alert-dialog-description'>
+            Are you sure you want to cancel appointment ?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelModalClose} color='primary'>
+          <Button onClick={handleClose} color='primary'>
             No
           </Button>
-          <Button onClick={props.cancel} color='primary'>
+          <Button onClick={props.cancel} color='primary' autoFocus>
             Yes
           </Button>
         </DialogActions>
