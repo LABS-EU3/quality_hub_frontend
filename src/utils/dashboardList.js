@@ -54,7 +54,7 @@ const customListItemStyles = {
 
 const CustomListItem = withStyles(customListItemStyles)(ListItem);
 
-export const ListComponent = () => {
+export const ListComponent = props => {
   const classes = useStyles();
   return (
     <List>
@@ -67,14 +67,16 @@ export const ListComponent = () => {
             <ListItemText primary='Dashboard' />
           </CustomListItem>
         </Link>
-        <Link to='/marketplace' className={classes.listItem}>
-          <CustomListItem button>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary='Find Coaches' />
-          </CustomListItem>
-        </Link>
+        {props.role_id === 1 ? (
+          <Link to='/marketplace' className={classes.listItem}>
+            <CustomListItem button>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary='Find Coaches' />
+            </CustomListItem>
+          </Link>
+        ) : null}
         <Link to='/feedback' className={classes.listItem}>
           <CustomListItem button>
             <ListItemIcon>

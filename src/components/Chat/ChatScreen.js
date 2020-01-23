@@ -6,11 +6,14 @@ import MessageList from './MessageList';
 import SendMessageForm from './SendMessage';
 import UserList from './UserList';
 import { getRooms } from '../../state/actions/chatActions';
-
+import TypingIndicator from './TypingIndicator';
 const StyledChatScreen = styled.div`
+  border-top: 1px solid #ced4da;
   height: 85vh;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
   width: 100%;
 
   .chat-container {
@@ -20,10 +23,26 @@ const StyledChatScreen = styled.div`
   }
 
   .whos-online-list-container {
-    width: 300px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border: 1px solid #ced4da;
+    width: 30%;
     flex: none;
-    background-color: #2c303b;
-    color: white;
+    color: 	#2F4F4F;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Ubuntu, sans-serif';
+
+    h5 {
+    padding-left: 1rem;  
+    padding-right: 1rem;
+    font-size: 1.15rem;  
+    }
+
+    .smallerP {
+      font-size: 1.1rem;
+    }
+
   }
 
   .chat-list-container {
@@ -38,6 +57,7 @@ class ChatScreen extends React.Component {
     currentRoom: {},
     messages: [],
     error: null,
+    usersWhoAreTyping: [],
   };
 
   componentDidMount = () => {
@@ -70,6 +90,21 @@ class ChatScreen extends React.Component {
                 messages: [...this.state.messages, message],
               });
             },
+            onUserStartedTyping: user => {
+              this.setState({
+                usersWhoAreTyping: [
+                  ...this.state.usersWhoAreTyping,
+                  user.name,
+                ],
+              });
+            },
+            onUserStoppedTyping: user => {
+              this.setState({
+                usersWhoAreTyping: this.state.usersWhoAreTyping.filter(
+                  username => username !== user.name,
+                ),
+              });
+            },
           },
         });
       })
@@ -85,12 +120,20 @@ class ChatScreen extends React.Component {
       roomId: this.state.currentRoom.id,
     });
   };
+
+  sendTypingEvent = () => {
+    this.state.currentUser
+      .isTypingIn({ roomId: this.state.currentRoom.id })
+      .catch(error => this.setState({ error }));
+  };
+
   render() {
     return (
       <StyledChatScreen>
         <div className='chat-container'>
           <aside className='whos-online-list-container'>
-            <h2>Your Chats</h2>
+            <h5>Your Chats</h5>
+            <h5 className='smallerP'>Select a conversation to send a message</h5>
             <UserList
               rooms={this.props.rooms}
               user={this.props.user}
@@ -99,7 +142,13 @@ class ChatScreen extends React.Component {
           </aside>
           <section className='chat-list-container'>
             <MessageList messages={this.state.messages} />
-            <SendMessageForm onSubmit={this.sendMessage} />
+            <TypingIndicator
+              usersWhoAreTyping={this.state.usersWhoAreTyping}
+            />
+            <SendMessageForm
+              onSubmit={this.sendMessage}
+              onChange={this.sendTypingEvent}
+            />
           </section>
         </div>
       </StyledChatScreen>

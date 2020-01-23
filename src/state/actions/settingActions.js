@@ -11,7 +11,7 @@ export const updateUserInfo = (
 ) => dispatch => {
   dispatch({ type: types.USER_INFO_UPDATE });
   axios
-    .put(`${url}user/${userId}`, userInfo)
+    .put(`${url}user`, userInfo)
     .then(res => {
       showSuccess();
       dispatch({

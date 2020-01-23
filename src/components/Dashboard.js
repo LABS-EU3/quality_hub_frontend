@@ -282,7 +282,10 @@ const Dashboard = props => {
           }
         </div>
         <Divider className={classes.styledDivider} />
-        <ListComponent className={classes.listStyles}></ListComponent>
+        <ListComponent
+          role_id={props.user.role_id}
+          className={classes.listStyles}
+        />
         <Divider className={classes.hidden} />
       </Drawer>
       <main className={classes.content}>
@@ -304,4 +307,6 @@ const Dashboard = props => {
   );
 };
 
-export default connect(state => state, { logout })(Dashboard);
+export default connect(state => state.userReducer, { logout })(
+  Dashboard,
+);

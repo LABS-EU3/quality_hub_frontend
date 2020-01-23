@@ -66,7 +66,7 @@ function userReducer(state = initialState, action) {
         ...state,
         user: {
           ...state.user,
-          coach_id: action.id,
+          id: action.id,
         },
       };
     case types.SET_STUDENT_ID:
@@ -74,7 +74,7 @@ function userReducer(state = initialState, action) {
         ...state,
         user: {
           ...state.user,
-          student_id: action.id,
+          id: action.id,
         },
       };
     case types.USER_INFO_UPDATE:
@@ -86,7 +86,6 @@ function userReducer(state = initialState, action) {
       return {
         ...state,
         userUpdated: true,
-        user: action.payload,
       };
     case types.USER_INFO_UPDATE_FAILED:
       return {

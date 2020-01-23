@@ -39,24 +39,6 @@ function marketplaceReducer(state = initialState, action) {
               .toLowerCase()
               .includes(action.payload.toLowerCase());
           }
-          if (
-            coach.description
-              .toLowerCase()
-              .includes(action.payload.toLowerCase())
-          ) {
-            return coach.description
-              .toLowerCase()
-              .includes(action.payload.toLowerCase());
-          }
-          if (
-            coach.location
-              .toLowerCase()
-              .includes(action.payload.toLowerCase())
-          ) {
-            return coach.location
-              .toLowerCase()
-              .includes(action.payload.toLowerCase());
-          }
           return coach;
         }),
       };

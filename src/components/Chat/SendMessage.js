@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import SendIcon from '@material-ui/icons/Send';
+import Button from '@material-ui/core/Button';
 
 const StyledSendMessage = styled.div`
-  padding: 20;
-  border-top: 1px #4c758f solid;
-  margin-bottom: 20;
+  display: flex;
+  .formDiv {
+    padding: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 15px;
+    /* border-bottom: 1px #4c758f solid; */
+    margin-left: 20px;
+    margin-right: 2rem;
+    width: 100%;
+  }
 
   .form {
     display: flex;
@@ -18,7 +27,20 @@ const StyledSendMessage = styled.div`
     flex: 1;
     font-size: 16;
   }
+
+  button {
+    background: #4fad65;
+    border: none;
+    width: 5rem;
+    height: 100%;
+    margin-right: 3rem;
+    border-radius: 5px;
+  }
 `;
+
+const iconStyles = {
+  color: 'white',
+};
 
 const SendMessageForm = props => {
   const { onSubmit, onChange } = props;
@@ -38,7 +60,7 @@ const SendMessageForm = props => {
   };
   return (
     <StyledSendMessage>
-      <div>
+      <div className='formDiv'>
         <form onSubmit={onSubmission} className='form'>
           <input
             type='text'
@@ -49,6 +71,9 @@ const SendMessageForm = props => {
           />
         </form>
       </div>
+      <button>
+        <SendIcon style={iconStyles} />
+      </button>
     </StyledSendMessage>
   );
 };

@@ -4,7 +4,7 @@ const initialState = {
   feedback: null,
   idRole: null,
   giveFeedback: null,
-  rating: null,
+  rating: 3,
   isLoading: false,
   error: null,
 };
