@@ -20,6 +20,7 @@ export const getFeedback = (coach_student_id, role) => dispatch => {
       params: { role },
     })
     .then(res => {
+      console.log(res);
       dispatch({
         type: GET_FEEDBACK_SUCCESSFUL,
         payload: res.data.feedback,

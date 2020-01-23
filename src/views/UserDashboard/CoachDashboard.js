@@ -6,10 +6,11 @@ import Pagination from 'antd/lib/pagination';
 import 'antd/lib/pagination/style/index.css';
 import {
   getAppointment,
-    cancelAppointment,
+  cancelAppointment,
 } from '../../state/actions/appointmentActions';
 import { saveIdRole } from '../../state/actions/feedbackActions';
 import { startInterview } from '../../state/actions/interviewActions';
+import AppointmentCard from '../../components/Cards/AppointmentCard';
 import EmptyAppointment from '../../components/Cards/EmptyAppointmentCard';
 import NewAppointmentCard from '../../components/Cards/newAppointmentCard';
 import StudentChart from '../../components/DataVisualization/StudentChart';

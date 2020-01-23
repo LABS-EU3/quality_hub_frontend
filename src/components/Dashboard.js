@@ -44,7 +44,6 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     background: '#FAFAFA',
-    zIndex: -10,
   },
 
   toolbarIcon: {
@@ -282,7 +281,17 @@ const Dashboard = props => {
           }
         </div>
         <Divider className={classes.styledDivider} />
-        <ListComponent className={classes.listStyles}></ListComponent>
+        {props.userReducer.user.role_id === 1 ? (
+          <ListComponent
+            role='student'
+            className={classes.listStyles}
+          ></ListComponent>
+        ) : (
+          <ListComponent
+            role='coach'
+            className={classes.listStyles}
+          ></ListComponent>
+        )}
         <Divider className={classes.hidden} />
       </Drawer>
       <main className={classes.content}>
