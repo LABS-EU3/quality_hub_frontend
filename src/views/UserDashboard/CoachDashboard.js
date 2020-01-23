@@ -10,10 +10,8 @@ import {
 } from '../../state/actions/appointmentActions';
 import { saveIdRole } from '../../state/actions/feedbackActions';
 import { startInterview } from '../../state/actions/interviewActions';
-import AppointmentCard from '../../components/Cards/AppointmentCard';
 import EmptyAppointment from '../../components/Cards/EmptyAppointmentCard';
 import NewAppointmentCard from '../../components/Cards/newAppointmentCard';
-import StudentChart from '../../components/DataVisualization/StudentChart';
 
 const StyledContainer = styled.div`
   width: 100%;
