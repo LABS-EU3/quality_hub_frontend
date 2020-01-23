@@ -8,9 +8,12 @@ import UserList from './UserList';
 import { getRooms } from '../../state/actions/chatActions';
 
 const StyledChatScreen = styled.div`
+  border-top: 1px solid #ced4da;
   height: 85vh;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
   width: 100%;
 
   .chat-container {
@@ -20,10 +23,26 @@ const StyledChatScreen = styled.div`
   }
 
   .whos-online-list-container {
-    width: 300px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border: 1px solid #ced4da;
+    width: 30%;
     flex: none;
-    background-color: #2c303b;
-    color: white;
+    color: 	#2F4F4F;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Ubuntu, sans-serif';
+
+    h5 {
+    padding-left: 1rem;  
+    padding-right: 1rem;
+    font-size: 1.15rem;  
+    }
+
+    .smallerP {
+      font-size: 1.1rem;
+    }
+
   }
 
   .chat-list-container {
@@ -90,7 +109,8 @@ class ChatScreen extends React.Component {
       <StyledChatScreen>
         <div className='chat-container'>
           <aside className='whos-online-list-container'>
-            <h2>Your Chats</h2>
+            <h5>Your Chats</h5>
+            <h5 className='smallerP'>Select a conversation to send a message</h5>
             <UserList
               rooms={this.props.rooms}
               user={this.props.user}

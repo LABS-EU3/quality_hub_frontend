@@ -54,7 +54,7 @@ const customListItemStyles = {
 
 const CustomListItem = withStyles(customListItemStyles)(ListItem);
 
-const StudentList = () => {
+export const ListComponent = () => {
   const classes = useStyles();
   return (
     <List>
@@ -102,42 +102,4 @@ const StudentList = () => {
       </div>
     </List>
   );
-};
-
-const CoachList = () => {
-  const classes = useStyles();
-  return (
-    <List>
-      <div>
-        <Link to='/dashboard' className={classes.listItem}>
-          <CustomListItem button>
-            <ListItemIcon>
-              <DashboardIcon className={classes.listIcon} />
-            </ListItemIcon>
-            <ListItemText primary='Dashboard' />
-          </CustomListItem>
-        </Link>
-        <Link to='/feedback' className={classes.listItem}>
-          <CustomListItem button>
-            <ListItemIcon>
-              <BarChartIcon />
-            </ListItemIcon>
-            <ListItemText primary='Your Feedback' />
-          </CustomListItem>
-        </Link>
-        <Link to='/FAQ/general' className={classes.listItem}>
-          <CustomListItem button>
-            <ListItemIcon>
-              <LiveHelpIcon />
-            </ListItemIcon>
-            <ListItemText primary='FAQ' />
-          </CustomListItem>
-        </Link>
-      </div>
-    </List>
-  );
-};
-
-export const ListComponent = ({ role }) => {
-  return role === 'student' ? <StudentList /> : <CoachList />;
 };
