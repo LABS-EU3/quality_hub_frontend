@@ -495,17 +495,19 @@ const Landing = () => {
             </LogoTitleContainer>
             <LinksContainer>
               <NavbarLink>
-                <a href='/faq/general'>FAQ</a>
+                <a href='/faq/general' data-testid='faq'>
+                  FAQ
+                </a>
               </NavbarLink>
               <NavbarLink>
-                <a href='/' alt='about'>
+                <a href='/' data-testid='about'>
                   About
                 </a>
               </NavbarLink>
-              <a href='/login'>
+              <a href='/login' data-testid='login'>
                 <StyledButton theme={buttonTheme}>LOGIN</StyledButton>
               </a>
-              <a href='/register'>
+              <a href='/register' data-testid='signup'>
                 <StyledButton
                   theme={invertTheme}
                   style={{ whiteSpace: 'nowrap' }}

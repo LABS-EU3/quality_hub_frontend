@@ -154,6 +154,7 @@ const LoginForm = ({
             <Form>
               <div>
                 <Field
+                  data-testid='email'
                   type='email'
                   name='email'
                   placeholder='Email'
@@ -164,6 +165,7 @@ const LoginForm = ({
               </div>
               <div>
                 <Field
+                  data-testid='password'
                   type='password'
                   name='password'
                   placeholder='Password'
@@ -186,6 +188,7 @@ const LoginForm = ({
                       : buttonTheme
                   }
                   type='submit'
+                  data-testid='submit'
                   disabled={isSubmitting}
                 >
                   Sign in to your account

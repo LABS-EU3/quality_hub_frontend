@@ -4,8 +4,11 @@ import '@testing-library/jest-dom/extend-expect';
 import * as rtl from '@testing-library/react';
 import Landing from '../../Landing';
 
+let tools;
+
 beforeEach(() => {
   rtl.cleanup();
+  tools = rtl.render(<Landing />);
 });
 
 it('renders without crashing', () => {
@@ -19,36 +22,51 @@ it('matches snapshot', () => {
   expect(wrapper.firstChild).toMatchSnapshot();
 });
 
-it('renders Navigation', () => {
-  const wrapper = rtl.render(<Landing />);
-  const faq = wrapper.queryAllByText(/faq/i);
-  expect.arrayContaining(faq);
+it('renders FAQ Link', () => {
+  const faq = tools.getByTestId('faq');
+  expect(faq).toBeInTheDocument();
 
-  const about = wrapper.queryAllByText(/about/i);
-  expect.arrayContaining(about);
+  expect(faq.closest('a')).toHaveAttribute('href', '/faq/general');
+});
+
+it('renders About link', () => {
+  const about = tools.getByTestId('about');
+  expect(about).toBeInTheDocument();
+
+  expect(about.closest('a')).toHaveAttribute('href', '/');
+});
+
+it('renders Login link', () => {
+  const login = tools.getByTestId('login');
+  expect(login).toBeInTheDocument();
+
+  expect(login.closest('a')).toHaveAttribute('href', '/login');
+});
+
+it('renders Signup link', () => {
+  const signup = tools.getByTestId('signup');
+  expect(signup).toBeInTheDocument();
+
+  expect(signup.closest('a')).toHaveAttribute('href', '/register');
 });
 
 it('finds main image', () => {
-  const wrapper = rtl.render(<Landing />);
-  const womanImage = wrapper.queryByAltText(/woman/i);
+  const womanImage = tools.queryByAltText(/woman/i);
   expect(womanImage).toBeInTheDocument();
 });
 
 it('loads lower section images', () => {
-  const wrapper = rtl.render(<Landing />);
-  const triptychImages = wrapper.queryAllByAltText(/feature/i);
+  const triptychImages = tools.queryAllByAltText(/feature/i);
   expect.arrayContaining(triptychImages);
 });
 
 it('loads upper email input', () => {
-  const wrapper = rtl.render(<Landing />);
-  const emailInput = wrapper.getByPlaceholderText('Enter your email');
+  const emailInput = tools.getByPlaceholderText('Enter your email');
   expect(emailInput).toBeInTheDocument();
 });
 
 it('loads lower email input', () => {
-  const wrapper = rtl.render(<Landing />);
-  const LowerEmailInput = wrapper.getByPlaceholderText(
+  const LowerEmailInput = tools.getByPlaceholderText(
     'Enter your email address',
   );
   expect(LowerEmailInput).toBeInTheDocument();
