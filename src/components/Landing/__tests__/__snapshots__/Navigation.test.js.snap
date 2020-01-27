@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation matches snapshot  1`] = `
+<nav
+  className="sc-bxivhb frcxEG navigation"
+  data-testid="landing-nav"
+>
+  <div
+    className="logo"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-bdVaJa kHYcQv"
+      />
+    </a>
+    <p
+      className="logo-name"
+    >
+      DevCoach
+    </p>
+  </div>
+  <div
+    className="list-items-container"
+  >
+    <ul
+      className="list-items"
+    >
+      <li
+        className="list-item"
+      >
+        <a
+          data-testid="faq"
+          href="/faq/general"
+          onClick={[Function]}
+        >
+          FAQ
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          data-testid="about"
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          data-testid="login"
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          data-testid="signup"
+          href="/register"
+          onClick={[Function]}
+        >
+          Signup
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;

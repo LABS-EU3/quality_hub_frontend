@@ -9,10 +9,13 @@ import mainImage from './img/landing-comp.jpg';
 
 const Landing = () => (
   <div className='app'>
-    <CtaContainer className='cta-container'>
+    <CtaContainer
+      data-testid='cta-container'
+      className='cta-container'
+    >
       <Navigation />
       <div className='landing-image'>
-        <img src={mainImage} alt='main' />
+        <img src={mainImage} data-testid='main' alt='main' />
         <Header />
       </div>
     </CtaContainer>

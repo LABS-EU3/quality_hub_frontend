@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing page matches snapshot  1`] = `
+<div
+  className="app"
+>
+  <div
+    className="sc-bwzfXH YWBBG cta-container"
+    data-testid="cta-container"
+  >
+    <nav
+      className="sc-bxivhb frcxEG navigation"
+      data-testid="landing-nav"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <div
+            className="sc-bdVaJa kHYcQv"
+          />
+        </a>
+        <p
+          className="logo-name"
+        >
+          DevCoach
+        </p>
+      </div>
+      <div
+        className="list-items-container"
+      >
+        <ul
+          className="list-items"
+        >
+          <li
+            className="list-item"
+          >
+            <a
+              data-testid="faq"
+              href="/faq/general"
+              onClick={[Function]}
+            >
+              FAQ
+            </a>
+          </li>
+          <li
+            className="list-item"
+          >
+            <a
+              data-testid="about"
+              href="/about"
+              onClick={[Function]}
+            >
+              About
+            </a>
+          </li>
+          <li
+            className="list-item"
+          >
+            <a
+              data-testid="login"
+              href="/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </li>
+          <li
+            className="list-item"
+          >
+            <a
+              data-testid="signup"
+              href="/register"
+              onClick={[Function]}
+            >
+              Signup
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div
+      className="landing-image"
+    >
+      <img
+        alt="main"
+        data-testid="main"
+        src="landing-comp.jpg"
+      />
+      <div
+        className="sc-ifAKCX gTGar"
+      >
+        <h2
+          className="cta-title"
+        >
+          Interviewing isn't easy. That doesn't mean it has to be stressful
+        </h2>
+        <div
+          className="cta-button"
+        >
+          <a
+            href="/register"
+            onClick={[Function]}
+          >
+            <button
+              className="sc-htpNat bypFkS"
+            >
+              SIGN UP
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-EHOje cLIDdN"
+  >
+    <div
+      className="main-about-top"
+    >
+      <h2
+        className="main-about-title"
+      >
+        Enhance your skills. Land your dream job.
+        <span
+          className="logo"
+        >
+           DevCoach
+        </span>
+      </h2>
+      <p
+        className="main-about-intro"
+      >
+        We connect developers looking to improve their interviewing technique with experienced pros who have mastered the technical interview and can coach you through the process from start to finish.
+      </p>
+    </div>
+    <div
+      className="main-about-bottom"
+    >
+      <h4>
+        How does DevCoach work?
+      </h4>
+      <div
+        className="about-cards"
+      >
+        <div
+          className="about-card"
+        >
+          <div
+            className="image"
+          >
+            <img
+              alt="hand shake´"
+              src="how-2.jpg"
+            />
+          </div>
+          <div
+            className="card-info"
+          >
+            <h6>
+              Find Your Coach
+            </h6>
+            <p>
+              Match with experienced professionals tailored to you
+            </p>
+          </div>
+        </div>
+        <div
+          className="about-card"
+        >
+          <div
+            className="image"
+          >
+            <img
+              alt="analytics´"
+              src="how-1.jpg"
+            />
+          </div>
+          <div
+            className="card-info"
+          >
+            <h6>
+              Enhance Your Skills
+            </h6>
+            <p>
+              Practice mock interviews one on one with your coach
+            </p>
+          </div>
+        </div>
+        <div
+          className="about-card"
+        >
+          <div
+            className="image"
+          >
+            <img
+              alt="analytics´"
+              src="how-3.jpg"
+            />
+          </div>
+          <div
+            className="card-info"
+          >
+            <h6>
+              Get Hired
+            </h6>
+            <p>
+              Ace the real interview and land that dream job
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="user-stories-container"
+    >
+      <h2
+        className="user-stories-title"
+      >
+        Hear more about how DevCoach helped students master the technical interview and land their dream job
+      </h2>
+      <div
+        className="user-stories"
+      >
+        <div
+          className="user-story"
+        >
+          <div
+            className="user-header"
+          >
+            <img
+              alt="user"
+              src="person-1.jpg"
+            />
+            <h3>
+              John Davidson
+            </h3>
+          </div>
+          <p>
+            DevCoach definitely played a role in my performance. Nothing beats mock coding interviews. I still remember my first coding interview a few years back with another company.
+          </p>
+        </div>
+        <div
+          className="user-story"
+        >
+          <div
+            className="user-header"
+          >
+            <img
+              alt="user"
+              src="person-2.jpg"
+            />
+            <h3>
+              Aaron Ruiz
+            </h3>
+          </div>
+          <p>
+            Practicing with DevCoach gave me the confidence I needed to have a fun coding interview and eventually get the offers I wanted. Believe it or not, this time I wasn't even nervous when the day came
+          </p>
+        </div>
+        <div
+          className="user-story"
+        >
+          <div
+            className="user-header"
+          >
+            <img
+              alt="user"
+              src="person-3.jpg"
+            />
+            <h3>
+              Jessica Booth
+            </h3>
+          </div>
+          <p>
+            DevCoach helped me to get an amazing hands-on technical interview experience. After some preparation, I decided to test my skills in algorithms, so I scheduled a couple of DevCoach interviews.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-bZQynM ddyHvF footer-container"
+  >
+    <div
+      className="footer-top"
+    >
+      <div
+        className="cta-message"
+      >
+        <h2>
+          What are you waiting for?
+        </h2>
+      </div>
+      <div
+        className="cta-button"
+      >
+        <a
+          href="/register"
+          onClick={[Function]}
+        >
+          <button
+            className="sc-htpNat bypFkS"
+          >
+            Join Now
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      className="footer-bottom"
+    >
+      <div
+        className="footer-content footer-copyright"
+      >
+        <p>
+          Copyright © 2020 DevCoach
+        </p>
+      </div>
+      <div
+        className="footer-content footer-icons"
+      >
+        <div
+          className="footer-icon"
+        >
+          <img
+            alt="github"
+            src="github-1.png"
+          />
+        </div>
+        <div
+          className="footer-icon"
+        >
+          <img
+            alt="facebook"
+            src="facebook.png"
+          />
+        </div>
+        <div
+          className="footer-icon"
+        >
+          <img
+            alt="twitter"
+            src="twitter-1.png"
+          />
+        </div>
+        <div
+          className="footer-icon"
+        >
+          <img
+            alt="linkdin"
+            src="linkedin.png"
+          />
+        </div>
+        <div
+          className="footer-icon"
+        >
+          <img
+            alt="instagram"
+            src="instagram-logo-1.png"
+          />
+        </div>
+      </div>
+      <div
+        className="footer-content footer-tribute"
+      >
+        <p>
+          Designed by Labs EU3
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

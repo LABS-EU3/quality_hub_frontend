@@ -4,7 +4,7 @@ import { Logo } from '../Landing-styles';
 import { NavContainer } from './NavigationStyles';
 
 const Navigation = () => (
-  <NavContainer className='navigation'>
+  <NavContainer data-testid='landing-nav' className='navigation'>
     <div className='logo'>
       <Link to='/'>
         <Logo />
@@ -14,16 +14,24 @@ const Navigation = () => (
     <div className='list-items-container'>
       <ul className='list-items'>
         <li className='list-item'>
-          <Link to='/faq/general'>FAQ</Link>
+          <Link data-testid='faq' to='/faq/general'>
+            FAQ
+          </Link>
         </li>
         <li className='list-item'>
-          <Link to='/about'>About</Link>
+          <Link data-testid='about' to='/about'>
+            About
+          </Link>
         </li>
         <li className='list-item'>
-          <Link to='/login'>Login</Link>
+          <Link data-testid='login' to='/login'>
+            Login
+          </Link>
         </li>
         <li className='list-item'>
-          <Link to='/register'>Signup</Link>
+          <Link data-testid='signup' to='/register'>
+            Signup
+          </Link>
         </li>
       </ul>
     </div>
