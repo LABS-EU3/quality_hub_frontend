@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches snapshot  1`] = `
+<div
+  className="sc-bxivhb jbynth"
+>
+  <h2
+    className="cta-title"
+    data-testid="cta-title"
+  >
+    Interviewing isn't easy. That doesn't mean it has to be stressful
+  </h2>
+  <div
+    className="cta-button"
+  >
+    <a
+      data-testid="cta-button"
+      href="/register"
+      onClick={[Function]}
+    >
+      <button
+        className="sc-htpNat bypFkS"
+      >
+        SIGN UP
+      </button>
+    </a>
+  </div>
+</div>
+`;

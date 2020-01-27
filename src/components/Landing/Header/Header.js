@@ -5,12 +5,12 @@ import { HeaderContainer } from './Header-styles';
 
 const Header = () => (
   <HeaderContainer>
-    <h2 className='cta-title'>
+    <h2 data-testid='cta-title' className='cta-title'>
       Interviewing isn't easy. That doesn't mean it has to be
       stressful
     </h2>
     <div className='cta-button'>
-      <Link to='/register'>
+      <Link data-testid='cta-button' to='/register'>
         <StyledButton theme={buttonTheme}>SIGN UP</StyledButton>
       </Link>
     </div>
