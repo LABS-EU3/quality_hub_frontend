@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import devices from '../../utils/devices';
 import FeedbackModal from '../Modals/FeedbackModal';
 
-const CardContainer = styled.div`
+export const CardContainer = styled.div`
   max-width: 25rem;
   width: 100%;
   background: white;

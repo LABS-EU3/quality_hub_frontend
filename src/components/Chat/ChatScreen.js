@@ -13,18 +13,19 @@ const StyledChatScreen = styled.div`
   height: 85vh;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 1rem auto;
   justify-content: center;
   width: 100%;
   .chat-container {
     display: flex;
     flex: 1;
     width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 10px;
   }
   .whos-online-list-container {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
     width: 30%;
     flex: none;
     color: #2f4f4f;
@@ -32,7 +33,7 @@ const StyledChatScreen = styled.div`
     text-align: center;
     font-family: 'Ubuntu, sans-serif';
 
-    h5 {
+    h5, p {
       padding-left: 1rem;
       padding-right: 1rem;
       font-size: 1.15rem;
@@ -46,6 +47,8 @@ const StyledChatScreen = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 85vh;
+    box-sizing: border-box;
   }
 `;
 
@@ -61,7 +64,12 @@ class ChatScreen extends React.Component {
     this.props.getRooms(this.props.user.email);
     if (this.props.roomId) this.startChat(this.props.roomId);
   };
+
   startChat = roomId => {
+    if (this.state.currentUser) {
+      this.state.currentUser.roomSubscriptions[this.state.currentRoom.id].cancel();
+    }
+
     this.setState({ messages: [] });
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:02d03086-c977-4990-bbb8-d915c9090f74',
@@ -123,10 +131,10 @@ class ChatScreen extends React.Component {
       <StyledChatScreen>
         <div className='chat-container'>
           <aside className='whos-online-list-container'>
-            <h5>Your Chats</h5>
-            <h5 className='smallerP'>
+            <h5>Chats</h5>
+            <p className='smallerP'>
               Select a conversation to send a message
-            </h5>
+            </p>
             <UserList
               rooms={this.props.rooms}
               user={this.props.user}

@@ -4,6 +4,7 @@ import SendIcon from '@material-ui/icons/Send';
 
 const StyledSendMessage = styled.div`
   display: flex;
+  margin-top: 20px;
   .formDiv {
     padding: 15px;
     border: 1px solid #ced4da;

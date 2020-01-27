@@ -29,9 +29,7 @@ const DashboardContainer = styled.div`
     font-weight: 400;
   }
   .top-data-card {
-    padding: 1rem;
-    height: 8em;
-    width: 80%;
+    width: 100%;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0px 0px 4px rgba(82, 68, 110, 0.3);
@@ -41,6 +39,25 @@ const DashboardContainer = styled.div`
     text-align: center;
     margin-bottom: 2em;
     color: #4a4a4a;
+    font-size: 1rem;
+
+    .top-data-section {
+      text-align: center;
+      outline: 1px solid rgb(234, 234, 234);
+      width: 100%;
+      height: 7em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .data {
+        color: #4fad65;
+        font-size: 1.4rem;
+        font-weight: bolder;
+        margin: 0.1rem;
+      }
+    }
   }
 
   .appointment-cards-container {
@@ -160,22 +177,24 @@ const UserDashboard = props => {
       <h2 className='appointment-title'>Scheduled Interviews</h2>
       <div className='top-data-card'>
         <div className='top-data-section'>
-          <h3>Average rating:</h3>
-          <h3>
+          <p className='data'>
             {props.feedback && props.feedback.length
               ? `${calculateFormattedMean(props.feedback)}`
-              : 'N/A'}
-          </h3>
+              : 0}
+          </p>
+          <p>Average rating</p>
         </div>
         <div className='top-data-section'>
-          <h3>Number of interviews completed:</h3>
-          <h3>{props.feedback ? props.feedback.length : 'N/A'}</h3>
+          <p className='data'>
+            {props.feedback ? props.feedback.length : 0}
+          </p>
+          <p>Interviews completed</p>
         </div>
         <div className='top-data-section'>
-          <h3>Upcoming interviews:</h3>
-          <h3>
-            {props.appointments ? props.appointments.length : 'N/A'}
-          </h3>
+          <p className='data'>
+            {props.appointments ? props.appointments.length : 0}
+          </p>
+          <p>Upcoming interviews</p>
         </div>
       </div>
       {appointments ? (
@@ -207,7 +226,7 @@ const UserDashboard = props => {
               </div>
             </div>
           ) : (
-            <EmptyAppointment />
+            <EmptyAppointment role_id={user.role_id} />
           )}
         </div>
       ) : (

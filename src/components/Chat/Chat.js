@@ -12,7 +12,7 @@ const StyledChatLoader = styled.div`
   justify-content: center;
   align-items: center;
   height: 80vh;
-  margin-left: 35%;
+  margin-left: 45%;
 `;
 
 const ChatLoader = props => {

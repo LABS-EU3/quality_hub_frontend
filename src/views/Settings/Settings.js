@@ -4,7 +4,6 @@ import axios from 'axios';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { Upload, message } from 'antd';
 
 import {

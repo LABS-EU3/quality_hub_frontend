@@ -11,6 +11,8 @@ export const START_CHAT_FROM_SCRATCH_SUCCESSFUL =
 export const SAVE_FOR_CHAT = 'SAVE_FOR_CHAT';
 export const SAVE_ROOM_ID = 'SAVE_ROOM_ID';
 
+const url = process.env.REACT_APP_BASE_URL;
+
 export const saveForChat = peer => {
   return { type: SAVE_FOR_CHAT, payload: peer };
 };
@@ -18,8 +20,6 @@ export const saveForChat = peer => {
 export const saveRoomId = roomId => {
   return { type: SAVE_ROOM_ID, payload: roomId };
 };
-
-const url = process.env.REACT_APP_BASE_URL;
 
 export const getRooms = email => dispatch => {
   axiosWithAuth()
