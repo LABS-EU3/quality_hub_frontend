@@ -30,7 +30,7 @@ describe('Navigation', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('renders Signup link', () => {
+  it('Signup link ok', () => {
     const tree = rtl.render(
       <Router>
         <Navigation />
@@ -42,7 +42,7 @@ describe('Navigation', () => {
     expect(signup.closest('a')).toHaveAttribute('href', '/register');
   });
 
-  it('renders FAQ Link', () => {
+  it('FAQ Link ok', () => {
     const tree = rtl.render(
       <Router>
         <Navigation />
@@ -54,7 +54,7 @@ describe('Navigation', () => {
     expect(faq.closest('a')).toHaveAttribute('href', '/faq/general');
   });
 
-  it('renders About link', () => {
+  it('About link ok', () => {
     const tree = rtl.render(
       <Router>
         <Navigation />
@@ -66,7 +66,7 @@ describe('Navigation', () => {
     expect(about.closest('a')).toHaveAttribute('href', '/about');
   });
 
-  it('renders Login link', () => {
+  it('Login link ok', () => {
     const tree = rtl.render(
       <Router>
         <Navigation />
