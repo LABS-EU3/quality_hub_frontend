@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer matches snapshot  1`] = `
+<div
+  className="sc-bxivhb TZoTl footer-container"
+>
+  <div
+    className="footer-top"
+  >
+    <div
+      className="cta-message"
+    >
+      <h2>
+        What are you waiting for?
+      </h2>
+    </div>
+    <div
+      className="cta-button"
+      data-testid="cta-button"
+    >
+      <a
+        data-testid="registerLink"
+        href="/register"
+        onClick={[Function]}
+      >
+        <button
+          className="sc-htpNat bypFkS"
+        >
+          Join Now
+        </button>
+      </a>
+    </div>
+  </div>
+  <div
+    className="footer-bottom"
+  >
+    <div
+      className="footer-content footer-copyright"
+    >
+      <p>
+        Copyright © 2020 DevCoach
+      </p>
+    </div>
+    <div
+      className="footer-content footer-icons"
+    >
+      <div
+        className="footer-icon"
+      >
+        <img
+          alt="github"
+          src="github-1.png"
+        />
+      </div>
+      <div
+        className="footer-icon"
+      >
+        <img
+          alt="facebook"
+          src="facebook.png"
+        />
+      </div>
+      <div
+        className="footer-icon"
+      >
+        <img
+          alt="twitter"
+          src="twitter-1.png"
+        />
+      </div>
+      <div
+        className="footer-icon"
+      >
+        <img
+          alt="linkdin"
+          src="linkedin.png"
+        />
+      </div>
+      <div
+        className="footer-icon"
+      >
+        <img
+          alt="instagram"
+          src="instagram-logo-1.png"
+        />
+      </div>
+    </div>
+    <div
+      className="footer-content footer-tribute"
+    >
+      <p>
+        Designed by Labs EU3
+      </p>
+    </div>
+  </div>
+</div>
+`;

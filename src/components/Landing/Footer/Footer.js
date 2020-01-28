@@ -15,8 +15,8 @@ const Footer = () => (
       <div className='cta-message'>
         <h2>What are you waiting for?</h2>
       </div>
-      <div className='cta-button'>
-        <Link to='/register'>
+      <div data-testid='cta-button' className='cta-button'>
+        <Link data-testid='registerLink' to='/register'>
           <StyledButton theme={buttonTheme}>Join Now</StyledButton>
         </Link>
       </div>

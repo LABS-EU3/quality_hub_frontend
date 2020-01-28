@@ -10,8 +10,8 @@ import personThree from './img/person-3.jpg';
 
 const Main = () => (
   <MainContainer>
-    <div className='main-about-top'>
-      <h2 className='main-about-title'>
+    <div data-testid='main-about-top' className='main-about-top'>
+      <h2 data-testid='main-about-title' className='main-about-title'>
         Enhance your skills. Land your dream job.
         <span className='logo'> DevCoach</span>
       </h2>
@@ -39,7 +39,11 @@ const Main = () => (
         </div>
         <div className='about-card'>
           <div className='image'>
-            <img src={aboutOne} alt='analytics´' />
+            <img
+              src={aboutOne}
+              data-testid='aboutOne'
+              alt='analytics´'
+            />
           </div>
           <div className='card-info'>
             <h6>Enhance Your Skills</h6>
@@ -48,7 +52,11 @@ const Main = () => (
         </div>
         <div className='about-card'>
           <div className='image'>
-            <img src={aboutThree} alt='analytics´' />
+            <img
+              src={aboutThree}
+              data-testid='aboutThree'
+              alt='analytics´'
+            />
           </div>
           <div className='card-info'>
             <h6>Get Hired</h6>
@@ -67,7 +75,7 @@ const Main = () => (
       <div className='user-stories'>
         <div className='user-story'>
           <div className='user-header'>
-            <img src={personOne} alt='user' />
+            <img src={personOne} data-testid='personOne' alt='user' />
             <h3>John Davidson</h3>
           </div>
           <p>
@@ -79,7 +87,7 @@ const Main = () => (
         </div>
         <div className='user-story'>
           <div className='user-header'>
-            <img src={personTwo} alt='user' />
+            <img src={personTwo} data-testid='personTwo' alt='user' />
             <h3>Aaron Ruiz</h3>
           </div>
           <p>
@@ -91,7 +99,11 @@ const Main = () => (
         </div>
         <div className='user-story'>
           <div className='user-header'>
-            <img src={personThree} alt='user' />
+            <img
+              src={personThree}
+              data-testid='personThree'
+              alt='user'
+            />
             <h3>Jessica Booth</h3>
           </div>
           <p>

@@ -15,7 +15,7 @@ const Landing = () => (
     >
       <Navigation />
       <div className='landing-image'>
-        <img src={mainImage} data-testid='main' alt='main' />
+        <img src={mainImage} data-testid='landing-image' alt='main' />
         <Header />
       </div>
     </CtaContainer>

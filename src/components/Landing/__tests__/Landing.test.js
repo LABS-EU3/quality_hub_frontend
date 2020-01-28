@@ -46,7 +46,7 @@ describe('Landing page', () => {
         <Landing />
       </Router>,
     );
-    const test = tree.getByTestId(/main/i);
+    const test = tree.getByTestId('landing-image');
     expect(test).toBeInTheDocument();
   });
 

@@ -87,7 +87,7 @@ exports[`Landing page matches snapshot  1`] = `
     >
       <img
         alt="main"
-        data-testid="main"
+        data-testid="landing-image"
         src="landing-comp.jpg"
       />
       <div
@@ -95,6 +95,7 @@ exports[`Landing page matches snapshot  1`] = `
       >
         <h2
           className="cta-title"
+          data-testid="cta-title"
         >
           Interviewing isn't easy. That doesn't mean it has to be stressful
         </h2>
@@ -102,6 +103,7 @@ exports[`Landing page matches snapshot  1`] = `
           className="cta-button"
         >
           <a
+            data-testid="cta-button"
             href="/register"
             onClick={[Function]}
           >
@@ -120,9 +122,11 @@ exports[`Landing page matches snapshot  1`] = `
   >
     <div
       className="main-about-top"
+      data-testid="main-about-top"
     >
       <h2
         className="main-about-title"
+        data-testid="main-about-title"
       >
         Enhance your skills. Land your dream job.
         <span
@@ -176,6 +180,7 @@ exports[`Landing page matches snapshot  1`] = `
           >
             <img
               alt="analytics´"
+              data-testid="aboutOne"
               src="how-1.jpg"
             />
           </div>
@@ -198,6 +203,7 @@ exports[`Landing page matches snapshot  1`] = `
           >
             <img
               alt="analytics´"
+              data-testid="aboutThree"
               src="how-3.jpg"
             />
           </div>
@@ -233,6 +239,7 @@ exports[`Landing page matches snapshot  1`] = `
           >
             <img
               alt="user"
+              data-testid="personOne"
               src="person-1.jpg"
             />
             <h3>
@@ -251,6 +258,7 @@ exports[`Landing page matches snapshot  1`] = `
           >
             <img
               alt="user"
+              data-testid="personTwo"
               src="person-2.jpg"
             />
             <h3>
@@ -269,6 +277,7 @@ exports[`Landing page matches snapshot  1`] = `
           >
             <img
               alt="user"
+              data-testid="personThree"
               src="person-3.jpg"
             />
             <h3>
@@ -297,8 +306,10 @@ exports[`Landing page matches snapshot  1`] = `
       </div>
       <div
         className="cta-button"
+        data-testid="cta-button"
       >
         <a
+          data-testid="registerLink"
           href="/register"
           onClick={[Function]}
         >
