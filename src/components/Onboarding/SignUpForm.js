@@ -58,7 +58,7 @@ const SignUpForm = ({
   return (
     <div>
       <RegisterCard>
-        <Link to='/'>
+        <Link data-testid='registerCard' to='/'>
           <NavLogo />
         </Link>
         <h1>Sign Up To Get Started Now</h1>

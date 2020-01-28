@@ -41,6 +41,26 @@ describe('Main page', () => {
     expect(test).toHaveClass('main-about-top');
   });
 
+  it('Main h2 text ok', () => {
+    const tree = rtl.render(
+      <Router>
+        <Main />
+      </Router>,
+    );
+    const test = tree.queryAllByText('Enhance');
+    expect.arrayContaining(test);
+  });
+
+  it('DevCoach ok', () => {
+    const tree = rtl.render(
+      <Router>
+        <Main />
+      </Router>,
+    );
+    const text = tree.queryByText('DevCoach');
+    expect(text).toBeInTheDocument();
+  });
+
   it('Main-about-title ok', () => {
     const tree = rtl.render(
       <Router>
